@@ -111,6 +111,20 @@
 | 065 | 2026-02-28 | SESSION | `WORKING/WORKPAPER/closed/2026-02-24-diary-layer-konzept.md` | WP 2026-02-24 CLOSED. Alle 5 Next Steps implementiert. Vier-Schichten-Modell vollständig. Nach closed/ verschoben. |
 | 066 | 2026-02-28 | FIX | `READ-AGENT.md` | Current Status Sektion aktualisiert: LTM 28→58 Einträge, Whitepapers 1→2, offene WPs korrigiert, Diary Layer ergänzt, Issues #1-6 Status. |
 | 067 | 2026-02-28 | SESSION | `WORKING/WORKPAPER/closed/2026-02-28-repo-issue-review.md` | Repo-Issue-Review Session abgeschlossen. 5 Issues identified, 4 vollständig gelöst, 1 suspended (Feldtest). Diary Layer implementiert. LTM-Ingest abgeschlossen. |
+| 068 | 2026-03-26 | SESSION | `WORKING/WORKPAPER/2026-03-26-issue-analyse-und-umsetzungsplan.md` | AAMS Self-Check + vollständiger GitHub Issue Review (9 offene Issues). Konsolidierter Umsetzungsplan mit 7 Tasks (T1-T7). |
+| 069 | 2026-03-26 | FEATURE | `reference/AGENT_SCHEMA.json` | T1: `_deviations` Array-Property im Schema hinzugefügt. Objekte mit `spec_path`, `actual_path`, `reason` (alle required). |
+| 070 | 2026-03-26 | FEATURE | `reference/AGENT.json` | T1: `_deviations` Beispiel-Einträge aus Luna-1 Feldreport eingefügt. |
+| 071 | 2026-03-26 | FEATURE | `reference/SPEC.md` | T1: `_deviations — Intentional Deviations` Sektion vor `_ Annotation Convention` eingefügt mit Regeln und JSON-Beispiel. |
+| 072 | 2026-03-26 | FEATURE | `README.md` | T2: LTM Setup Order Tabelle (ltm-index.md first, ChromaDB optional). T3: "No CLAUDE.md. No GEMINI.md." Mapping-Tabelle — AAMS ersetzt tool-spezifische Dateien. |
+| 073 | 2026-03-26 | FEATURE | `READ-AGENT.md` | T4: §4 Agent-Specific Workflow Integration — Blueprint.md 2-Phase Pattern für Gemini/Firebase Studio. |
+| 074 | 2026-03-26 | GITHUB | Issues #21-#26 | 6 neue Issues aus Workpaper-Analyse erstellt. #21 _deviations, #22 LTM hero, #23 CLAUDE.md positioning, #24 Blueprint.md, #25 Session-Start Prompts, #26 Security Signals. |
+| 075 | 2026-03-26 | GITHUB | Issues #7,#8,#14-#20 | Alle 9 Legacy-Issues geschlossen mit Kommentaren. Superseded durch T1-T4 oder durch neue Issues #21-#26 abgedeckt. |
+| 076 | 2026-03-26 | FIX | `.agent.json` | Vier-Schichten-Modell: `diary` in `workspace.structure` + `documentation_model` aufgenommen. Von "Three-layer" auf "Four-layer" korrigiert. |
+| 077 | 2026-03-26 | FIX | `AGENTS.md` | `DIARY/` in Workspace-Baumdarstellung ergänzt. |
+| 078 | 2026-03-26 | FIX | `reference/templates/read-agent-template.md` | `DIARY/` in Template-Baumstruktur eingefügt — neue Bootstraps erzeugen jetzt Vier-Schichten READ-AGENT.md. |
+| 079 | 2026-03-26 | FIX | `docs/index.html` | LTM-Zahlen aktualisiert (46→67+), `prompts/bootstrap.md` → `reference/prompts/bootstrap.md`, Footer SPEC-Link → `reference/SPEC.md`. |
+| 080 | 2026-03-26 | UPDATE | `WORKING/WHITEPAPER/WP-001-aams-overview.md` | Stand 2026-03-26: T1-T4 Features dokumentiert, Issue-Status, LTM-Zahlen, neue Features-Zeile. |
+| 081 | 2026-03-26 | CLEANUP | `WORKING/DATABASE/` | Geistordner entfernt — Artefakt aus Selfcheck-Commit 8259553, nie in `.agent.json` deklariert. |
 
 ---
 
@@ -121,15 +135,20 @@
 - Ein **deklarativer Architekturstandard** der in jedem Repo als Datei existiert.
 - Besteht aus zwei Dateien: `AGENT.json` (voll) + `.agent.json` (minimal/portabel).
 
-### Drei-Schichten-Dokumentationsmodell
+### Vier-Schichten-Dokumentationsmodell
 1. **Workpaper** — sessiongebunden, operativ, wird nach Abschluss archiviert
 2. **Whitepaper** — stabile Systemwahrheit, architektonisch, nie gelöscht
-3. **Memory (LTM)** — persistenter Kontextspeicher über Sessions hinweg
+3. **Diary** — chronologischer Entscheidungslog, monatsweise, max 10 Zeilen pro Eintrag
+4. **Memory (LTM)** — persistenter Kontextspeicher über Sessions hinweg
 
-### Offene Issues (Stand 2026-02-22)
-- **Issue #1 — Secret Exclusion:** Im Manifest adressiert (`secrets_policy`, `can_read_secrets=false`). Gilt als gelöst.
-- **Issue #2 — Projektanalyse-Struktur:** Durch `workspace.onboarding.steps` + erstes Workpaper adressiert.
-- **Issue #3 — Strukturelle Unschärfen:** Durch klare Schichtentrennung (Workpaper/Whitepaper/Memory) + Agent Contract in READ-AGENT.md adressiert.
+### Offene Issues (Stand 2026-03-26)
+- **Issues #1-#20:** Alle geschlossen.
+- **Issue #21 — `_deviations` Schema:** Implementiert (T1).
+- **Issue #22 — LTM Hero Artifact:** Implementiert (T2).
+- **Issue #23 — CLAUDE.md Positioning:** Implementiert (T3).
+- **Issue #24 — Blueprint.md Workflow:** Implementiert (T4).
+- **Issue #25 — Session-Start Prompts:** Offen.
+- **Issue #26 — Security Signals:** Offen.
 
 ### Bootstrap-Ablauf (normativ)
 1. `.agent.json` lesen
