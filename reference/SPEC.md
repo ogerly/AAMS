@@ -927,6 +927,36 @@ aams-lint --check-refs AGENT.json
 
 Without such a check, `_ref` annotations risk becoming stale after refactoring.
 
+#### `_deviations` — Intentional Deviations
+
+Projects adopting AAMS onto **existing structures** may not be able to follow every spec default (pre-existing naming, 50+ historical files, cross-references that would break on rename). `_deviations` is the formal mechanism to document intentional deviations — making the contract self-documenting rather than silently wrong.
+
+```json
+"_deviations": [
+  {
+    "spec_path": "workspace.structure.workpapers_closed = ./WORKING/WORKPAPER/closed",
+    "actual_path": "./WORKING/WORKPAPER/close",
+    "reason": "Pre-AAMS naming — 50+ historical workpapers, renaming would break cross-references."
+  },
+  {
+    "spec_path": "workspace.workpaper_rules.naming_pattern = {date}-{agent}-{topic}.md",
+    "actual_path": "{date}_{topic}.md",
+    "reason": "Historical consistency — naming predates AAMS adoption."
+  }
+]
+```
+
+**Rules:**
+- `spec_path` — the default as defined in this spec
+- `actual_path` — what the project actually uses
+- `reason` — why (legacy, team preference, historical consistency)
+- Agents reading `_deviations` MUST adapt their path expectations accordingly
+- A deviation without a `reason` is a bug, not a feature
+
+> New adopters: Document deviations in `_deviations` rather than renaming everything. The cost of renaming 50 files is real. The cost of undocumented deviations is also real.
+
+---
+
 #### `_` Annotation Convention
 
 AAMS uses `_`-prefixed fields as machine-ignored, human-readable annotations. Every object in the schema permits them via `patternProperties: { "^_": true }`. This is intentional — not a schema loophole.

@@ -275,6 +275,21 @@
       "additionalProperties": true
     },
 
+    "_deviations": {
+      "type": "array",
+      "description": "Intentional deviations from the AAMS spec. Allows projects adopting AAMS on existing structures to formally document where and why they differ from spec defaults. Self-documents the contract when standard paths are overridden.",
+      "items": {
+        "type": "object",
+        "required": ["spec_path", "actual_path", "reason"],
+        "properties": {
+          "spec_path":   { "type": "string", "description": "The path, value, or convention as defined in the AAMS standard." },
+          "actual_path": { "type": "string", "description": "The path, value, or convention actually used in this project." },
+          "reason":      { "type": "string", "description": "Why this deviation exists (e.g. pre-AAMS naming, historical consistency, team preference)." }
+        },
+        "additionalProperties": false
+      }
+    },
+
     "bootstrap_rules": {
       "type": "object",
       "description": "LTM configuration and bootstrap behaviour for the minimal .agent.json manifest. All fields optional.",

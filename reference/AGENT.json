@@ -412,5 +412,18 @@
       "ci_cd": "github-actions",
       "monitoring": "grafana"
     }
-  }
+  },
+
+  "_deviations": [
+    {
+      "spec_path": "workspace.structure.workpapers_closed = ./WORKING/WORKPAPER/closed",
+      "actual_path": "./WORKING/WORKPAPER/close",
+      "reason": "Pre-AAMS naming convention — 50+ historical workpapers use 'close/', renaming would break cross-references."
+    },
+    {
+      "spec_path": "workspace.workpaper_rules.naming_pattern = {date}-{agent}-{topic}.md",
+      "actual_path": "{date}_{topic}.md",
+      "reason": "Historical consistency — naming pattern predates AAMS adoption."
+    }
+  ]
 }

@@ -112,6 +112,20 @@ READ-AGENT.md  ←  project context and agent contract
 
 One setup. Copilot, Cursor, Claude Code, Codex, Windsurf, Aider, Continue.dev — they all read `AGENTS.md`. From there, they reach the same contract. No duplication. No tool lock-in.
 
+**No CLAUDE.md. No GEMINI.md. No airules.md needed.**
+
+| Tool-specific file | Tool | Replaced by AAMS |
+|---|---|---|
+| `CLAUDE.md` | Claude Code | `AGENTS.md` → `READ-AGENT.md` → `.agent.json` |
+| `GEMINI.md` | Firebase Studio / Gemini | `AGENTS.md` → `.agent.json` |
+| `.idx/airules.md` | Firebase Studio | `AGENTS.md` → `READ-AGENT.md` |
+| `.cursorrules` | Cursor | `AGENTS.md` → `.agent.json` |
+| `.windsurfrules` | Windsurf | `AGENTS.md` → `.agent.json` |
+
+One set of files. All tools. When the rules change, update one place — not five.
+
+Long tool-specific files (e.g. `CLAUDE.md` >150 lines) are widely reported to hurt answer quality and increase hallucinations. AAMS avoids this by design: `AGENTS.md` stays thin and delegates to structured contracts, not system-prompt-sized instruction blocks.
+
 **That's the actual differentiator.** Not the folder structure. The portability.
 
 ---
@@ -169,6 +183,15 @@ WORKING/
 **Diary layer** — the gap between workpaper and whitepaper. Decisions have context that's too narrative for a whitepaper and too strategic for a workpaper. The diary preserves that — chronologically, monthly, max 10 lines per entry.
 
 Two LTM tracks, both mandatory: the **audit log** (`ltm-index.md`) is what humans read and what survives a fresh clone. The **vector store** (`AGENT-MEMORY/`) is what agents query efficiently. Without the vector store, context degrades after ~100 sessions. Without the audit log, a fresh clone starts blind.
+
+**LTM Setup Order — start here, not with ChromaDB:**
+
+| Step | What | Why |
+|------|------|---------|
+| 1 | Create `WORKING/MEMORY/ltm-index.md` | Zero dependencies. Human-readable. In Git. Survives fresh clone. Append after every session close. |
+| 2 | Set up ChromaDB *(optional)* | Semantic search. Essential at ~100 sessions. Requires `pip install chromadb`. Rebuilt from `ltm-index.md` if lost. |
+
+`ltm-index.md` is the source of truth. Always set it up first.
 
 ---
 

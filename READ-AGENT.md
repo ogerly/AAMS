@@ -140,6 +140,34 @@ No Python, no ChromaDB needed. Works on any fresh repo.
 
 ---
 
+### §4 Agent-Specific Workflow Integration
+
+Different AI agents have native planning behaviours. This section defines how they coexist with AAMS without conflict.
+
+#### The Blueprint.md Pattern (Gemini / Firebase Studio)
+
+Gemini in Firebase Studio creates a `blueprint.md` file during complex tasks — a live planning document showing the agent's current thinking. This is **not** a violation of AAMS. It is a native agent behaviour that AAMS explicitly accommodates.
+
+**Phase 1 — Live Planning (agent's active task)**
+
+- Agent creates `blueprint.md` in the project root
+- Purpose: transparent live plan — what the agent intends to do and the steps it is taking
+- Status: **ephemeral** — it is a working artefact for the duration of the task only
+- Rule: `blueprint.md` is NOT part of permanent project documentation
+
+**Phase 2 — AAMS Formalization (end of task)**
+
+When the task is complete, trigger the "AAMS routine":
+1. Create a **Workpaper** in `WORKING/WORKPAPER/` — summarize goal, actions, outcome
+2. Update or create a **Whitepaper** if any architectural decision was made
+3. **Delete `blueprint.md`** — `WORKING/` is the single source of truth, not the root
+
+> Rule: Any ephemeral planning artefact in the root (e.g. `blueprint.md`, `plan.md`, `task.md`) must be cleaned up at the end of the task. Its content must be transferred into AAMS structure before deletion.
+
+This pattern applies to any agent with native planning behaviours. AAMS is the archive. The agent's native tool is the scratchpad.
+
+---
+
 ## Key Files
 
 | File | Role |
