@@ -396,6 +396,49 @@
     </p>
   </section>
 
+  <!-- ── Skeptic ── -->
+  <section>
+    <h2>"I don't need this. I manage context myself."</h2>
+    <p>
+      You might. For now. Here's what changes — and these are provable, not opinions:
+    </p>
+    <ul class="bullets">
+      <li>
+        <strong>Provability.</strong> Every decision, every file change is documented with a timestamp in a workpaper.
+        <code style="font-family:monospace;font-size:13px">git log</code> proves what happened.
+        <code style="font-family:monospace;font-size:13px">ltm-index.md</code> proves what the agent knew when it decided.
+        That's not overhead — it's an audit trail.
+      </li>
+      <li>
+        <strong>History.</strong> Session 1 through session 100 — every one is a markdown file in
+        <code style="font-family:monospace;font-size:13px">WORKING/WORKPAPER/closed/</code>.
+        A new developer, a new agent, or you after a 3-month break can read the entire project history.
+        No tribal knowledge. The repo speaks for itself.
+      </li>
+      <li>
+        <strong>Economics.</strong> How much time do you spend re-explaining context to your agent?
+        Repeating architecture decisions? Fixing things it broke because it didn't know about a constraint from two weeks ago?
+        AAMS makes the agent self-serving: it queries memory before it acts, documents what it does,
+        and the next session inherits everything. Fewer wasted tokens. Fewer reverted commits.
+      </li>
+      <li>
+        <strong>Tool lock-in.</strong> Today it's Cursor. Tomorrow Copilot. Next month Claude Code.
+        Without a standard, your context lives in your head. Switch tools, and the new one starts blind.
+        With AAMS: switch tools, context stays. Migration cost: zero.
+      </li>
+      <li>
+        <strong>Scale.</strong> At 5 sessions you remember everything. At 50 you re-decide things from two months ago.
+        At 100 your agent hallucinates solutions to problems that were already solved.
+      </li>
+    </ul>
+    <p>
+      <strong>The cost of adopting AAMS is one <code style="font-family:monospace;font-size:13px">curl</code> command.</strong>
+      Zero dependencies. No install. No framework. The effort to adopt it is mass-zero.
+      The effort to <em>not</em> adopt it is the silent accumulation of repeated decisions
+      and context you reconstruct from memory instead of reading it from disk.
+    </p>
+  </section>
+
   <!-- ── Proof ── -->
   <section>
     <h2>Applied to itself</h2>
