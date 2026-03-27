@@ -44,6 +44,22 @@ The agent creates the `WORKING/` structure, scans the repo, writes the first wor
 
 ---
 
+### Chat Agent Users: Start Here
+
+> **Chat agents (Copilot Chat, ChatGPT, Cursor Chat) don't self-bootstrap.** You need to paste a prompt.
+
+**Every session**, paste this into your chat agent:
+
+```
+Read READ-AGENT.md and execute agent_contract.on_session_start.
+Query WORKING/MEMORY/ltm-index.md for prior context on [TOPIC].
+Create a workpaper in WORKING/WORKPAPER/ before starting any work.
+```
+
+This prevents the most common failure: the agent starts working without context or workpaper. More prompts (LTM query, workpaper creation, session close) in [`reference/prompts/bootstrap.md`](./reference/prompts/bootstrap.md).
+
+---
+
 If you want to survive on the open sea, you need two things: a good crew — and a map everyone can read. The new deckhand. The night watch relief. The AI.
 
 That's exactly what AAMS is — the Autonomous Agent Manifest Specification.
@@ -261,7 +277,7 @@ The long-term goal is a mechanism that causes any agent — chat or autonomous �
 - A bootstrap prompt library ([`reference/prompts/bootstrap.md`](./reference/prompts/bootstrap.md)) for users to hand to chat agents
 - Standardized `on_entry` signals that agent runtimes could recognize natively
 
-Until that problem is solved: for chat agents, the user prompt from [`reference/prompts/bootstrap.md`](./reference/prompts/bootstrap.md) is the bridge.
+Until that problem is solved: for chat agents, paste the session-start prompt from [`reference/prompts/bootstrap.md`](./reference/prompts/bootstrap.md) — or use the quick-reference table at the top of that file.
 
 ---
 

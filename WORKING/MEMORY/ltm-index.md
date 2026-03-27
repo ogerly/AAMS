@@ -131,6 +131,9 @@
 | 085 | 2026-03-27 | SPEC | `reference/SPEC.md` | LHR-Positionierungsabsatz nach Philosophy: "AAMS is the lowest solvable layer in the LHR stack." Verweis auf WP-004. |
 | 086 | 2026-03-27 | SESSION | `WORKING/WORKPAPER/closed/2026-03-27-long-horizon-reasoning-analyse.md` | Session CLOSED. WP-004 erstellt, SPEC.md aktualisiert, Cross-Model-Validierung dokumentiert. Offene Items: G1-G4 als Issues, v1.1-Roadmap. |
 | 087 | 2026-03-27 | GITHUB | Issues #28-#31 (vorbereitet) | 4 Issue-Bodies für v1.1-Gaps erstellt: #28 Standardisiertes LTM-Query-Protokoll (query_ltm), #29 Automatische Workpaper-Kompression, #30 CI-Enforcement-Hooks, #31 Intent-Awareness im Diary. Alle referenzieren WP-004 + Issue #27. |
+| 088 | 2026-03-27 | UX | `reference/prompts/bootstrap.md` | Issue #25: Bootstrap-Gap geschlossen. Komplette Überarbeitung: 7 Sektionen (Quick Reference, Bootstrap, Session Start, LTM Query, Workpaper, Session Close, Tool-Variants + VS Code Snippets). Kernänderung: "before starting any work" im Session-Start-Prompt gegen 30% Workpaper-Failure. |
+| 089 | 2026-03-27 | UX | `README.md` | "Chat Agent Users: Start Here" Abschnitt nach Quick Start eingefügt. Session-Start-Prompt direkt kopierbar. Verweis auf bootstrap.md für weitere Prompts. |
+| 090 | 2026-03-27 | SESSION | `WORKING/WORKPAPER/2026-03-27-issue-25-bootstrap-gap.md` | Session CLOSED. Issue #25 vollständig umgesetzt: bootstrap.md überarbeitet, README.md ergänzt, VS Code Snippet dokumentiert. |
 
 ---
 
