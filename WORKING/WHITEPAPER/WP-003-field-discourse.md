@@ -179,6 +179,39 @@ AAMS adressiert die KI-Seite dieses Problems: strukturierte, persistente, tool-�
 
 ---
 
+### 2026-03-27 — Die Kochbuch-Analogie: AAMS für NonDEVs
+
+**Kontext:** Antwort auf Person-Bs Anfrage nach einer Erklärung für Nicht-Entwickler. Entstanden aus der "Klaus-Problem"-Diskussion — Wissen geht verloren, wenn es nur im Kopf existiert.
+
+**Die Analogie:**
+
+> *„Ich gehe davon aus, dass wir alle noch die Kochbücher unserer Mütter und Großmütter kennen. Meine Großmutter hatte eine riesige Sammlung von Rezepten und Zetteln.*
+>
+> *Und ähnlich ist es eigentlich mit AAMS: In der ganzen Hektik und dem Stress vergisst man mit der Zeit einfach, wie man ein bestimmtes Gericht perfekt gemacht hat. Dann holt man sein Kochbuch wieder raus. Man sieht die kleinen Notizen am Rand – die Temperatur vom Ofen oder was man sonst noch beachtet hat.*
+>
+> *AAMS ist genau das für die Software-Entwicklung: Ein Kochbuch für die KI. Es speichert die Entscheidungen und Handgriffe, damit man nach 50 Schritten oder drei Wochen Pause nicht wieder bei Null anfangen muss. Es ist das Gedächtnis, das im Stress nicht verloren geht."*
+
+**Technische Abbildung der Analogie:**
+
+| Kochbuch-Element | AAMS-Entsprechung | Funktion |
+|---|---|---|
+| Rezept | Workpaper | Dokumentiert was in einer Session gemacht wurde — Schritt für Schritt |
+| Notizen am Rand | Diary + Workpaper File Protocol | Kontextuelle Entscheidungen: warum diese Temperatur, warum dieses Vorgehen |
+| Kochbuch wieder rauskramen | LTM-Query (on_session_start) | Nach Wochen Pause den Faden wiederfinden — ohne das Rezept neu zu erfinden |
+| Rezeptsammlung der Großmutter | `WORKING/WORKPAPER/closed/` + `ltm-index.md` | Das kumulative Wissen aller bisherigen Sessions — durchsuchbar, chronologisch |
+| Zettel zwischen den Seiten | Whitepaper | Stabile Grundwahrheiten: "Für dieses Gericht immer Butter, nie Margarine" |
+
+**Warum diese Analogie funktioniert:**
+
+1. **Universell verständlich** — Kochbücher kennt jede Generation, jede Kultur. Keine technische Vorkenntnis nötig.
+2. **Das Problem ist sofort greifbar** — "Man vergisst wie man es gemacht hat" braucht keine Erklärung.
+3. **Die Lösung ist intuitiv** — Aufschreiben, nachschlagen, weitermachen. Kein Paradigmenwechsel.
+4. **Die Skalierung wird sichtbar** — Ein Rezept ist trivial. 500 Rezepte über 30 Jahre brauchen ein System.
+
+**Bedeutung für AAMS-Kommunikation:** Erste funktionierende NonDev-Erklärung. Kann als Einstieg für Landing Pages, Konferenz-Talks und Gespräche mit Entscheidern dienen. Schließt die in "Offene Flanken §3" identifizierte Lücke: *"Non-Dev-Kommunikation fehlt."*
+
+---
+
 ## Erkenntnisse (kumulativ)
 
 ### Bestätigte Stärken
@@ -190,7 +223,7 @@ AAMS adressiert die KI-Seite dieses Problems: strukturierte, persistente, tool-�
 ### Offene Flanken
 1. **Enforcement bleibt deklarativ** — das ist architektonisch gewollt (.editorconfig-Analogie), aber Kritiker werden es wiederholt bemängeln
 2. **Adoption braucht sichtbare Feldberichte** — Luna-1 (#17) existiert, aber mehr Diversität nötig
-3. **Non-Dev-Kommunikation** fehlt — AAMS hat keine Landing-Page-Sprache für Entscheider/Nicht-Entwickler
+3. ~~**Non-Dev-Kommunikation** fehlt~~ — **Gelöst:** Die Kochbuch-Analogie (2026-03-27) liefert die erste funktionierende NonDev-Erklärung
 
 ### Nächste Schritte
 - [ ] CodeRabbit Discord: AGENTS.md ↔ AAMS-Spec Verbindung kommunizieren
