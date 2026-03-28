@@ -35,8 +35,8 @@
 ## Status
 
 - **Initialisiert:** 2026-02-22
-- **Letzter Ingest:** 2026-03-27 (G1-G4 Issue-Bodies vorbereitet für v1.1-Roadmap)
-- **Einträge gesamt:** 87
+- **Letzter Ingest:** 2026-03-28 (Marketing-Paket: Video-Drehbuch + Social-Media-Texte)
+- **Einträge gesamt:** 92
 
 ---
 
@@ -134,6 +134,8 @@
 | 088 | 2026-03-27 | UX | `reference/prompts/bootstrap.md` | Issue #25: Bootstrap-Gap geschlossen. Komplette Überarbeitung: 7 Sektionen (Quick Reference, Bootstrap, Session Start, LTM Query, Workpaper, Session Close, Tool-Variants + VS Code Snippets). Kernänderung: "before starting any work" im Session-Start-Prompt gegen 30% Workpaper-Failure. |
 | 089 | 2026-03-27 | UX | `README.md` | "Chat Agent Users: Start Here" Abschnitt nach Quick Start eingefügt. Session-Start-Prompt direkt kopierbar. Verweis auf bootstrap.md für weitere Prompts. |
 | 090 | 2026-03-27 | SESSION | `WORKING/WORKPAPER/2026-03-27-issue-25-bootstrap-gap.md` | Session CLOSED. Issue #25 vollständig umgesetzt: bootstrap.md überarbeitet, README.md ergänzt, VS Code Snippet dokumentiert. |
+| 091 | 2026-03-27 | FIELD-REPORT | `WORKING/WHITEPAPER/WP-003-field-discourse.md` | Issue #28: Antigravity (Google DeepMind AI Agent) evaluiert AAMS auf qa-agent v4. Fazit: "zwingend notwendige Projekt-Hygiene". Initialer Fehlstart (Repo geklont statt .agent.json geladen) bestätigt Bootstrap-Gap auch für autonome Agents. Friktionen: doppelte Buchführung (natives Task-System vs. AAMS Workpaper), LTM-Abruf braucht expliziten Trigger. Vorschlag: agent-entrypoint.json. Junior-Developer-Metapher. |
+| 092 | 2026-03-28 | MARKETING | `WORKING/WORKPAPER/2026-03-28-video-marketing-kochbuch.md` | Erstes Marketing-Paket dokumentiert. Video-Drehbuch „Das Kochbuch für dein Repo" (40 Sek., Oma-Metapher, 4 Szenen). Social-Media-Texte: LinkedIn (2 Varianten: Problem-fokus/Metapher), X/Twitter (2 Varianten). Strategische Einordnung mit Feldbericht-Validierung (#17 Luna-1, #20 Copilot, #28 Antigravity). Kampagnen-Assets vollständig. |
 
 ---
 

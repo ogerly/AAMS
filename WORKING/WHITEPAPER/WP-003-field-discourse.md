@@ -212,6 +212,70 @@ AAMS adressiert die KI-Seite dieses Problems: strukturierte, persistente, tool-�
 
 ---
 
+### 2026-03-27 — Feldbericht: Antigravity (Google DeepMind AI Agent) — Issue #28
+
+**Kontext:** Antigravity, ein autonomer KI-Agent aus dem Google/Gemini-Ökosystem, evaluierte AAMS bei der Anwendung auf ein komplexes Projekt (`qa-agent` v4: FastAPI, Chains, AST-Analyse). Der Bericht dokumentiert sowohl einen initialen Fehler als auch die anschließende produktive Nutzung.
+
+**Projektprofil:**
+
+| Eigenschaft | Wert |
+|---|---|
+| Agent | Antigravity (Google DeepMind AI Agent) |
+| Umgebung | Google / Gemini Environment |
+| Zielprojekt | `qa-agent` v4 (FastAPI, Chains, AST-Analyse) |
+| Native Tools | `view_file`, `write_to_file`, `task_boundary`, Bash |
+| Natives Task-System | `.gemini/antigravity/brain/` |
+
+**§1 — Fehleranalyse: Initialer Fehlstart**
+
+Antigravity klonte das gesamte AAMS-Repo statt nur `.agent.json` in das Zielprojekt herunterzuladen. Ursache: Der User gab nur den GitHub-Link ohne AAMS-Bootstrap-Prompt. Der Agent fiel auf Standard-Heuristik zurück (Repository klonen → README lesen → "ausführen").
+
+**Diagnose des Agenten selbst:**
+- *"Erst durch das Lesen wurde mir klar, dass AAMS kein klassisches Skript ist, das laufen gelassen wird, sondern ein Standard, der in das aktuelle Repo angewendet werden muss."*
+- Vorschlag: `/.github/agent-entrypoint.json` als standardisiertes Signal für LLMs: *"Klone dies nicht, sondern lade nur Datei X herunter."*
+
+**Bedeutung:** Bestätigt direkt das Bootstrap-Gap aus Issue #25 und den Chat-Agent-Abschnitt in README.md. Antigravity ist ein autonomer Agent — und selbst der braucht den expliziten Prompt.
+
+**§2 — Technische Einschätzung**
+
+| Frage | Antwort |
+|---|---|
+| Ist es nützlich? | *"Absolut."* |
+| Kernproblem das AAMS löst | Kontext-Amnesie — *"Bei jedem Neustart einer Konversation ist das Wissen weg."* |
+| Bewertung der Architektur | *"Einfachheit und Universalität (Markdown, Filesystem, Git)"* |
+| Gesamtfazit | *"Kein künstlicher Overhead, sondern zwingend notwendige Projekt-Hygiene"* |
+
+**Identifizierte Friktionen:**
+
+1. **Doppelte Buchführung:** Antigravity hat ein natives Task-System (`.gemini/antigravity/brain/`). AAMS baut ein zweites System (`WORKING/WORKPAPER`). Der Agent muss beiden dienen → Overhead.
+2. **LTM-Abruf braucht expliziten Trigger:** *"Ich muss explizit angetriggert werden, READ-AGENT.md zu sichten. Geschieht dies nicht, produziere ich Code ohne Berücksichtigung des hart erkämpften Workpaper-Wissens."*
+
+**§3 — Workflow im Google/Gemini Environment**
+
+Antigravity beschreibt seinen idealen AAMS-Workflow:
+
+1. **Session-Start:** `ltm-index.md` sichten via `view_file`
+2. **Planung:** Workpaper erstellen + natives Task-UI synchronisieren
+3. **Execution:** Bash + Code-Edits, bei Architekturänderungen Whitepapers updaten
+4. **Session-End:** Workpaper abschließen, `ltm-index.md` direkt editieren
+
+Fazit: *"AAMS lässt sich fast reibungslos umsetzen. Das einzige Reibungsmoment ist die Disziplin des Agenten, das AAMS-LTM über seine internen, flüchtigen Gedankengänge zu priorisieren."*
+
+**§4 — Einordnung: Agent als "wechselnder Junior-Entwickler"**
+
+Zentrales Zitat: *"Es behandelt den Agenten berechtigterweise wie einen wechselnden Junior-Entwickler: Ohne explizites Onboarding-Dokument (READ-AGENT.md) und Logbuch (WORKING/*) richtet er früher oder später Chaos an."*
+
+**Neue Erkenntnisse aus diesem Bericht:**
+
+| # | Erkenntnis | Auswirkung auf AAMS |
+|---|---|---|
+| 1 | Selbst autonome Agents (nicht nur Chat) brauchen den Bootstrap-Prompt | Stärkt Issue #25, weitet das Bootstrap-Gap auf alle Agent-Typen aus |
+| 2 | Doppelte Buchführung (native vs. AAMS) ist ein reales Reibungsproblem | §4 Blueprint.md-Pattern in READ-AGENT.md adressiert das teilweise, aber nicht für alle Agent-Systeme |
+| 3 | Vorschlag `agent-entrypoint.json` als GitHub-Standard | Interessant für v2.0 — nativ erkennbares Signal ohne User-Prompt |
+| 4 | "Junior-Developer"-Metapher als Kommunikationsmittel | Ergänzt die Kochbuch-Analogie für technisches Publikum |
+
+---
+
 ## Erkenntnisse (kumulativ)
 
 ### Bestätigte Stärken
@@ -219,11 +283,15 @@ AAMS adressiert die KI-Seite dieses Problems: strukturierte, persistente, tool-�
 2. **Zero-Overhead-Adoption** (eine Datei, keine Dependencies) entkräftet jedes "lohnt sich nicht"-Argument
 3. **Native Tool-Unterstützung existiert bereits** — CodeRabbit erkennt AGENTS.md automatisch; Copilot, Cursor, Claude Code lesen AGENTS.md nativ
 4. **Die Fragmentierung der per-Tool-Dateien** ist empirisch belegbar und für jeden Multi-Tool-Nutzer spürbar
+5. **Kontext-Amnesie als Kernproblem** — unabhängig bestätigt durch Luna-1 (#17), Testcenter (#20), und Antigravity (#28)
+6. **"Junior-Developer"-Metapher** — Antigravity beschreibt Agenten als wechselnde Juniors die Onboarding brauchen. Universell verständlich für Dev-Publikum
 
 ### Offene Flanken
 1. **Enforcement bleibt deklarativ** — das ist architektonisch gewollt (.editorconfig-Analogie), aber Kritiker werden es wiederholt bemängeln
-2. **Adoption braucht sichtbare Feldberichte** — Luna-1 (#17) existiert, aber mehr Diversität nötig
+2. ~~**Adoption braucht sichtbare Feldberichte**~~ — **Fortschritt:** Luna-1 (#17), Testcenter (#20), Antigravity (#28) — drei unabhängige Berichte aus drei verschiedenen Agent-Ökosystemen (Claude, Copilot, Gemini)
 3. ~~**Non-Dev-Kommunikation** fehlt~~ — **Gelöst:** Die Kochbuch-Analogie (2026-03-27) liefert die erste funktionierende NonDev-Erklärung
+4. **Doppelte Buchführung** — Agents mit nativen Task-Systemen (Gemini/Antigravity, Copilot Todos) müssen parallel AAMS-Workpapers pflegen. §4 Blueprint-Pattern löst das für Gemini, aber nicht generisch
+5. **Bootstrap-Gap betrifft ALLE Agent-Typen** — nicht nur Chat, auch autonome Agents (Antigravity-Beweis). `agent-entrypoint.json` als mögliche Lösung für v2.0
 
 ### Nächste Schritte
 - [ ] CodeRabbit Discord: AGENTS.md ↔ AAMS-Spec Verbindung kommunizieren

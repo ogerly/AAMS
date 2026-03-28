@@ -44,6 +44,22 @@ The agent creates the `WORKING/` structure, scans the repo, writes the first wor
 
 ---
 
+## See It in Action
+
+> Good recipes need a good cookbook. Good projects need one too.
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=VIDEO_ID_HERE">
+    <img src="https://img.youtube.com/vi/VIDEO_ID_HERE/maxresdefault.jpg" alt="AAMS – The Cookbook for Your Repo" width="600">
+  </a>
+</p>
+
+**40 seconds.** One file. Zero setup. Your AI agent remembers everything — across sessions, across tools. That's AAMS: the cookbook for your repository.
+
+[▶ Watch on YouTube](https://www.youtube.com/watch?v=VIDEO_ID_HERE)
+
+---
+
 ### Chat Agent Users: Start Here
 
 > **Chat agents (Copilot Chat, ChatGPT, Cursor Chat) don't self-bootstrap.** You need to paste a prompt.
