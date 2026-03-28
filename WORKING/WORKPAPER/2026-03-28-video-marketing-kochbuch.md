@@ -198,11 +198,15 @@ Das Marketingmaterial stützt sich auf validierte Praxis:
 
 | Asset | Status | Hinweise |
 |---|---|---|
-| Video (35–40 Sek.) | ✅ produziert | Kochbuch-Metapher, Oma-Charakter |
+| Video (35–40 Sek.) | ✅ veröffentlicht | https://youtu.be/MPadODFSKng — DEVmatrose YouTube-Kanal |
+| README.md Video-Sektion | ✅ eingebaut | "See It in Action" mit YouTube-Thumbnail |
+| index.html Video-Embed | ✅ eingebaut | Responsive 16:9 iframe nach Header |
 | LinkedIn Post (Option A) | ✅ Text fertig | Problem-fokussiert |
 | LinkedIn Post (Option B) | ✅ Text fertig | Metapher-fokussiert |
 | X/Twitter Post (Option A) | ✅ Text fertig | Kurz, Problem/Lösung |
 | X/Twitter Post (Option B) | ✅ Text fertig | Kurz, Metapher |
+| Werbetext Vibecoder | ✅ Text fertig | Locker, direkt, Repo-Hygiene-Framing |
+| Werbetext Senior Devs | ✅ Text fertig | Technisch, nüchtern, Infrastruktur-Framing |
 
 ---
 
@@ -211,6 +215,10 @@ Das Marketingmaterial stützt sich auf validierte Praxis:
 | Aktion | Datei | Bemerkung |
 |---|---|---|
 | CREATED | `WORKING/WORKPAPER/2026-03-28-video-marketing-kochbuch.md` | Dieses Workpaper |
+| MODIFIED | `README.md` | Video-Sektion "See It in Action" eingefügt (YouTube-Thumbnail + Link) |
+| MODIFIED | `docs/index.html` | Video-Embed-Sektion eingefügt (responsive iframe) |
+| MODIFIED | `WORKING/DIARY/2026-03.md` | Diary-Eintrag 2026-03-28 |
+| MODIFIED | `WORKING/MEMORY/ltm-index.md` | LTM-Eintrag #092 |
 
 ---
 
@@ -219,13 +227,18 @@ Das Marketingmaterial stützt sich auf validierte Praxis:
 1. Video-Drehbuch und Social-Media-Texte werden als Workpaper dokumentiert, nicht als Whitepaper — es handelt sich um Kampagnen-Material, nicht um stabile Architekturwahrheit.
 2. Beide Optionen (Problem-fokus vs. Metapher-fokus) werden aufbewahrt für A/B-Testing auf den Plattformen.
 3. Feldberichte (#17, #20, #28) als Validierungsbasis in die strategische Einordnung einbezogen.
+4. Video auf DEVmatrose YouTube-Kanal veröffentlicht (strategisch besser als nur lokal im Repo).
+5. Video direkt in README.md (Thumbnail-Link) und index.html (iframe-Embed) eingebaut.
+6. Zwei zusätzliche Werbetexte erstellt: Vibecoder-Variante (locker) + Senior-Dev-Variante (technisch).
 
 ---
 
 ## Next Steps
 
-- [ ] Video auf YouTube/Social-Media veröffentlichen
+- [x] Video auf YouTube veröffentlichen → https://youtu.be/MPadODFSKng
+- [x] Video in README.md + index.html eingebaut
 - [ ] LinkedIn-Post veröffentlichen (Option A oder B wählen, ggf. A/B-Test)
 - [ ] X/Twitter-Post veröffentlichen
 - [ ] Engagement tracken und in Diary eintragen
+- [ ] Bei Erfolg: Erweiterte Version (technischer, 60 Sek.) als Follow-Up planen
 - [ ] Bei Erfolg: Erweiterte Version (technischer, 60 Sek.) als Follow-Up planen
