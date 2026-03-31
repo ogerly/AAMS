@@ -7,8 +7,9 @@
 
 | State | Action |
 |---|---|
-| **First entry — `WORKING/` does not exist or is empty** | Execute `on_first_entry` below |
-| **New session — `WORKING/` exists, workpapers present** | Execute `on_session_start` below |
+| **First entry** — `WORKING/WORKPAPER/` does not exist or contains zero files | Execute `on_first_entry` below |
+| **Returning session** — `WORKING/WORKPAPER/` exists and contains workpapers | Execute `on_session_start` below |
+| **Uncertain** — structure partially exists but no workpapers found | Execute `on_first_entry` (safe — idempotent) |
 
 Start immediately. No confirmation needed.
 
@@ -84,6 +85,10 @@ Core idea:
 2. Check last workpaper in `WORKING/WORKPAPER/` — what was the last state?
 3. Query `WORKING/MEMORY/` for the session topic
 4. Open or create workpaper for this session
+
+### Compatibility with native agent task systems
+
+Agents may maintain their own internal task tracking (e.g., `.gemini/brain/`, Copilot todos, Cursor composer history). The AAMS workpaper is the **canonical audit trail** — it is the single source of truth for what happened in a session. Agent-internal systems are supplementary and optional. If in doubt: the workpaper wins.
 
 ---
 

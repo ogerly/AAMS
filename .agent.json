@@ -93,6 +93,7 @@
   "agent_contract": {
     "_doc": "Behavioral contract every agent MUST honor when working in this repository.",
     "on_first_entry": [
+      "0. PRE-CHECK: If WORKING/WORKPAPER/ already contains workpapers, STOP — run on_session_start instead.",
       "1. Read READ-AGENT.md (if exists)",
       "2. Create all workspace.structure folders if missing",
       "3. Scan repository → write first workpaper with sections: session_goal, repository_inventory (file tree + status), key_findings (from README + docs), open_questions, file_protocol, next_steps",

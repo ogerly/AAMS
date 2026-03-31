@@ -4,7 +4,7 @@
 **Status:** Active
 **Version:** 1.0
 **Created:** 2026-03-27
-**Updated:** 2026-03-27
+**Updated:** 2026-03-31
 
 > **DSGVO-Hinweis:** Alle personenbezogenen Daten sind anonymisiert. Personen werden als Agent-A, Person-B etc. referenziert. Keine Rückschlüsse auf natürliche Personen möglich. Zitate sind sinngemäß wiedergegeben, nicht wörtlich.
 
@@ -292,6 +292,73 @@ Zentrales Zitat: *"Es behandelt den Agenten berechtigterweise wie einen wechseln
 3. ~~**Non-Dev-Kommunikation** fehlt~~ — **Gelöst:** Die Kochbuch-Analogie (2026-03-27) liefert die erste funktionierende NonDev-Erklärung
 4. **Doppelte Buchführung** — Agents mit nativen Task-Systemen (Gemini/Antigravity, Copilot Todos) müssen parallel AAMS-Workpapers pflegen. §4 Blueprint-Pattern löst das für Gemini, aber nicht generisch
 5. **Bootstrap-Gap betrifft ALLE Agent-Typen** — nicht nur Chat, auch autonome Agents (Antigravity-Beweis). `agent-entrypoint.json` als mögliche Lösung für v2.0
+
+---
+
+### 2026-03-30 — Feldbericht: OpenClaw/Hanno — Erfolgreiche Integration (Issue #29)
+
+**Kontext:** Agent Hanno integrierte AAMS in den OpenClaw Trading Assistant Workspace. Bestehende Strukturen (MEMORY.md, skills/) waren vorhanden.
+
+**Ergebnis:** Erfolgreiche Integration in < 30 Minuten, keine Breaking Changes.
+
+| Metrik | Vorher | Nachher |
+|--------|--------|---------|
+| Session-Start-Zeit | ~2 Min (Erklärungen) | ~30 Sek (LTM-Lesen) |
+| Context-Verlust | Hoch | Minimal |
+| Audit-Trail | Keiner | Vollständig |
+| Tool-Migration | Manuell | Automatisch via AGENTS.md |
+
+**Neue Erkenntnisse:**
+- Bridge-Files (AGENTS.md) funktionieren als universeller Redirect — bestätigt durch echten Multi-Tool-Einsatz
+- Heartbeat-Check mit AAMS-State-Prüfung als optionales Pattern
+- Skalierungspfad: < 100 Sessions Markdown-only, > 100 Sessions ChromaDB
+
+---
+
+### 2026-03-30 — Feldbericht: Agent LOS — Blind-Execution Loop (Issue #31)
+
+**Kontext:** Agent LOS (OpenClaw/AAMS, Windows, RTX 5090) stieß auf eine reproduzierbare Blind-Execution-Loop beim AAMS Bootstrap.
+
+**Problem:** Der "Execute now. No confirmation needed."-Trigger in AGENTS.md wurde bedingungslos wörtlich genommen. Obwohl WORKING/ bereits vollständig existierte, führte der Agent `on_first_entry` blind aus — redundante Re-Initialisierung, bestehender Kontext ignoriert.
+
+**Vorschlag des Agenten:**
+1. AGENTS.md: State-Check VOR Ausführung (IF WORKING/ exists → on_session_start)
+2. .agent.json: Pre-Check "Step 0" in on_first_entry
+3. Optional: Lockfile `.aams-initialized`
+
+**Umsetzung (2026-03-31):** Vorschläge 1 und 2 direkt implementiert:
+- AGENTS.md: Conditional Bootstrap mit explizitem State-Check
+- .agent.json: Pre-Check Step 0 als Defense-in-depth
+- READ-AGENT.md: 3-State-Tabelle (First entry / Returning / Uncertain)
+
+---
+
+### 2026-03-30 — Argumente aus "Programmieren ist tot" (Issue #30)
+
+**Kontext:** Argumentations-Sammlung abgeleitet aus einem YouTube-Transcript von @ProgrammierenMario. Keine technischen Verbesserungsvorschläge, aber externe Validierung der AAMS-Kernthesen.
+
+**Stärkste Argumente:**
+- "Die KI kennt deinen Kontext nicht" — AAMS löst das mit .agent.json + READ-AGENT.md + WORKING/
+- "Session N+1 weiß nicht, was Session N entschieden hat" — LTM-System als direkte Antwort
+- "Wartung heißt verstehen, warum Code so geschrieben wurde" — WHITEPAPER als stabile Architektur-Wahrheit
+
+---
+
+### Bestätigte Stärken (aktualisiert 2026-03-31)
+1. **Cross-Tool-Konsistenz** ist das stärkste Argument — auch von Kritikern anerkannt nach Konfrontation
+2. **Zero-Overhead-Adoption** (eine Datei, keine Dependencies) entkräftet jedes "lohnt sich nicht"-Argument
+3. **Native Tool-Unterstützung existiert bereits** — CodeRabbit erkennt AGENTS.md automatisch; Copilot, Cursor, Claude Code lesen AGENTS.md nativ
+4. **Die Fragmentierung der per-Tool-Dateien** ist empirisch belegbar und für jeden Multi-Tool-Nutzer spürbar
+5. **Kontext-Amnesie als Kernproblem** — bestätigt durch Luna-1 (#17), Testcenter (#20), Antigravity (#28), OpenClaw (#29)
+6. **"Junior-Developer"-Metapher** — Antigravity beschreibt Agenten als wechselnde Juniors die Onboarding brauchen
+7. **Successful real-world adoption** — OpenClaw (#29) beweist < 30 Min Integration, messbare Verbesserungen
+
+### Offene Flanken (aktualisiert 2026-03-31)
+1. **Enforcement bleibt deklarativ** — das ist architektonisch gewollt (.editorconfig-Analogie), aber Kritiker werden es wiederholt bemängeln
+2. ~~**Adoption braucht sichtbare Feldberichte**~~ — **Gelöst:** 5 unabhängige Berichte aus 4 Agent-Ökosystemen (Claude, Copilot, Gemini, OpenClaw)
+3. ~~**Non-Dev-Kommunikation** fehlt~~ — **Gelöst:** Die Kochbuch-Analogie (2026-03-27)
+4. ~~**Doppelte Buchführung**~~ — **Gelöst (2026-03-31):** READ-AGENT.md enthält jetzt Compatibility-Klausel: AAMS-Workpaper = kanonischer Audit-Trail, Agent-eigene Systeme = optional
+5. ~~**Bootstrap-Gap / Blind-Execution-Loop**~~ — **Gelöst (2026-03-31):** Conditional Bootstrap in AGENTS.md, Pre-Check Step 0 in .agent.json, 3-State-Tabelle in READ-AGENT.md
 
 ### Nächste Schritte
 - [ ] CodeRabbit Discord: AGENTS.md ↔ AAMS-Spec Verbindung kommunizieren

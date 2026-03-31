@@ -28,6 +28,8 @@
 
 **Step 1 — Drop `.agent.json` into your repo:**
 
+> **AAMS is not a dependency to clone.** You do not clone this repository into your project. You download one single file into YOUR repo root.
+
 ```bash
 curl -sO https://raw.githubusercontent.com/DEVmatrose/AAMS/main/.agent.json
 ```

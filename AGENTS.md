@@ -10,9 +10,9 @@ This repository uses **AAMS — Autonomous Agent Manifest Specification**.
 
 1. Read [`.agent.json`](./.agent.json) — your workspace contract
 2. Read [`READ-AGENT.md`](./READ-AGENT.md) — full project context and session rules  
-3. Execute `agent_contract.on_first_entry` as defined in `READ-AGENT.md`
-
-> If you are starting a new session (not first entry): execute `agent_contract.on_session_start` instead.
+3. **Check state before executing:**
+   - IF `WORKING/WORKPAPER/` does not exist or is empty → Execute `agent_contract.on_first_entry`
+   - IF `WORKING/WORKPAPER/` exists and contains workpapers → Execute `agent_contract.on_session_start`
 
 ---
 

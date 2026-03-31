@@ -3,7 +3,7 @@
 
 - **ID:** WP-001
 - **Erstellt:** 2026-02-22
-- **Letztes Update:** 2026-03-26
+- **Letztes Update:** 2026-03-31
 - **Status:** Aktiv
 - **Typ:** Architektur / Projektverständnis
 
@@ -112,6 +112,9 @@ Ein Agent braucht dasselbe, aber explizit und persistent.
 Wenn ein Agent ein Repo mit AAMS betritt:
 
 ```
+0. State-Check: WORKING/WORKPAPER/ prüfen
+   → Enthält Workpapers? → on_session_start (Schritt 4)
+   → Leer oder nicht vorhanden? → on_first_entry (Schritt 1)
 1. READ-AGENT.md lesen
 2. WORKING/-Struktur prüfen → anlegen wenn fehlend (idempotent)
 3. Repository scannen → Inventory im ersten Workpaper
@@ -148,23 +151,24 @@ Langfristiges Ziel: AAMS wird zu einem **de-facto Standard** den jedes Agenten-F
 
 ---
 
-## 8. Aktueller Stand (2026-03-26)
+## 8. Aktueller Stand (2026-03-31)
 
 | Bereich | Status |
 |---|---|
 | Spezifikation (SPEC.md / SPEC-DE.md) | Vollständig, AAMS/1.0 |
 | Referenz-Manifest (AGENT.json) | Vollständig, annotiert — inkl. `_deviations` |
 | JSON Schema (AGENT_SCHEMA.json) | Vollständig — inkl. `_deviations` |
-| Minimal-Bootstrap (.agent.json) | Aktiv, AAMS-MINI/1.0 — Vier-Schichten-Modell (inkl. Diary) |
-| READ-AGENT.md | Aktiv — dual-track LTM, Diary Layer, §4 Blueprint.md Workflow |
-| AGENTS.md | Aktiv — auto-read bridge für alle major Agent-Tools |
+| Minimal-Bootstrap (.agent.json) | Aktiv, AAMS-MINI/1.0 — inkl. Pre-Check Step 0 (Idempotenz-Guard) |
+| READ-AGENT.md | Aktiv — dual-track LTM, Diary Layer, 3-State-Tabelle, Compatibility-Klausel |
+| AGENTS.md | Aktiv — Conditional Bootstrap (State-Check vor Execution) |
 | WORKING/-Struktur | Vollständig aktiv inkl. DIARY/ und DATABASE/ |
 | Workpapers (archived) | 20+ in WORKPAPER/closed/ |
-| Whitepapers | 2 (WP-001, WP-002) |
+| Whitepapers | 4 (WP-001 bis WP-004) |
 | LTM | 67+ Einträge ltm-index.md + ChromaDB |
 | GitHub Issues #1-#20 | Geschlossen |
-| GitHub Issues #21-#26 | Offen — neue Aufgaben aus Session 2026-03-26 |
+| GitHub Issues #21-#26 | Teils offen — Aufgaben aus Session 2026-03-26 |
+| GitHub Issues #28-#31 | Field Reports — ausgewertet, Fixes implementiert (2026-03-31) |
 | GitHub Pages | Live — devmatrose.github.io/AAMS |
-| Field Report | Luna-1 (#17): 4 Monate Produktionseinsatz bestätigt |
+| Field Reports | Luna-1 (#17), Testcenter (#20), Antigravity (#28), OpenClaw (#29), Blind-Execution (#31) — 5 unabhängige Berichte |
 | AAMS-MINI | Eingeführt: ltm_mode markdown (Track A) + vector (Track B) |
-| Neue Features (2026-03-26) | `_deviations` Schema-Feld, LTM Setup Order in README, CLAUDE.md/GEMINI.md Positioning, §4 Blueprint.md Workflow |
+| Fixes (2026-03-31) | Conditional Bootstrap (AGENTS.md), Pre-Check Step 0 (.agent.json), 3-State-Tabelle (READ-AGENT.md), Compatibility-Klausel, Bootstrap-Klarstellung (README) |
