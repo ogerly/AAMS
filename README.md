@@ -60,7 +60,7 @@ The agent creates the `WORKING/` structure, scans the repo, writes the first wor
   </a>
 </p>
 
-**40 seconds.** One file. Zero setup. Your AI agent remembers everything — across sessions, across tools. That's AAMS: the cookbook for your repository.
+**40 seconds.** One file. Zero setup. Switch tools tomorrow — the context stays. That's AAMS: the cookbook for your repository.
 
 [▶ Watch on YouTube](https://www.youtube.com/watch?v=MPadODFSKng)
 
@@ -90,7 +90,9 @@ That's exactly what AAMS is — the Autonomous Agent Manifest Specification.
 
 ## The Problem Remains. The Solution Is Now Clearer.
 
-Session 48 doesn't know what session 47 decided. That was the problem back then. It's the problem today. And no agent framework in the world solves it — because the problem isn't in the framework. It's in the structure of the repo.
+Switch tools, and session 47 is gone. Change team members, and the context walks out the door. Many agents now have session persistence — but it lives in their cloud, in their format, locked to their ecosystem.
+
+The problem isn't that agents forget. The problem is that project knowledge doesn't belong to the project. Without AAMS, it belongs to the tool.
 
 A repo without agent structure is like a ship without a logbook. Everyone knows what they did yesterday. Nobody knows what came before.
 
@@ -113,7 +115,7 @@ The solution is not a new AI. The solution is **discipline in the repo**.
 
 You might. For now. Here's what changes — and these are provable, not opinions:
 
-**It's not about you losing context. It's about your agent losing it.** You remember what you decided last week. Your agent doesn't. Every session, it starts from zero. You compensate with your own memory — and you don't notice the cost because it feels like "just prompting."
+**It's not about you losing context. It's about the project losing it.** You remember what you decided last week. But switch tools next month, and your new agent starts from zero. Add a colleague, and their agent starts from zero. Session notes live in one tool's cloud — not in your repo. You compensate with your own memory — and you don't notice the cost because it feels like "just prompting."
 
 **Provability.** Every decision, every file change, every architectural choice is documented with a timestamp in a workpaper. `git log` proves what happened. `ltm-index.md` proves what the agent knew when it decided. No more "who changed this and why?" — you `grep` the workpaper archive. That's not overhead. That's an audit trail you'd want in any production codebase.
 
