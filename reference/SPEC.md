@@ -1,5 +1,5 @@
 # AAMS — Autonomous Agent Manifest Specification
-## Version 1.0 · local-first · 2026-02-18
+## Version 1.1 · local-first · 2026-04-08
 
 > **Repository:** https://github.com/DEVmatrose/AAMS  
 > **Status:** Draft  
@@ -719,6 +719,7 @@ The following strings are the AAMS Closing Checklist Registry. Use these exact v
 | `no_secrets_in_files`      | No passwords, tokens, or API keys in any written file |
 | `workpaper_status_updated` | Workpaper status is set to ✅ COMPLETED |
 | `ltm_ingested`             | Workpaper and changed files ingested into LTM before archiving |
+| `whitepapers_updated`       | Whitepapers updated if session contains architectural decisions (Wissenskette: WP → WH → LTM) |
 | `next_steps_documented`    | Concrete next steps written — not "TBD" |
 | `commit_pushed`            | All changes committed and pushed to remote (if applicable) |
 | `open_tasks_in_backlog`    | Unfinished tasks tracked in backlog workpaper or issue |
@@ -831,7 +832,7 @@ Without mandatory triggers, LTM gets forgotten. Therefore AAMS defines explicit 
 | `new_workpaper`              | `query`             | mandatory   | Load context from LTM before new work |
 | `session_start`              | `query`             | mandatory   | Search session topic in LTM |
 | `context_limit_reached`      | `query_and_ingest`  | mandatory   | Ingest, then query in new chat |
-| `workpaper_closed`           | `ingest`            | mandatory   | Ingest BEFORE moving to close/ |
+| `workpaper_closed`           | `ingest`            | mandatory   | Update Whitepapers first (if architectural), THEN ingest — knowledge chain: WP → WH → LTM |
 | `workpaper_pre_save`         | `scan_secrets`      | mandatory   | Scan workpaper content for secrets before writing. Block on match (`on_match: block_and_alert`). Last guardrail before Git. |
 | `documentation_changed`      | `ingest`            | mandatory   | Re-ingest at session end |
 | `files_added_or_removed`     | `ingest`            | mandatory   | Re-ingest on file changes |

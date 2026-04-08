@@ -101,9 +101,11 @@ Agents may maintain their own internal task tracking (e.g., `.gemini/brain/`, Co
 
 ### On every session end
 1. Complete workpaper (file protocol + decisions + next steps)
-2. Ingest workpaper into `WORKING/MEMORY/`
-3. Move workpaper to `WORKING/WORKPAPER/closed/`
-4. Update this file if architecture or structure changed
+2. **Update Whitepapers** if session contains architectural decisions  
+   → Knowledge chain: `WP → Whitepaper → LTM` — never skip or reorder
+3. Ingest workpaper into `WORKING/MEMORY/` (LTM learns from current truth, not stale WPs)
+4. Move workpaper to `WORKING/WORKPAPER/closed/`
+5. Update this file if architecture or structure changed
 
 ---
 
@@ -194,7 +196,7 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 ## Current Status
 
 - Bootstrap: **complete** (2026-02-22)
-- Spec version: AAMS/1.0
+- Spec version: AAMS/1.1
 - Workspace: initialized, all folders present (incl. `WORKING/DIARY/` — Temporal Context Layer)
 - LTM: 58 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB ✅ aktiv, 114 Chunks)
 - Whitepapers: 2 → `WORKING/WHITEPAPER/INDEX.md` (WP-001 AAMS Overview, WP-002 Related Work)

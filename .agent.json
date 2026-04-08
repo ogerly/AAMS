@@ -115,9 +115,10 @@
     ],
     "on_session_end": [
       "1. Complete workpaper (file protocol, decisions, next steps)",
-      "2. Ingest workpaper into memory",
-      "3. Move workpaper to closed/",
-      "4. Update READ-AGENT.md if architecture changed"
+      "2. Update Whitepapers if session contains architectural decisions (knowledge chain: WP → WH → LTM — never skip)",
+      "3. Ingest workpaper into memory (after Whitepapers are current — ensures LTM learns fresh truth, not stale WP)",
+      "4. Move workpaper to closed/",
+      "5. Update READ-AGENT.md if architecture changed"
     ]
   }
 }

@@ -182,6 +182,23 @@
 
 ---
 
+## 2026-04-08 — Copilot — Session Check + Issue #35
+
+**Workpaper:** `2026-04-08-copilot-session-check.md`  
+**Themen:** AAMS-Status-Review, offene Workpapers, GitHub Issues, Wissensketten-Implementierung
+
+**Was wurde getan:**
+- 5 offene Workpapers identifiziert (4 echt offen, 1 Duplikat bereinigt)
+- `2026-03-27-long-horizon-reasoning-analyse.md` → `closed/` (war identisches Duplikat)
+- **Issue #35 implementiert** — Wissenskette `WP → Whitepaper → LTM` als expliziter Schritt in `on_session_end` verankert
+  - `.agent.json`: Neuer Schritt 2 "Update Whitepapers before LTM-Ingest"
+  - `READ-AGENT.md`: Session-End-Protokoll um Whitepaper-Step erweitert
+  - `reference/SPEC.md`: `whitepapers_updated` Checklist-Item + `workpaper_closed` Trigger-Beschreibung
+
+**Offene Issues (5):** #35 (✅ done), #26 (Security Signals), #24 (Blueprint.md 2-Phasen), #23 (vs. CLAUDE.md), #22 (ltm-index.md Hero-Artefakt)
+
+---
+
 ## Nächster geplanter Ingest
 
 Nach Abschluss der laufenden Session.
