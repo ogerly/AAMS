@@ -1,5 +1,5 @@
 # AAMS — Autonomous Agent Manifest Specification
-## Version 1.1 · local-first · 2026-04-08
+## Version 1.3 · local-first · 2026-04-09
 
 > **Repository:** https://github.com/DEVmatrose/AAMS  
 > **Status:** Draft  
@@ -848,9 +848,9 @@ Priorities: `mandatory` = MUST, `recommended` = SHOULD, `optional` = MAY.
 >
 > The specification intentionally leaves room for different technical implementations.
 
-#### `diary` — Temporal Context Layer
+#### `diary` — Temporal Index Layer
 
-The **Diary** is the mandatory fourth documentation layer. It captures the reasoning, strategic decisions, and reflections that fall between sessions — too informal for a Whitepaper, too narrativ for a Workpaper.
+The **Diary** is the mandatory fourth documentation layer. It is a **pointer-only temporal index** — it records WHAT was touched WHEN, without duplicating content from Workpapers, Whitepapers, or LTM.
 
 **Four-layer model (all mandatory):**
 
@@ -858,13 +858,23 @@ The **Diary** is the mandatory fourth documentation layer. It captures the reaso
 |-------|------|----------------|-----------|
 | **Whitepaper** | `WORKING/WHITEPAPER/` | Long-term | Normative / structural |
 | **Workpaper** | `WORKING/WORKPAPER/` | Session-scoped | Operational / iterative |
-| **Diary** | `WORKING/DIARY/` | Chronological | Narrative / reflective |
+| **Diary** | `WORKING/DIARY/` | Chronological | Pointer / temporal index |
 | **Memory (LTM)** | `WORKING/MEMORY/` | Cross-session | Queryable / indexed |
 
-**Three rules — no more:**
-1. Maximum 10 lines per entry
-2. Only decisions, blockers, insights
-3. No perfectionism — the obligation is to *presence*, not *perfection*
+**Format — one line per session:**
+```
+YYYY-MM-DD | WP: {workpaper-filename} | WH: {whitepaper if updated} | {other files}
+```
+
+**Hierarchical compression (429 entries/year):**
+1. **Daily entries** — one line per session, pointer only
+2. **Weekly rollup** — which documents/TOPICs were active this week
+3. **Monthly summary** — focus themes, activity volume
+
+**Rules:**
+1. No content duplication — if it's in a Workpaper or Whitepaper, don't repeat it
+2. Every chain link must add unique value — Diary's value is the time axis
+3. Follow the pointer for details — Diary answers "when", Workpaper answers "what" and "how"
 
 **File structure:** Monthly files — `WORKING/DIARY/YYYY-MM.md`. Bootstrap creates the `WORKING/DIARY/` folder. The first file is created lazily on the first entry (never a blank placeholder).
 

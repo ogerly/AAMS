@@ -2,7 +2,7 @@
 
 - **Datum:** 2026-04-09
 - **Agent:** GitHub Copilot (Claude Opus 4.6)
-- **Status:** OPEN
+- **Status:** CLOSED — Umgesetzt in v1.2.0
 - **Vorgänger:** `2026-04-09-science-knowledge-validation-layer.md` (verworfen — zu komplex für Spec)
 
 ---

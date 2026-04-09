@@ -140,6 +140,9 @@
 | 094 | 2026-04-09 | ARCHITECTURE | `WORKING/WORKPAPER/2026-04-09-rfl-reflection-protocol-step.md` | RFL (Reflection Protocol Step) eingeführt als Schritt 4 in on_session_start. 3-Stufen-Konsistenzprüfung: Stage 1 Pattern-Match auf TOPIC-Tag (*-{TOPIC}-*), Stage 2 LTM-Query, Stage 3 letztes Workpaper chronologisch. Löst: Agent widerspricht sich über Sessions. Output: ⚠ RFL Consistency Flag im Workpaper. Kein neuer Layer, kein neuer Ordner. |
 | 095 | 2026-04-09 | ARCHITECTURE | `.agent.json` + `READ-AGENT.md` | Naming Schema eingeführt. Workpapers: {DATE}-{TOPIC}-{SUBTOPIC}-{description}.md. Whitepapers: WP-{NNN}-{TOPIC}-{description}.md. TOPIC-Tags (ARCH, SPEC, LTM, SEC, etc.) als primärer Ordnungsschlüssel für RFL Pattern-Matching. Hybrid-Ansatz: Spec empfiehlt, Framework erzwingt. Topic Registry erweiterbar. |
 | 096 | 2026-04-09 | WHITEPAPER | `WORKING/WHITEPAPER/WP-001-aams-overview.md` | WP-001 aktualisiert auf 2026-04-09. Naming Schema und RFL als Core-Elemente ergänzt. Aktueller Stand: Issues #36-#39, v1.2.0 Release. |
+| 097 | 2026-04-09 | ARCHITECTURE | `WORKING/WORKPAPER/closed/2026-04-09-ARCH-DRY-diary-granularity-problem.md` | Diary-Layer reformiert: Pointer-only Zeitindex statt Workpaper-Abstracts. Redundanz-Test: 100% der Diary-Einträge waren Dubletten. Neues Format: `YYYY-MM-DD \| WP: {datei} \| WH: {datei}`. Hierarchische Kompression: Tag→Woche→Monat (429/Jahr). "Max 10 Zeilen" ersatzlos gestrichen. |
+| 098 | 2026-04-09 | ARCHITECTURE | `.env` + `READ-AGENT.md` + `reference/SPEC.md` | Version-Zentralisierung: `AAMS_VERSION` in `.env` als Single Source of Truth. Löst Versionsdrift (v1.2.0 released aber 1.1 in Dateien). v1.3.0 released. |
+| 099 | 2026-04-09 | SESSION | `WORKING/WORKPAPER/closed/2026-04-09-rfl-reflection-protocol-step.md` | RFL-Workpaper geschlossen (war seit v1.2.0 erledigt aber noch offen). |
 
 ---
 

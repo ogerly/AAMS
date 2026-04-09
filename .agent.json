@@ -36,8 +36,10 @@
         "on_close": "stays — never moved"
       },
       "diary": {
-        "purpose": "Temporal context layer. Chronological decision log — why we decided what. Monthly files, max 10 lines per entry.",
+        "purpose": "Temporal index layer. Pointer-only time log — WHAT was touched WHEN, no content duplication. Hierarchical: daily entries → weekly rollup → monthly summary.",
+        "format": "YYYY-MM-DD | WP: {workpaper} | WH: {whitepaper} | {other files}",
         "naming": "{YYYY}-{MM}.md",
+        "compression": "daily lines → weekly rollup → monthly summary (429 entries/year max)",
         "location": "./WORKING/DIARY/",
         "on_close": "stays — never moved"
       },

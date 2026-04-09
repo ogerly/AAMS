@@ -32,7 +32,7 @@ Core idea:
 | `WORKING/WHITEPAPER/` | Stable architecture and system truth. Not for daily work. See [INDEX.md](WORKING/WHITEPAPER/INDEX.md). |
 | `WORKING/WORKPAPER/` | Session- and task-scoped working documents. One per session. |
 | `WORKING/WORKPAPER/closed/` | Finished workpapers after session close. |
-| `WORKING/DIARY/` | Temporal context layer. Chronological decision log — why we decided what. Monthly files. |
+| `WORKING/DIARY/` | Temporal index layer. Pointer-only time log — what was touched when. Monthly files with daily entries. |
 | `WORKING/MEMORY/` | Long-term context store. Cross-session knowledge. |
 | `WORKING/LOGS/` | Agent action logs and audit trail. |
 | `WORKING/GUIDELINES/` | Coding standards and architecture rules derived from this project. |
@@ -54,10 +54,11 @@ Core idea:
    - Never moved, never deleted.
    - Naming: `WP-{NNN}-{TOPIC}-{description}.md`
 
-3. **Diary** — Why did we decide this?
-   - Chronological decision log. Monthly files (`YYYY-MM.md`).
-   - Max 10 lines per entry. Captures strategic motives, blockers, reflections.
-   - Fills the gap between workpaper (operational) and whitepaper (structural).
+3. **Diary** — What was touched when?
+   - **Pointer-only temporal index.** No content — only references to documents touched that day.
+   - Format: `YYYY-MM-DD | WP: {workpaper} | WH: {whitepaper} | {other files changed}`
+   - Hierarchical compression: daily lines → weekly rollup → monthly summary.
+   - Answers: "When did I last work on X?" / "What happened on date Y?" — without duplicating Workpaper content.
 
 4. **Memory** — What did we learn across sessions?
    - Ingest every closed workpaper.
@@ -244,13 +245,15 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 ## Current Status
 
 - Bootstrap: **complete** (2026-02-22)
-- Spec version: AAMS/1.1
-- Workspace: initialized, all folders present (incl. `WORKING/DIARY/` — Temporal Context Layer)
-- LTM: 58 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB ✅ aktiv, 114 Chunks)
-- Whitepapers: 2 → `WORKING/WHITEPAPER/INDEX.md` (WP-001 AAMS Overview, WP-002 Related Work)
-- Open workpapers: 1 → `2026-02-22-feldtest-independentes-repo.md` (SUSPENDED: pending external repo test)
-- READMEs: DE ✅ · EN ✅ (CH archived) — review fixes applied ✅
+- Spec version: **AAMS/1.3**
+- Last release: **v1.3.0** (2026-04-09) — Diary Reform (pointer-only temporal index) + Version Centralization
+- Workspace: initialized, all folders present
+- LTM: 96+ entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
+- Whitepapers: 4 → WP-001 AAMS Overview, WP-002 Related Work, WP-003 Field Discourse, WP-004 Long-Horizon Reasoning
+- Closed workpapers: ~20 in `WORKING/WORKPAPER/closed/`
+- READMEs: DE ✅ · EN ✅
 - LTM architecture: dual-layer (audit-log + vector store) ✅
-- SPEC path bugs: fixed ✅ · Skills: `bootstrap_workspace` ✅
-- GitHub Issues #1–6: addressed and closed
-- Diary Layer: **active** — `WORKING/DIARY/2026-02.md` (four-layer documentation model)
+- GitHub Issues #1–6: closed · #36–#39: closed (v1.2.0) · #40: closed (v1.3.0, Diary reform)
+- Diary Layer: **reformed** — pointer-only temporal index (v1.3.0)
+- Documentation model: 4 layers (Workpaper, Whitepaper, Diary, Memory) + RFL consistency check
+- Naming Schema: `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` (recommended, not enforced)
