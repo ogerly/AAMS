@@ -47,11 +47,12 @@ Core idea:
 1. **Workpaper** — What am I doing right now in this session?
    - Created at session start, closed at session end.
    - File protocol (created/modified/moved/deleted) is mandatory.
-   - Naming: `{date}-{agent}-{topic}.md`
+   - Naming: `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` (see Naming Schema below)
 
 2. **Whitepaper** — What does this system look like?
    - Stable. Written once. Updated only on architecture decisions.
    - Never moved, never deleted.
+   - Naming: `WP-{NNN}-{TOPIC}-{description}.md`
 
 3. **Diary** — Why did we decide this?
    - Chronological decision log. Monthly files (`YYYY-MM.md`).
@@ -61,6 +62,47 @@ Core idea:
 4. **Memory** — What did we learn across sessions?
    - Ingest every closed workpaper.
    - Query at every session start.
+
+---
+
+### Naming Schema
+
+Structured filenames enable cross-session consistency checks (RFL). Agents SHOULD follow this schema. Frameworks MAY enforce it.
+
+**Workpapers:**
+
+`{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md`
+
+- `DATE` — `YYYY-MM-DD`
+- `TOPIC` — 3-4 letter tag, UPPERCASE (primary key for RFL pattern-matching)
+- `SUBTOPIC` — 3-4 letter tag, UPPERCASE
+- `description` — kebab-case, lowercase
+
+Example: `2026-04-09-ARCH-RFL-reflection-protocol-step.md`
+
+**Whitepapers:**
+
+`WP-{NNN}-{TOPIC}-{description}.md`
+
+Example: `WP-005-ARCH-naming-schema.md`
+
+**Topic Registry:**
+
+| TOPIC | Meaning |
+|-------|---------|
+| `ARCH` | Architecture & system design |
+| `SPEC` | Specification work |
+| `LTM` | Long-term memory |
+| `SEC` | Security & governance |
+| `BOOT` | Bootstrap & onboarding |
+| `FLD` | Field tests & reports |
+| `RES` | Research & related work |
+| `MKT` | Marketing & communication |
+| `ISS` | Issue processing |
+| `GOV` | Governance & process |
+| `EDU` | Education & courses |
+
+The registry is extensible. Rule: max 4 letters, UPPERCASE, unique.
 
 ---
 
@@ -84,7 +126,13 @@ Core idea:
 1. Read this file
 2. Check last workpaper in `WORKING/WORKPAPER/` — what was the last state?
 3. Query `WORKING/MEMORY/` for the session topic
-4. Open or create workpaper for this session
+4. **RFL — Reflection (3-stage consistency check):**
+   - **Stage 1:** Determine the TOPIC tag for this session. Scan `WORKING/WORKPAPER/closed/` for files matching `*-{TOPIC}-*`. If found, read their Decisions sections.
+   - **Stage 2:** If no matches in Stage 1, use the LTM results from step 3 to identify prior workpapers with decisions on the current topic.
+   - **Stage 3:** If still nothing, read the Decisions section of the most recent closed workpaper.
+   - If any prior decision conflicts with the current session goal, flag it in the new workpaper under `## ⚠ RFL Consistency Flag` with: the conflicting decision, its source workpaper, the stage it was found in, and a resolution (confirmed | revised | intentionally changed + rationale).
+   - If no conflicts found: no flag needed. Zero overhead.
+5. Open or create workpaper for this session (recommended naming: `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md`)
 
 ### Compatibility with native agent task systems
 

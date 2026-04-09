@@ -24,12 +24,14 @@
       "_doc": "Four-layer documentation model. Every agent working in this repo MUST follow this.",
       "workpaper": {
         "purpose": "Session- and task-scoped working documents. Created at session start, closed at session end.",
-        "naming": "{date}-{agent}-{topic}.md",
+        "naming": "{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md",
+        "naming_doc": "DATE=YYYY-MM-DD, TOPIC=3-4 letter UPPERCASE tag (e.g. ARCH, LTM, SPEC), SUBTOPIC=3-4 letter UPPERCASE subtag, description=kebab-case. TOPIC enables RFL pattern-matching.",
         "location": "./WORKING/WORKPAPER/",
         "on_close": "move to ./WORKING/WORKPAPER/closed/"
       },
       "whitepaper": {
         "purpose": "Stable architecture and system truth. Written once, updated on structural decisions only.",
+        "naming": "WP-{NNN}-{TOPIC}-{description}.md",
         "location": "./WORKING/WHITEPAPER/",
         "on_close": "stays — never moved"
       },
@@ -111,7 +113,8 @@
     "on_session_start": [
       "1. Read READ-AGENT.md",
       "2. Query memory for session topic",
-      "3. Open or create workpaper for this session"
+      "3. RFL — Reflection: Determine TOPIC tag for this session. Stage 1: scan WORKPAPER/closed/ for *-{TOPIC}-*. Stage 2: use LTM results. Stage 3: read last closed workpaper. If prior decision conflicts with current goal, flag in workpaper under '## ⚠ RFL Consistency Flag' with source, resolution.",
+      "4. Open or create workpaper for this session (naming: {DATE}-{TOPIC}-{SUBTOPIC}-{description}.md)"
     ],
     "on_session_end": [
       "1. Complete workpaper (file protocol, decisions, next steps)",

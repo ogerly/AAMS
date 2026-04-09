@@ -3,7 +3,7 @@
 
 - **ID:** WP-001
 - **Erstellt:** 2026-02-22
-- **Letztes Update:** 2026-03-31
+- **Letztes Update:** 2026-04-09
 - **Status:** Aktiv
 - **Typ:** Architektur / Projektverständnis
 
@@ -105,6 +105,32 @@ Ein Agent braucht dasselbe, aber explizit und persistent.
 
 **Diary Layer** (Temporal Context Layer) wurde 2026-02-24 als verpflichtender dritter Dokumentations-Layer eingeführt. Der Gap: Entscheidungen entstehen *zwischen* Workpaper und Whitepaper. Strategische Motive verschwinden. Das Diary schließt diesen Gap — chronologisch, monatsweise, max. 10 Zeilen pro Eintrag.
 
+### Naming Schema (eingeführt 2026-04-09)
+
+Strukturierte Dateinamen ermöglichen thematisches Pattern-Matching über Sessions hinweg:
+
+| Dokument | Schema | Beispiel |
+|----------|--------|----------|
+| Workpaper | `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` | `2026-04-09-ARCH-RFL-reflection-protocol-step.md` |
+| Whitepaper | `WP-{NNN}-{TOPIC}-{description}.md` | `WP-005-ARCH-naming-schema.md` |
+
+TOPIC-Tags (3-4 Buchstaben, UPPERCASE) sind der primäre Ordnungsschlüssel. Sie ermöglichen den RFL-Schritt (siehe unten) und Cross-Referenzierung zwischen Workpapers und Whitepapers.
+
+### RFL — Reflection Protocol Step (eingeführt 2026-04-09)
+
+RFL ist ein Konsistenzprüfungs-Schritt im Session-Start-Contract. Er löst das häufigste Failure-Pattern agentischer Sessions:
+
+> Agent entscheidet in Session 47 das Gegenteil von Session 12 — und merkt es nicht.
+
+**Alle vier Layer sind Speicher. Keiner ist Prüfung.** RFL schließt diese Lücke — als Protokollschritt, nicht als Layer.
+
+3-Stufen-Fallback:
+1. Pattern-Match auf TOPIC-Tag in Dateinamen (`*-{TOPIC}-*`)
+2. LTM-Query-Ergebnisse
+3. Letztes geschlossenes Workpaper (chronologisch)
+
+Bei Widerspruch: Flag im neuen Workpaper (`## ⚠ RFL Consistency Flag`). Bei Konsistenz: kein Overhead.
+
 ---
 
 ## 5. Bootstrap-Ablauf (normativ)
@@ -151,24 +177,25 @@ Langfristiges Ziel: AAMS wird zu einem **de-facto Standard** den jedes Agenten-F
 
 ---
 
-## 8. Aktueller Stand (2026-03-31)
+## 8. Aktueller Stand (2026-04-09)
 
 | Bereich | Status |
 |---|---|
 | Spezifikation (SPEC.md / SPEC-DE.md) | Vollständig, AAMS/1.0 |
 | Referenz-Manifest (AGENT.json) | Vollständig, annotiert — inkl. `_deviations` |
 | JSON Schema (AGENT_SCHEMA.json) | Vollständig — inkl. `_deviations` |
-| Minimal-Bootstrap (.agent.json) | Aktiv, AAMS-MINI/1.0 — inkl. Pre-Check Step 0 (Idempotenz-Guard) |
-| READ-AGENT.md | Aktiv — dual-track LTM, Diary Layer, 3-State-Tabelle, Compatibility-Klausel |
+| Minimal-Bootstrap (.agent.json) | Aktiv, AAMS-MINI/1.0 — inkl. Pre-Check Step 0, RFL in on_session_start, Naming Schema |
+| READ-AGENT.md | Aktiv — dual-track LTM, Diary Layer, 3-State-Tabelle, Compatibility-Klausel, **Naming Schema**, **RFL Protocol Step** |
 | AGENTS.md | Aktiv — Conditional Bootstrap (State-Check vor Execution) |
 | WORKING/-Struktur | Vollständig aktiv inkl. DIARY/ und DATABASE/ |
-| Workpapers (archived) | 20+ in WORKPAPER/closed/ |
+| Workpapers (archived) | 25+ in WORKPAPER/closed/ |
 | Whitepapers | 4 (WP-001 bis WP-004) |
 | LTM | 67+ Einträge ltm-index.md + ChromaDB |
 | GitHub Issues #1-#20 | Geschlossen |
-| GitHub Issues #21-#26 | Teils offen — Aufgaben aus Session 2026-03-26 |
-| GitHub Issues #28-#31 | Field Reports — ausgewertet, Fixes implementiert (2026-03-31) |
+| GitHub Issues #21-#26 | Teils offen |
+| GitHub Issues #28-#31 | Field Reports — ausgewertet, Fixes implementiert |
+| GitHub Issues #36-#39 | v1.2.0: Naming Schema (#36), RFL (#37), WP-001 Update (#38), Release (#39) |
 | GitHub Pages | Live — devmatrose.github.io/AAMS |
-| Field Reports | Luna-1 (#17), Testcenter (#20), Antigravity (#28), OpenClaw (#29), Blind-Execution (#31) — 5 unabhängige Berichte |
-| AAMS-MINI | Eingeführt: ltm_mode markdown (Track A) + vector (Track B) |
-| Fixes (2026-03-31) | Conditional Bootstrap (AGENTS.md), Pre-Check Step 0 (.agent.json), 3-State-Tabelle (READ-AGENT.md), Compatibility-Klausel, Bootstrap-Klarstellung (README) |
+| Field Reports | 5 unabhängige Berichte |
+| AAMS-MINI | ltm_mode markdown (Track A) + vector (Track B) |
+| **Neu (v1.2.0)** | **Naming Schema (Workpapers + Whitepapers), RFL Protocol Step (3-Stufen-Konsistenzprüfung), SCIENCE-Konzept als Framework-Feature verlagert** |
