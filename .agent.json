@@ -7,6 +7,14 @@
     "root": "./WORKING",
     "entry_point": "./READ-AGENT.md",
 
+    "discovery": {
+      "_doc": "Optional container layer. If a WORKSPACE/ directory exists at repo root and contains a WORKING/ subfolder, the agent MUST use WORKSPACE/WORKING/ as effective root. This enables multi-project repos and monorepos to isolate agent workspaces without changing any other paths.",
+      "container_dir": "./WORKSPACE",
+      "detection": "if exists(./WORKSPACE/WORKING/) then effective_root = ./WORKSPACE/WORKING else effective_root = ./WORKING",
+      "fallback": "./WORKING",
+      "affects": "All paths in workspace.structure are relative to effective_root. entry_point stays at repo root."
+    },
+
     "structure": {
       "_doc": "Agent creates these folders on first read. Never deletes. Never overwrites existing content.",
       "whitepapers": "./WORKING/WHITEPAPER",
@@ -99,6 +107,7 @@
     "on_first_entry": [
       "0. PRE-CHECK: If WORKING/WORKPAPER/ already contains workpapers, STOP — run on_session_start instead.",
       "1. Read READ-AGENT.md (if exists)",
+      "1a. DISCOVERY: If ./WORKSPACE/WORKING/ exists, use it as effective root for all WORKING/ paths. Otherwise use ./WORKING/ directly.",
       "2. Create all workspace.structure folders if missing",
       "3. Scan repository → write first workpaper with sections: session_goal, repository_inventory (file tree + status), key_findings (from README + docs), open_questions, file_protocol, next_steps",
       "4. Create READ-AGENT.md if missing",

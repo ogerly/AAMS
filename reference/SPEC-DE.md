@@ -427,6 +427,20 @@ Wenn ein Agent ein Repository klont und `AGENT.json` findet:
 | `entry_point`       | string  | ✅      | Datei die der Agent zuerst liest |
 | `auto_create`       | boolean | ✅      | `true` (Standard): Agent MUSS fehlende Ordner anlegen. `false`: Nur-Lesen-Modus — Agent arbeitet mit vorhandener Struktur, legt keine Ordner an und ändert keine. |
 | `structure`         | object  | ✅      | Key-Value-Paare: Rolle → Pfad (Single Source of Truth) |
+
+#### Discovery (optional)
+
+Das `workspace.discovery`-Objekt ermöglicht eine optionale Container-Ebene für Monorepos und Multi-Projekt-Setups:
+
+| Feld | Typ | Beschreibung |
+|------|-----|--------------|
+| `container_dir` | string | Zu prüfendes Container-Verzeichnis (Standard: `./WORKSPACE`) |
+| `detection` | string | Pseudo-Code: wenn `container_dir/WORKING/` existiert, als effective root nutzen |
+| `fallback` | string | Fallback wenn Container fehlt (Standard: Wert von `workspace.root`) |
+
+**Regel:** Wenn `./WORKSPACE/WORKING/` im Repo-Root existiert, MUSS der Agent `WORKSPACE/WORKING/` als effective root für alle `workspace.structure`-Pfade verwenden. Sonst wird `./WORKING/` direkt genutzt. Der `entry_point` bleibt immer im Repo-Root.
+
+Dies ist rückwärtskompatibel: Repos ohne `WORKSPACE/`-Verzeichnis sind nicht betroffen.
 | `onboarding`        | object  | ⬜      | Schritte bei Ersteinrichtung |
 | `workpaper_rules`   | object  | ⬜      | Regeln für Workpaper-Erstellung und -Abschluss |
 | `code_hygiene`      | object  | ⬜      | Regeln für sauberen Code und saubere Repos |

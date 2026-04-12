@@ -27,6 +27,10 @@ Core idea:
 
 ## Workspace Structure
 
+### Discovery Rule
+
+If `./WORKSPACE/WORKING/` exists at repo root, use it as the effective root for all `WORKING/` paths below. Otherwise use `./WORKING/` directly. This enables monorepos and multi-project setups to isolate agent workspaces inside a container directory.
+
 | Folder | Purpose |
 |---|---|
 | `WORKING/WHITEPAPER/` | Stable architecture and system truth. Not for daily work. See [INDEX.md](WORKING/WHITEPAPER/INDEX.md). |

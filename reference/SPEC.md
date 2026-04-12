@@ -551,6 +551,20 @@ When an agent clones a repository and finds `AGENT.json`:
 | `entry_point`       | string  | ✅        | File the agent reads first |
 | `auto_create`       | boolean | ✅        | `true` (default): agent MUST create missing folders. `false`: read-only mode — agent works with existing structure only, does not create or modify folders. |
 | `structure`         | object  | ✅        | Key-value pairs: role → path (Single Source of Truth) |
+
+#### Discovery (optional)
+
+The `workspace.discovery` object enables an optional container layer for monorepos and multi-project setups:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `container_dir` | string | Container directory to check (default: `./WORKSPACE`) |
+| `detection` | string | Pseudo-code: if `container_dir/WORKING/` exists, use it as effective root |
+| `fallback` | string | Fallback when container is absent (default: value of `workspace.root`) |
+
+**Rule:** If `./WORKSPACE/WORKING/` exists at repo root, the agent MUST use `WORKSPACE/WORKING/` as the effective root for all `workspace.structure` paths. Otherwise, `./WORKING/` is used directly. The `entry_point` always stays at repo root.
+
+This is backward-compatible: repos without a `WORKSPACE/` directory are unaffected.
 | `onboarding`        | object  | ⬜        | Steps for initial setup |
 | `workpaper_rules`   | object  | ⬜        | Rules for workpaper creation and closing |
 | `code_hygiene`      | object  | ⬜        | Rules for clean code and clean repos |
