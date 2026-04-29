@@ -308,6 +308,27 @@
       "additionalProperties": false
     },
 
+    "file_safety": {
+      "type": "object",
+      "description": "Optional file safety guidance. Describes how agents may handle file deletions outside the workspace. All fields optional.",
+      "properties": {
+        "outside_workspace": {
+          "type": "object",
+          "properties": {
+            "_doc":        { "type": "string" },
+            "check_git_history": { "type": "string" },
+            "if_history_found":  { "type": "string" },
+            "if_no_history":     { "type": "string" },
+            "manual_rm_rf":      { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        }
+      },
+      "patternProperties": { "^_": true },
+      "additionalProperties": false
+    },
+
     "bootstrap_rules": {
       "type": "object",
       "description": "LTM configuration and bootstrap behaviour for the minimal .agent.json manifest. All fields optional.",

@@ -94,6 +94,23 @@
       "use": ".env or external secret manager only"
     },
 
+    "topic_registry": {
+      "_doc": "Official TOPIC tags for workpaper naming. Used for RFL pattern-matching. Extensible — new tags may be added.",
+      "tags": ["ARCH", "SPEC", "LTM", "SEC", "BOOT", "FLD", "RES", "MKT", "ISS", "GOV", "EDU"],
+      "extensible": true
+    },
+
+    "file_safety": {
+      "_doc": "Describes how agents may handle file deletions outside the workspace. Git history is the source of truth for file relevance.",
+      "outside_workspace": {
+        "_doc": "Files outside WORKING/ should be treated with caution before deletion.",
+        "check_git_history": "git log --all --diff-filter=D -- <file> examines whether a file has been committed in any branch.",
+        "if_history_found": "Files with git history may be relevant. Agents should inform the user before deletion.",
+        "if_no_history": "Files without git history may be safe to delete. Agents may proceed with caution.",
+        "manual_rm_rf": "Never use rm -rf with manual file lists without git verification."
+      }
+    },
+
     "gitignore_patterns": {
       "_note": "WORKING/MEMORY/ is intentionally NOT ignored — ltm-index.md is the shared collaboration artifact. Only binary/runtime artifacts are excluded.",
       "_gitkeep_note": "Use glob+negation patterns (WORKING/LOGS/*) instead of folder patterns (WORKING/LOGS/) to keep .gitkeep files trackable. See issue #10.",

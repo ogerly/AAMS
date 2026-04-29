@@ -14,4 +14,5 @@
 
 > **AAMS/2.0 — Agent Manifest (nicht Specification)**
 > AAMS beschreibt Workspace- und Dokumentationskonventionen. Es schreibt Agenten kein Verhalten vor.
+> Includes optional `file_safety` guidance for safe file deletion outside WORKING/ (Issue #50).
 > [Learn more](https://github.com/DEVmatrose/AAMS)

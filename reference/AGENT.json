@@ -408,6 +408,17 @@
     "contact": "maintainer@example.com"
   },
 
+  "file_safety": {
+    "_doc": "Optional file safety guidance. Describes how agents may handle file deletions outside the workspace.",
+    "outside_workspace": {
+      "_doc": "Files outside WORKING/ should be treated with caution before deletion.",
+      "check_git_history": "git log --all --diff-filter=D -- <file>",
+      "if_history_found": "Files with git history may be relevant. Inform the user before deletion.",
+      "if_no_history": "Files without git history may be safe to delete.",
+      "manual_rm_rf": "Never use rm -rf with manual file lists without git verification."
+    }
+  },
+
   "metadata": {
     "_doc": "Free-form field for provider-specific extensions and project-specific data. No fixed schema.",
     "project_category": "web-application",
