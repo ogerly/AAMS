@@ -159,14 +159,15 @@
 3. **Diary** — chronologischer Entscheidungslog, monatsweise, max 10 Zeilen pro Eintrag
 4. **Memory (LTM)** — persistenter Kontextspeicher über Sessions hinweg
 
-### Offene Issues (Stand 2026-03-26)
+### Offene Issues (Stand 2026-04-17)
 - **Issues #1-#20:** Alle geschlossen.
-- **Issue #21 — `_deviations` Schema:** Implementiert (T1).
-- **Issue #22 — LTM Hero Artifact:** Implementiert (T2).
-- **Issue #23 — CLAUDE.md Positioning:** Implementiert (T3).
-- **Issue #24 — Blueprint.md Workflow:** Implementiert (T4).
-- **Issue #25 — Session-Start Prompts:** Offen.
-- **Issue #26 — Security Signals:** Offen.
+- **Issues #21-#25:** Alle geschlossen (T1-T4 implementiert, Prompts überarbeitet).
+- **Issue #26 — Security Signals:** Offen (Backlog, post AAMS/2.0).
+- **Issue #39 — v1.2.0 Release:** Geschlossen.
+- **Issue #41 — MantisClaw Field Report:** Offen (Topic Registry + Compat Matrix ausstehend).
+- **Issue #43 — RFC Spec→Contract:** Offen als RFC-Tracker.
+- **Issue #48 — Decision-Kompoundierungs-Leck:** Offen, CRITICAL.
+- **Issue #49 — Upgrade-Transparenz:** Offen, HIGH.
 
 ### Bootstrap-Ablauf (normativ)
 1. `.agent.json` lesen
@@ -189,23 +190,73 @@
 
 ---
 
-## 2026-04-08 — Copilot — Session Check + Issue #35
+## 2026-04-17 — Klarschiff-Session: Karpathy LLM-Wiki + Workpaper-Audit + Whitepaper-Fix
 
-**Workpaper:** `2026-04-08-copilot-session-check.md`  
-**Themen:** AAMS-Status-Review, offene Workpapers, GitHub Issues, Wissensketten-Implementierung
+**Workpaper:** `2026-04-17-RES-WIKI-karpathy-llm-wiki-vergleich.md`  
+**Themen:** Karpathy LLM-Wiki Vergleich, TST-Methodik, Decision-Promotion, Workpaper-Audit, Whitepaper-Widersprüche
 
 **Was wurde getan:**
-- 5 offene Workpapers identifiziert (4 echt offen, 1 Duplikat bereinigt)
-- `2026-03-27-long-horizon-reasoning-analyse.md` → `closed/` (war identisches Duplikat)
-- **Issue #35 implementiert** — Wissenskette `WP → Whitepaper → LTM` als expliziter Schritt in `on_session_end` verankert
-  - `.agent.json`: Neuer Schritt 2 "Update Whitepapers before LTM-Ingest"
-  - `READ-AGENT.md`: Session-End-Protokoll um Whitepaper-Step erweitert
-  - `reference/SPEC.md`: `whitepapers_updated` Checklist-Item + `workpaper_closed` Trigger-Beschreibung
 
-**Offene Issues (5):** #35 (✅ done), #26 (Security Signals), #24 (Blueprint.md 2-Phasen), #23 (vs. CLAUDE.md), #22 (ltm-index.md Hero-Artefakt)
+### Phase 1: Karpathy LLM-Wiki Vergleich
+- Gist analysiert: 3-Schichten-Wiki (Raw Sources / Wiki / Schema) vs. AAMS 4-Schichten
+- Adaptions-Assessment: Wiki-Lint (Mittel), Decision-Promotion (CRITICAL), kein wholesale adoption
+- **TST-Methodik** (Theoretical Stress Testing) als GUIDELINE etabliert
+  - `WORKING/GUIDELINES/theoretical-stress-testing.md` — erste Guideline überhaupt
+  - Regel: "Kein Workpaper mit Architektur-Empfehlungen darf geschlossen werden, ohne TST"
+  - 3 Core-Gaps dokumentiert (CG-1 Decision-Kompoundierung, CG-2 Upgrade-Transparenz, CG-3 Lint-Äquivalent)
+
+### Phase 2: Issues erstellt
+- **Issue #48** — Decision-Kompoundierungs-Leck (CRITICAL): Architektur-Decisions versickern in Workpapers
+- **Issue #49** — Upgrade-Transparenz fehlt (HIGH): CHANGELOG, Git-Tags, MIGRATION.md
+
+### Phase 3: Klarschiff — Workpaper-Audit
+- 17 offene Workpapers analysiert
+- **6 Workpapers → closed/** (video-marketing, claude-buddy, wissen-in-zeit, WORKSPACE-field-report, WKSP-discovery, public-presence)
+- 11 verbleiben: 3 BLOCKED (E-1..E-5), 4 fast fertig, 2 extern, 2 aktiv
+
+### Phase 4: Whitepaper-Konsistenz
+- 10 Prüffragen → 4 RED, 3 YELLOW, 3 GREEN
+- **WP-001 aktualisiert:**
+  - §5: WORKSPACE-Discovery ergänzt (implementiert 2026-04-12)
+  - §8: Versioning & Upgrade-Transparenz (konzipiert, nicht implementiert)
+  - §9: Decision-Promotion als neues Konzept
+  - §10: Cross-Referenzen WP-001↔WP-002↔WP-003↔WP-004
+  - §11: Aktueller Stand auf 2026-04-17 (Issues, GUIDELINES/, Versioning-Status)
+  - ⚠️ Pending-Decision-Marker: "Spezifikation" → "Agent Contract" (E-1..E-5 offen)
+- **INDEX.md aktualisiert:**
+  - WP-001 Stand + Themen aktualisiert
+  - Cross-Referenzen-Block hinzugefügt
+  - Pending-Decisions-Block hinzugefügt
+  - Stand: 2026-04-17
+
+### Phase 5: GitHub Issues bestätigt
+- Issues #22, #23, #24, #39, #42, #44 — alle waren bereits geschlossen (konsistent mit Triage-Empfehlung)
+
+**Offene Issues:** #26 (Security, Backlog), #41 (MantisClaw), #43 (RFC Tracker), #48 (Decision-Leck), #49 (Upgrade-Transparenz)
+
+| # | Datum | Typ | Datei | Inhalt |
+|---|---|---|---|---|
+| 100 | 2026-04-17 | RESEARCH | `WORKING/WORKPAPER/2026-04-17-RES-WIKI-karpathy-llm-wiki-vergleich.md` | Karpathy LLM-Wiki vs. AAMS Vergleich. 3-Schichten → 4-Schichten Mapping. Adaptions-Assessment: Decision-Promotion CRITICAL, Wiki-Lint Mittel. |
+| 101 | 2026-04-17 | GUIDELINE | `WORKING/GUIDELINES/theoretical-stress-testing.md` | TST-Methodik: Theoretical Stress Testing als Pflichtschritt für Architektur-Workpapers. 3 Core-Gaps (Decision-Kompoundierung, Upgrade-Transparenz, Lint-Äquivalent). |
+| 102 | 2026-04-17 | GITHUB | Issues #48, #49 | #48 Decision-Kompoundierungs-Leck (CRITICAL), #49 Upgrade-Transparenz (HIGH). Beide aus TST-Stress-Tests entstanden. |
+| 103 | 2026-04-17 | AUDIT | `WORKING/WORKPAPER/` | 17 offene Workpapers auditiert. 6 → closed/. 11 verbleiben (3 BLOCKED, 4 fast fertig, 2 extern, 2 aktiv). |
+| 104 | 2026-04-17 | WHITEPAPER | `WORKING/WHITEPAPER/WP-001-aams-overview.md` | Majored Update: WORKSPACE-Discovery §5, Versioning §8, Decision-Promotion §9, Cross-Refs §10, Stand §11. Pending-Decision für Spec→Contract. |
+| 105 | 2026-04-17 | WHITEPAPER | `WORKING/WHITEPAPER/INDEX.md` | Cross-Referenzen + Pending-Decisions-Block. WP-001 Stand auf 2026-04-17. |
+| 106 | 2026-04-17 | DIARY | `WORKING/DIARY/2026-04.md` | Klarschiff-Session Eintrag: alle Aktionen zusammengefasst. |
+| 107 | 2026-04-19 | TOOL | `WORKING/TOOLS/wiki_lint.py` | Wiki-Lint Health-Check: 7 Checks (L1 Index-Konsistenz, L2 Stale WPs, L3 Naming-Schema, L4 Decision-Promotion, L5 Cross-Refs, L6 LTM-Nummerierung, L7 Pending-Decisions). Erstlauf: 0 Errors, 12 Warnings, 2 Infos. ~3k Tokens. Inspiriert von Karpathy LLM-Wiki Lint-Konzept. |
+| 108 | 2026-04-19 | ARCHITECTURE | `READ-AGENT.md` | Decision-Promotion als Schritt 2 in on_session_end verankert. Regel: Kein Workpaper darf mit ungelösten [PROMOTE→WP-xxx] Tags geschlossen werden. wiki_lint.py als optionaler Schritt 7. Current Status aktualisiert (LTM 106+, Issues, Guidelines, Tools). |
 
 ---
 
 ## Nächster geplanter Ingest
 
 Nach Abschluss der laufenden Session.
+
+| # | Datum | Typ | Datei | Inhalt |
+|---|---|---|---|---|
+| 116 | 2026-04-29 | ANALYSE | `WORKING/WORKPAPER/2026-04-29-projekt-analyse.md` | Absolute Projekt-Analyse: 8 offene Issues, 11 aktive Workpapers, 6 Whitepapers. Health-Score 5/10. Core-Gaps: #48 teilweise, #49 teilweise, #43 blockiert (E-1..E-5), #50/#51 neu. Decisions D1-D7. GitHub-API-Token invalid. |
+| 117 | 2026-04-29 | RFCT | `.agent.json` + AGENT_SCHEMA.json + AGENT.json + CHANGELOG.md + READ-AGENT.md + INDEX.md | Phase 1 RFCT: AAMS/2.0 Manifest-Prinzip. `_contract: AAMS/2.0` + deprecated `_spec` + `topic_registry` + `agent_conventions` (descriptive). Schema: `_contract` required, `_spec` deprecated. CHANGELOG.md v2.0.0. READ-AGENT.md Current Status + Topic Registry. INDEX.md Pending Decisions + Manifest-Prinzip. |
+| 118 | 2026-04-29 | RFCT | `AGENTS.md` + `copilot-instructions.md` + `CONTRACT.md` + `SPEC.md` (Stub) + `MIGRATION.md` | Phase 2 RFCT: AGENTS.md + copilot-instructions.md Tagline-Updates. CONTRACT.md (Stub) + SPEC.md (Stub). MIGRATION.md v1.x→v2.0. |
+| 119 | 2026-04-29 | RFCT | STRAT + RFCT Workpapers → closed/ | E-1..E-5 beschlossen. Phase 1 RFCT abgeschlossen. STRAT + RFCT Workpapers archiviert. |
+| 120 | 2026-04-29 | RFCT | WP-001, WP-002, WP-003, WP-004, INDEX.md | Phase 2 RFCT: Alle Whitepapers "Specification" → "Agent Manifest". WP-001 Header + Pending Decision + Current Status + governance + agent_contract. WP-002 Header + "AAMS declares" → "AAMS describes". WP-003 Header + AAMS-Spec → AAMS-Contract. WP-004 Header + Reference. INDEX.md Header + Pending Decisions. WP-001 INDEX vs. Inhalt Widerspruch gelöst. Manifest-Prinzip (D9) in WP-001 + INDEX.md. |
+| 121 | 2026-04-29 | RFCT | README.md, README.en.md, README.zh.md, reference/README-DE.md, docs/outreach | Phase 2 RFCT: Alle READMEs + Outreach "Specification" → "Agent Manifest". README.md: "Spezifikation" → "Manifest", Tagline, Kernsatz. README.en.md: "Specification" → "Agent Manifest", Header → "Contract Reference". README.zh.md: "Specification" → "Agent Manifest". reference/README-DE.md: "Specification" → "Agent Manifest". Outreach-Templates aktualisiert. |

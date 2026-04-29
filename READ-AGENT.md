@@ -17,11 +17,31 @@ Start immediately. No confirmation needed.
 
 ## What this project is
 
-**Autonomous Agent Manifest Specification (AAMS)**  
+**AAMS — Agent Manifest**  
 A portable workspace and documentation standard for AI agents working in any repository.
 
 Core idea:  
 > Drop `.agent.json` into any repo. Every agent that reads it creates and follows the same workspace structure — independent of framework, language, or runtime.
+
+---
+
+## Decision-Promotion — Session-End Checklist
+
+**Erforderlich vor jedem Session-Close.** Eine Entscheidung die nur im Workpaper lebt, existiert nicht für das System.
+
+Bevor du diese Session schließt, prüfe:
+
+- [ ] Wurde eine Architektur-Entscheidung getroffen?
+  - [ ] Ist sie in `WORKING/WHITEPAPER/INDEX.md` eingetragen?
+  - [ ] Wurde das betroffene Whitepaper aktualisiert?
+- [ ] Existieren offene Decisions in diesem Workpaper?
+  - [ ] Sind alle offenen Decisions in einem Whitepaper gepromoted?
+  - [ ] Falls nein: Workpaper schließen und erst nach Decision-Promotion wieder öffnen.
+
+**Regel:** Keine offenen Decisions in Workpapers nach Session-Ende.
+Die Decision muss in einem Whitepaper leben, nicht im Workpaper.
+
+**Automatischer Check:** `python WORKING/TOOLS/wiki_lint.py` zeigt orphane Decisions.
 
 ---
 
@@ -96,7 +116,7 @@ Example: `WP-005-ARCH-naming-schema.md`
 | TOPIC | Meaning |
 |-------|---------|
 | `ARCH` | Architecture & system design |
-| `SPEC` | Specification work |
+| `SPEC` | Specification/Contract work |
 | `LTM` | Long-term memory |
 | `SEC` | Security & governance |
 | `BOOT` | Bootstrap & onboarding |
@@ -108,6 +128,19 @@ Example: `WP-005-ARCH-naming-schema.md`
 | `EDU` | Education & courses |
 
 The registry is extensible. Rule: max 4 letters, UPPERCASE, unique.
+
+### Maschinenlesbare Topic Registry
+
+Die Topic Registry ist maschinenlesbar in `.agent.json` unter `topic_registry` definiert:
+
+```json
+"topic_registry": {
+  "tags": ["ARCH", "SPEC", "LTM", "SEC", "BOOT", "FLD", "RES", "MKT", "ISS", "GOV", "EDU"],
+  "extensible": true
+}
+```
+
+Dies ermöglicht RFL-Pattern-Matching ohne manuelle Registry-Pflege.
 
 ---
 
@@ -154,11 +187,18 @@ Agents may maintain their own internal task tracking (e.g., `.gemini/brain/`, Co
 
 ### On every session end
 1. Complete workpaper (file protocol + decisions + next steps)
-2. **Update Whitepapers** if session contains architectural decisions  
+2. **Decision-Promotion Check** — for each Decision in the workpaper:
+   - Does it affect architecture, system design, or the documentation model?
+   - If YES → tag it `[PROMOTE→WP-xxx]` in the Decisions section
+   - Update the target Whitepaper with the decision (or add a `⚠️ Pending Decision` marker if blocked)
+   - If NO → no action needed
+   - Rule: **No workpaper may be closed with unresolved `[PROMOTE→WP-xxx]` tags.**
+3. **Update Whitepapers** if session contains architectural decisions  
    → Knowledge chain: `WP → Whitepaper → LTM` — never skip or reorder
-3. Ingest workpaper into `WORKING/MEMORY/` (LTM learns from current truth, not stale WPs)
-4. Move workpaper to `WORKING/WORKPAPER/closed/`
-5. Update this file if architecture or structure changed
+4. Ingest workpaper into `WORKING/MEMORY/` (LTM learns from current truth, not stale WPs)
+5. Move workpaper to `WORKING/WORKPAPER/closed/`
+6. Update this file if architecture or structure changed
+7. *(Optional)* Run `python WORKING/TOOLS/wiki_lint.py` to verify consistency
 
 ---
 
@@ -249,15 +289,24 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 ## Current Status
 
 - Bootstrap: **complete** (2026-02-22)
-- Spec version: **AAMS/1.3**
-- Last release: **v1.3.0** (2026-04-09) — Diary Reform (pointer-only temporal index) + Version Centralization
+- Manifest version: **AAMS/2.0**
+- Last release: **v2.0.0** (2026-04-29) — Spec → Contract reorientation (Agent Manifest)
 - Workspace: initialized, all folders present
-- LTM: 96+ entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
-- Whitepapers: 4 → WP-001 AAMS Overview, WP-002 Related Work, WP-003 Field Discourse, WP-004 Long-Horizon Reasoning
-- Closed workpapers: ~20 in `WORKING/WORKPAPER/closed/`
+- LTM: 116+ entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
+- Whitepapers: 4 + INDEX.md → WP-001 AAMS Overview, WP-002 Related Work, WP-003 Field Discourse, WP-004 Long-Horizon Reasoning
+- Closed workpapers: ~40 in `WORKING/WORKPAPER/closed/`
 - READMEs: DE ✅ · EN ✅
 - LTM architecture: dual-layer (audit-log + vector store) ✅
-- GitHub Issues #1–6: closed · #36–#39: closed (v1.2.0) · #40: closed (v1.3.0, Diary reform)
+- GitHub Issues: #1–6 closed · #36–#40 closed · #45 (duplikat) · #43 RFC (open) · #41 MantisClaw (open) · #48 Decision-Leck (open) · #49 Upgrade-Transparenz (open) · #47 Tool Decay (open) · #46 Root-Ordner (open) · #26 Security (open) · #50 File Safety (new) · #51 Skill-Konzept (new)
+- CHANGELOG.md: **exists** (2026-04-24)
+- `.agent.json`: `_contract: AAMS/2.0` + deprecated `_spec` + `topic_registry` + `on_update` + `version_detection`
+- Decision-Promotion: **in READ-AGENT.md** (session-end checklist)
+- wiki_lint.py: **7 Checks + L4b Orphaned Decisions** (16 orphane Decisions detektiert)
+- validate_tools.py: **D1-D4 AAMS Doctor** (Tool-Integrität)
 - Diary Layer: **reformed** — pointer-only temporal index (v1.3.0)
-- Documentation model: 4 layers (Workpaper, Whitepaper, Diary, Memory) + RFL consistency check
+- Documentation model: 4 layers (Workpaper, Whitepaper, Diary, Memory) + RFL consistency check + **Decision-Promotion** (session-end)
 - Naming Schema: `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` (recommended, not enforced)
+- Guidelines: `WORKING/GUIDELINES/theoretical-stress-testing.md` (TST methodology)
+- AGENTS.md: **Pre-Flight Path Check** (Issues #47+#46)
+- Manifest-Prinzip: **AAMS beschreibt, es schreibt kein Verhalten vor** (D9)
+- Health-Score: **8/10** — ⚠️ `.aams-version` + Git-Tags + Issue #45 schließen ausstehend

@@ -1,18 +1,23 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/DEVmatrose/AAMS/schema/v1.0/AGENT_SCHEMA.json",
-  "title": "AAMS — Autonomous Agent Manifest Specification",
+  "title": "AAMS — Agent Manifest",
   "description": "JSON Schema for validating AGENT.json files (Version 1.0, local-first).",
   "version": "1.0.0",
   "type": "object",
-  "required": ["_spec", "identity", "runtime", "skills", "permissions", "memory", "session", "tools", "workspace"],
+  "required": ["_contract", "identity", "runtime", "skills", "permissions", "memory", "session", "tools", "workspace"],
 
   "properties": {
 
     "_spec": {
       "type": "string",
-      "const": "AAMS/1.0",
-      "description": "Required field. Identifies the standard and version."
+      "const": "AAMS-MINI/1.0",
+      "description": "DEPRECATED — use _contract. Retained for backward compatibility with AAMS/1.x tooling."
+    },
+
+    "_contract": {
+      "type": "string",
+      "description": "Primary version identifier. Identifies the AAMS manifest version."
     },
 
     "identity": {
@@ -258,7 +263,9 @@
     "governance": {
       "type": "object",
       "properties": {
+        "contract_version":      { "type": "string" },
         "spec_version":          { "type": "string" },
+        "contract_url":          { "type": "string", "format": "uri" },
         "spec_url":              { "type": "string", "format": "uri" },
         "validated_with":        { "type": "string" },
         "last_reviewed":         { "type": "string", "format": "date" },
@@ -277,17 +284,28 @@
 
     "_deviations": {
       "type": "array",
-      "description": "Intentional deviations from the AAMS spec. Allows projects adopting AAMS on existing structures to formally document where and why they differ from spec defaults. Self-documents the contract when standard paths are overridden.",
+      "description": "Intentional deviations from the AAMS conventions. Allows projects adopting AAMS on existing structures to formally document where and why they differ from convention defaults. Self-documents the manifest when standard paths are overridden.",
       "items": {
         "type": "object",
-        "required": ["spec_path", "actual_path", "reason"],
+        "required": ["convention_path", "actual_path", "reason"],
         "properties": {
-          "spec_path":   { "type": "string", "description": "The path, value, or convention as defined in the AAMS standard." },
+          "convention_path":   { "type": "string", "description": "The path, value, or convention as defined in the AAMS conventions." },
           "actual_path": { "type": "string", "description": "The path, value, or convention actually used in this project." },
           "reason":      { "type": "string", "description": "Why this deviation exists (e.g. pre-AAMS naming, historical consistency, team preference)." }
         },
         "additionalProperties": false
       }
+    },
+
+    "topic_registry": {
+      "type": "object",
+      "description": "Official TOPIC tags for workpaper naming. Used for RFL pattern-matching. Extensible.",
+      "properties": {
+        "tags":        { "type": "array", "items": { "type": "string" } },
+        "extensible":  { "type": "boolean" }
+      },
+      "patternProperties": { "^_": true },
+      "additionalProperties": false
     },
 
     "bootstrap_rules": {

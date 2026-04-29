@@ -1,0 +1,27 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local)",
+      "options": {
+        "baseURL": "http://192.168.0.70:1234/v1/",
+        "apiKey": "{env:LM_API_TOKEN}"
+      },
+      "models": {
+        "qwen/qwen3-coder-30b": {
+          "name": "Qwen3 Coder 30B"
+        },
+        "qwen/qwen3-coder-next": {
+        "name": "Qwen3 Coder Next"
+        },
+        "qwen/qwen3.6-27b": {
+          "name": "Qwen3.6 27B"
+        },
+        "qwen/qwen3.6-35b-a3b": {
+          "name": "Qwen3.6 35B"
+        }
+      }
+    }
+  }
+}

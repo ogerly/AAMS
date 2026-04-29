@@ -19,7 +19,7 @@
 
 # Every Agent. One File.
 
-> **AAMS — 自主代理清单规范（Autonomous Agent Manifest Specification）**  
+> **AAMS — Agent Manifest**  
 > `README.md` 是给人看的。`AGENT.json` 是给机器看的。
 
 **[→ devmatrose.github.io/AAMS](https://devmatrose.github.io/AAMS/)**
@@ -53,7 +53,7 @@ Read .agent.json and execute the full agent_contract.on_first_entry. Start immed
 > 好的食谱需要一本好的食谱书。好的项目也是如此。
 
 <p align="center">
-  <img src="docs/aams-process-eng.png" alt="AAMS 工作方法论" width="700">
+  <img src="docs/aams-function-img.png" alt="AAMS 功能图" width="700">
 </p>
 
 想象一下奶奶的食谱书——充满了精彩的菜谱、手写的笔记和几十年积累的智慧。但没有目录、没有交叉引用、没有办法找到你需要的东西，除非翻遍整本书。

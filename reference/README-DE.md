@@ -4,7 +4,7 @@
 
 # Land in Sicht: Dein Repo als agentischer Arbeitsraum
 
-> **AAMS — Autonomous Agent Manifest Specification**  
+> **AAMS — Agent Manifest**  
 > `README.md` ist für Menschen. `AGENT.json` ist für Maschinen.
 
 **[→ devmatrose.github.io/AAMS](https://devmatrose.github.io/AAMS/)**
@@ -13,7 +13,7 @@
 
 Wer auf hoher See überleben will, braucht zwei Dinge: eine gute Crew — und eine Karte, die jeder lesen kann. Auch der neue Matrose. Auch die Ablösung in der Nachtschicht. Auch eine KI.
 
-Genau das ist AAMS — die Autonomous Agent Manifest Specification.
+Genau das ist AAMS — ein Agent Manifest.
 
 ---
 

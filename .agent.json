@@ -1,7 +1,10 @@
 {
   "_spec": "AAMS-MINI/1.0",
-  "_doc": "Minimal Agent Bootstrap Contract. Drop this file into any repository. Any agent reading this file MUST create the workspace structure below if it does not exist. Idempotent: safe to read multiple times.",
+  "_spec_note": "DEPRECATED — use _contract. _spec retained for backward compatibility with AAMS/1.x tooling.",
+  "_doc": "Minimal Agent Manifest for workspace and documentation conventions. Drop this file into any repository. Idempotent: safe to read multiple times.",
   "_source": "https://github.com/DEVmatrose/AAMS",
+  "_contract": "AAMS/2.0",
+  "_version_date": "2026-04-29",
 
   "workspace": {
     "root": "./WORKING",
@@ -16,7 +19,7 @@
     },
 
     "structure": {
-      "_doc": "Agent creates these folders on first read. Never deletes. Never overwrites existing content.",
+      "_doc": "Workspace structure conventions. Folders may be created by agents or users following these paths. Never deletes. Never overwrites existing content.",
       "whitepapers": "./WORKING/WHITEPAPER",
       "workpapers":  "./WORKING/WORKPAPER",
       "workpapers_closed": "./WORKING/WORKPAPER/closed",
@@ -29,7 +32,7 @@
     },
 
     "documentation_model": {
-      "_doc": "Four-layer documentation model. Every agent working in this repo MUST follow this.",
+      "_doc": "Four-layer documentation model conventions. Describes the relationship between workpaper, whitepaper, diary, and memory layers.",
       "workpaper": {
         "purpose": "Session- and task-scoped working documents. Created at session start, closed at session end.",
         "naming": "{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md",
@@ -77,6 +80,12 @@
       "ltm_audit_log": "./WORKING/MEMORY/ltm-index.md"
     },
 
+    "topic_registry": {
+      "_doc": "Official TOPIC tags for workpaper naming. Used for RFL pattern-matching. Extensible — new tags may be added.",
+      "tags": ["ARCH", "SPEC", "LTM", "SEC", "BOOT", "FLD", "RES", "MKT", "ISS", "GOV", "EDU"],
+      "extensible": true
+    },
+
     "secrets_policy": {
       "never_in_workpapers": true,
       "never_in_whitepapers": true,
@@ -102,8 +111,8 @@
     }
   },
 
-  "agent_contract": {
-    "_doc": "Behavioral contract every agent MUST honor when working in this repository.",
+  "agent_conventions": {
+    "_doc": "Agent behavior conventions and session lifecycle patterns. Describes typical workflows — not prescriptive rules.",
     "on_first_entry": [
       "0. PRE-CHECK: If WORKING/WORKPAPER/ already contains workpapers, STOP — run on_session_start instead.",
       "1. Read READ-AGENT.md (if exists)",
@@ -122,6 +131,8 @@
       "next_steps"
     ],
     "on_session_start": [
+      "0. VERSION-CHECK: Compare _contract (priority) with local ./.aams-version (if exists). If _contract not present, compare _spec (legacy fallback). _spec is a constant value.",
+      "0a. FALLBACK: If version discrepancy detected, execute on_update before continuing.",
       "1. Read READ-AGENT.md",
       "2. Query memory for session topic",
       "3. RFL — Reflection: Determine TOPIC tag for this session. Stage 1: scan WORKPAPER/closed/ for *-{TOPIC}-*. Stage 2: use LTM results. Stage 3: read last closed workpaper. If prior decision conflicts with current goal, flag in workpaper under '## ⚠ RFL Consistency Flag' with source, resolution.",
@@ -133,6 +144,21 @@
       "3. Ingest workpaper into memory (after Whitepapers are current — ensures LTM learns fresh truth, not stale WP)",
       "4. Move workpaper to closed/",
       "5. Update READ-AGENT.md if architecture changed"
-    ]
+    ],
+    "on_update": [
+      "Compare `_contract` (priority) or `_spec` (legacy fallback) version with local .aams-version",
+      "If discrepancy detected: read CHANGELOG.md section for new version",
+      "For Minor-Bump (1.x → 1.y): write READ-CHANGELOG.md with new features",
+      "For Major-Bump (x.0 → y.0): inform about potential Breaking Changes, read MIGRATIONS.md",
+      "Write updated READ-AGENT.md",
+      "Set .aams-version in target repo to new version"
+    ],
+    "version_detection": {
+      "_doc": "Mechanism to detect if .agent.json has been updated via curl. Compare _contract (priority) with stored .aams-version. _spec (legacy fallback) used only if _contract not present.",
+      "local_version_file": "./.aams-version",
+      "check": "if exists(local_version_file) and local_version != _contract: trigger on_update",
+      "fallback_check": "if exists(local_version_file) and _contract not present and local_version != _spec: trigger on_update (legacy)",
+      "update": "write new _contract value to local_version_file after on_update completes"
+    }
   }
 }

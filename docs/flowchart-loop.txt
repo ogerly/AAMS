@@ -1,0 +1,103 @@
+flowchart TD
+
+    H[Human / Operator] -->|defines structure & intent| S[Project Structure]
+
+    S --> WP[Workpapers]
+    S --> WTP[Whitepapers]
+    S --> LOG[Decision Logs]
+
+    WP --> AG[Agent Execution Layer]
+    WTP --> AG
+    LOG --> AG
+
+    AG -->|process tasks| OUT[Outputs / Code / Actions]
+
+    OUT --> DOC[Auto Documentation]
+    DOC --> LOG
+
+    LOG --> MEM[Long-Term Memory]
+
+    MEM -->|context injection| AG
+
+    MEM -->|project understanding| INSIGHT[Derived Knowledge]
+
+    INSIGHT --> H
+
+    subgraph CONTROL LOOP
+        H --> AG
+        AG --> H
+    end
+
+
+
+
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    🔍 Interpretation (precise, technical)
+1. Human as Control Layer
+No autonomous agent in the classical sense
+The human defines:
+structure
+rules
+context
+
+➡️ The agent is a deterministic worker, not an actor
+
+2. Structure as the Core (AAMS)
+
+The actual innovation is not the model, but:
+
+Workpapers → operational tasks
+Whitepapers → conceptual layer
+Decision Logs → decision graph
+
+➡️ This replaces prompt engineering as the primary control mechanism
+
+3. Agent Layer (Execution Engine)
+consumes structured input
+produces outputs
+NO personality
+NO implicit memory
+4. Memory emerges
+
+Not:
+
+“the agent has memory”
+
+But:
+
+memory = aggregated, traceable history
+
+Composed of:
+
+logs
+decisions
+documentation
+
+➡️ Conceptually similar to an event-sourced system
+
+5. Closed-loop system
+
+Core principle:
+
+Output → Documentation → Decision → Memory → new Context
+
+➡️ This is the actual “agent loop”
+
+6. Multi-agent extension (optional)
+
+In your model:
+
+multiple workers (agents)
+shared structure (AAMS)
+shared or segmented memory
+
+➡️ results in:
+
+agent mesh
+coordinated workflows
+🧩 Essence (short form)
+
+AAMS is:
+
+not an agent framework
+but a structured context and decision compiler for agents

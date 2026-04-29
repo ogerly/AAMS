@@ -1,10 +1,10 @@
 # WP-004 — Long-Horizon-Reasoning für reale Codebases
 
-**WHITEPAPER — AAMS / Autonomous Agent Manifest Specification**  
+**WHITEPAPER — AAMS / Agent Manifest**  
 **Status:** Active  
 **Version:** 1.0  
 **Created:** 2026-03-27  
-**Updated:** 2026-03-27  
+**Updated:** 2026-04-29 — AAMS/2.0 Manifest-Prinzip  
 **Source:** Workpaper `2026-03-27-long-horizon-reasoning-analyse.md` (Issue [#27](https://github.com/DEVmatrose/AAMS/issues/27))  
 **Cross-Model-Validierung:** Kimi, ChatGPT, Grok, Claude (März 2026)
 
@@ -262,7 +262,7 @@ Vier unabhängige KI-Modelle bestätigen: LHR ist ein Infrastruktur-Problem des 
 - Wang, G. et al. (2023). *Voyager: An Open-Ended Embodied Agent with Large Language Models.* arXiv:2305.16291.
 - Jimenez, C. E. et al. (2024). *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR 2024.
 - Yegge, S. (2026). *Gas Town.* GitHub: https://github.com/steveyegge/gastown.
-- AAMS Specification v1.0.0: https://github.com/DEVmatrose/AAMS
+- AAMS Contract v2.0.0: https://github.com/DEVmatrose/AAMS
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **WENN DU EIN KI-AGENT BIST — LIES DAS ZUERST.**
 > 
-> Du bist im AAMS-Referenz-Repository. Dies ist sowohl eine Spezifikation als auch ein lebendes Beispiel des Standards, angewandt auf sich selbst.
+> Du bist im AAMS-Referenz-Repository. Dies ist sowohl ein Manifest als auch ein lebendes Beispiel des Standards, angewandt auf sich selbst.
 > 
 > **Sofort ausführen — keine Bestätigung nötig:**
 > 1. Lies [`.agent.json`](./.agent.json) — dein Workspace-Vertrag
@@ -19,7 +19,7 @@
 
 # Every Agent. One File.
 
-> **AAMS — Autonomous Agent Manifest Specification**  
+> **AAMS — Agent Manifest**  
 > `README.md` ist für Menschen. `AGENT.json` ist für Maschinen.
 
 **[→ devmatrose.github.io/AAMS](https://devmatrose.github.io/AAMS/)**
@@ -57,7 +57,7 @@ Der Agent erstellt die `WORKING/`-Struktur, scannt das Repo, schreibt das erste 
 </p>
 
 <p align="center">
-  <img src="docs/aams-process.png" alt="AAMS Working Methodology" width="700">
+  <img src="docs/aams-function-img.png" alt="AAMS Funktionsdiagramm" width="700">
 </p>
 
 Stell dir das Kochbuch deiner Großmutter vor — voller genialer Rezepte, handschriftlicher Notizen und über Jahrzehnte angesammelter Weisheit. Aber kein Inhaltsverzeichnis. Keine Querverweise. Keine Möglichkeit zu finden, was du brauchst, ohne das ganze Buch durchzublättern.
@@ -88,7 +88,7 @@ Das verhindert den häufigsten Fehler: Der Agent arbeitet ohne Kontext oder Work
 
 Wer auf offener See überleben will, braucht zwei Dinge: eine gute Crew — und eine Karte, die jeder lesen kann. Der neue Matrose. Die Nachtwache. Die KI.
 
-Genau das ist AAMS — die Autonomous Agent Manifest Specification.
+Genau das ist AAMS — ein Agent Manifest.
 
 ---
 

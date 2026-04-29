@@ -1,33 +1,21 @@
-# AAMS — Autonomous Agent Manifest Specification
-## Version 1.3 · local-first · 2026-04-09
+# AAMS — Agent Manifest (legacy name: Specification)
+## Version 2.0 · local-first · 2026-04-29
 
-> **Repository:** https://github.com/DEVmatrose/AAMS  
-> **Status:** Draft  
-> **Maintainer:** open — contributions welcome  
+> **⚠️ Redirect:** Diese Datei wurde umbenannt von `SPEC.md` → `CONTRACT.md` als Teil der AAMS/2.0 Spec→Contract Reorientation.
+>
+> **Content:** Der Inhalt bleibt identisch — nur die Selbstbeschreibung ändert sich von "Specification" zu "Agent Manifest".
+>
+> **Legacy link:** `reference/SPEC.md` bleibt als Stub mit Redirect auf `CONTRACT.md`.
+
+---
+
+*Die vollständige AAMS-Spezifikation finden Sie unter [reference/CONTRACT.md](./CONTRACT.md). Der Inhalt ist identisch — nur die Terminologie hat sich geändert.*
 
 ---
 
-## Why AAMS?
-
-Every repository has a `README.md`. It tells humans how the project works. But when an AI agent clones that repo, it has nothing: no workspace structure, no memory, no rules, no entry point.
-
-Without a standard, this happens:
-
-- **Context loss** — session 48 doesn't know what session 47 decided
-- **Duplicate work** — the agent makes the same decisions again
-- **Orphaned files** — nobody cleans up what an abandoned work branch left behind
-- **No structure** — whitepapers, workpapers, logs end up somewhere or nowhere
-
-**AAMS is the answer:** A standardized, versionable, validatable manifest file that tells an agent: This is how you work in this project.
-
-```
-README.md           → for humans
-AGENT.json          → for machines
-READ-AGENT.md       → entry point for the agent
-WORKING/            → workspace structure (created per AGENT.json)
-```
-
----
+> **AAMS/2.0 — Agent Manifest (not Specification)**  
+> AAMS describes workspace and documentation conventions. It does not prescribe agent behavior.  
+> [Learn more](https://github.com/DEVmatrose/AAMS)
 
 ## Philosophy
 

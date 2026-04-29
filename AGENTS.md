@@ -2,7 +2,7 @@
 
 > **This file is read automatically by GitHub Copilot, Cursor, Claude Code, OpenAI Codex, Windsurf, Aider, Continue.dev, and most other AI coding agents.**
 
-This repository uses **AAMS — Autonomous Agent Manifest Specification**.
+This repository uses **AAMS — an agent-contract standard for autonomous work**.
 
 ---
 
@@ -32,6 +32,20 @@ This repository uses **AAMS — Autonomous Agent Manifest Specification**.
 
 ---
 
+## Before Creating Any Directory or File
+
+- **NEVER** create utility/tool/script folders in the project root
+- Check `WORKING/` structure first — `WORKING/TOOLS/` is the designated location for helper scripts, templates, and dev utilities
+- Only create root-level folders if they serve a direct production purpose (e.g., `src/`, `public/`, `dist/`)
+- Before executing any tool: validate its root-anchoring does not point outside `WORKING/`
+- If a tool uses `Path(__file__).resolve().parent.parent` or similar offset paths:
+  - Verify it still resolves to the correct root for its current location
+  - If uncertain: ask before executing
+
+**Beispiel:** Ein Python-Skript das früher in `/tools/` lag und jetzt in `/WORKING/TOOLS/` liegt, braucht einen angepassten Root-Pointer. Ein Offset von `.parent.parent` zeigt fälschlich auf den Agent-Memory statt auf das Projekt.
+
+---
+
 ## Workspace structure
 
 ```
@@ -48,9 +62,9 @@ WORKING/
 
 ---
 
-## Full specification
+## Full reference
 
-- [`reference/SPEC.md`](./reference/SPEC.md) — technical reference
+- [`reference/CONTRACT.md`](./reference/CONTRACT.md) — technical reference (redirect from SPEC.md)
 - [`reference/AGENT.json`](./reference/AGENT.json) — full annotated manifest
 - [`reference/AGENT_SCHEMA.json`](./reference/AGENT_SCHEMA.json) — JSON Schema for validation
 

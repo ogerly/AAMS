@@ -1,10 +1,10 @@
 # WP-002 — Related Work: AAMS in Context
 
-**WHITEPAPER — AAMS / Autonomous Agent Manifest Specification**
+**WHITEPAPER — AAMS / Agent Manifest**
 **Status:** Active
 **Version:** 1.1
 **Created:** 2026-02-22
-**Updated:** 2026-02-22 — Gas Town (Yegge, 2026) added
+**Updated:** 2026-04-29 — AAMS/2.0 Manifest-Prinzip
 
 ---
 
@@ -18,7 +18,7 @@ This whitepaper positions AAMS relative to existing work in agent memory, workfl
 
 > AAMS is not solving the LTM problem. It is creating the scaffolding that makes LTM solutions pluggable.
 
-AAMS declares *where* memory lives, *when* it must be queried, and *how* sessions are documented. It does not implement retrieval, embedding, or summarization. This makes AAMS infrastructure-neutral and intentionally layered *below* memory frameworks.
+AAMS describes *where* memory lives, *when* it must be queried, and *how* sessions are documented. It does not implement retrieval, embedding, or summarization. This makes AAMS infrastructure-neutral and intentionally layered *below* memory frameworks.
 
 ---
 
@@ -184,7 +184,7 @@ The closest analogy is a constitution for a codebase: it declares the workspace 
 - FIPA Specifications: [http://www.fipa.org/specs/](http://www.fipa.org/specs/)
 - Yegge, S. (2026). *Gas Town.* GitHub: https://github.com/steveyegge/gastown. Released 2026-01-01.
 - Eichhorst, I. (2026). *Gas Town: Mad-Max-inspiriertes Framework für Coding-Agenten.* heise Developer, 2026-02-21. https://heise.de/-11177514
-- AAMS Specification: `SPEC.md` in this repository
+- AAMS Contract: `CONTRACT.md` (redirect from `SPEC.md`) in this repository
 
 ---
 

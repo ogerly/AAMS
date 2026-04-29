@@ -1,6 +1,8 @@
 {
-  "_spec": "AAMS/1.0",
-  "_doc": "Autonomous Agent Manifest Specification — https://github.com/DEVmatrose/AAMS",
+  "_spec": "AAMS-MINI/1.0",
+  "_spec_note": "DEPRECATED — use _contract.",
+  "_contract": "AAMS/2.0",
+  "_doc": "Autonomous Agent Manifest — https://github.com/DEVmatrose/AAMS",
   "_focus": "local-first",
 
   "identity": {
@@ -396,7 +398,9 @@
 
   "governance": {
     "_doc": "Governance and compliance metadata.",
+    "contract_version": "2.0",
     "spec_version": "1.0",
+    "contract_url": "https://github.com/DEVmatrose/AAMS",
     "spec_url": "https://github.com/DEVmatrose/AAMS",
     "validated_with": "aams-validator",
     "last_reviewed": "2026-02-18",

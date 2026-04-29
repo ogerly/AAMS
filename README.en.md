@@ -19,7 +19,7 @@
 
 # Every Agent. One File.
 
-> **AAMS — Autonomous Agent Manifest Specification**  
+> **AAMS — Agent Manifest**  
 > `README.md` is for humans. `AGENT.json` is for machines.
 
 **[→ devmatrose.github.io/AAMS](https://devmatrose.github.io/AAMS/)**
@@ -53,7 +53,7 @@ The agent creates the `WORKING/` structure, scans the repo, writes the first wor
 > Good recipes need a good cookbook. Good projects need one too.
 
 <p align="center">
-  <img src="docs/aams-process-eng.png" alt="AAMS Working Methodology" width="700">
+  <img src="docs/aams-function-img.png" alt="AAMS Working Methodology" width="700">
 </p>
 
 Imagine your grandmother's cookbook — full of brilliant recipes, handwritten notes, and wisdom accumulated over decades. But no index. No cross-references. No way to find what you need without flipping through the whole thing.
@@ -198,7 +198,7 @@ Want to add your project? Open a PR — we'd love to see what you're building.
 
 ---
 
-## Specification
+## Contract Reference
 
 - [`reference/SPEC.md`](./reference/SPEC.md) — technical reference
 - [`reference/AGENT.json`](./reference/AGENT.json) — full annotated manifest

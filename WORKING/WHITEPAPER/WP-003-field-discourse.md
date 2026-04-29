@@ -1,10 +1,10 @@
 # WP-003 — Field Discourse: AAMS im Dialog mit KI-Agenten, Projekten und Industrie
 
-**WHITEPAPER — AAMS / Autonomous Agent Manifest Specification**
+**WHITEPAPER — AAMS / Agent Manifest**
 **Status:** Active
 **Version:** 1.0
 **Created:** 2026-03-27
-**Updated:** 2026-03-31
+**Updated:** 2026-04-29 — AAMS/2.0 Manifest-Prinzip
 
 > **DSGVO-Hinweis:** Alle personenbezogenen Daten sind anonymisiert. Personen werden als Agent-A, Person-B etc. referenziert. Keine Rückschlüsse auf natürliche Personen möglich. Zitate sind sinngemäß wiedergegeben, nicht wörtlich.
 
@@ -155,7 +155,7 @@ knowledge_base:
 |---|---|---|
 | **Discord** (Community) | Aktiver Community-Server. Aktuell läuft ein Docs-Refresh mit dediziertem Feedback-Kanal | Hoch — idealer Zeitpunkt, direkter Kontakt zum Team |
 | **awesome-coderabbit** (GitHub) | Kuratierte Liste von Projekten die CodeRabbit nutzen. PRs willkommen | Mittel-Hoch — indirekte Sichtbarkeit durch Projekt-O-Eintrag |
-| **Docs-Feedback** | CodeRabbit referenziert AGENTS.md bereits in Doku, aber ohne Link zur AAMS-Spec | Sehr hoch — strategisch wertvollster Ansatz |
+| **Docs-Feedback** | CodeRabbit referenziert AGENTS.md bereits in Doku, aber ohne Link zur AAMS-Contract | Sehr hoch — strategisch wertvollster Ansatz |
 
 **Empfohlene Strategie:** Discord zuerst. Einstieg: *"Ihr referenziert AGENTS.md bereits in eurer Code Guidelines Doku. Das Format ist Teil einer offenen Spec (AAMS). Wäre es sinnvoll, die Spec dort zu verlinken?"* — kein kalter Pitch, sondern Kontext zu etwas das sie bereits nutzen.
 
@@ -361,7 +361,7 @@ Zentrales Zitat: *"Es behandelt den Agenten berechtigterweise wie einen wechseln
 5. ~~**Bootstrap-Gap / Blind-Execution-Loop**~~ — **Gelöst (2026-03-31):** Conditional Bootstrap in AGENTS.md, Pre-Check Step 0 in .agent.json, 3-State-Tabelle in READ-AGENT.md
 
 ### Nächste Schritte
-- [ ] CodeRabbit Discord: AGENTS.md ↔ AAMS-Spec Verbindung kommunizieren
+- [ ] CodeRabbit Discord: AGENTS.md ↔ AAMS-Contract Verbindung kommunizieren
 - [ ] awesome-coderabbit: PR für Projekt-O als "Project Using CodeRabbit"
 - [ ] LinkedIn: NonDev-taugliche AAMS-Erklärung veröffentlichen
 - [ ] Feldberichte diversifizieren — weitere Projekte mit Multi-Tool-Setup identifizieren
