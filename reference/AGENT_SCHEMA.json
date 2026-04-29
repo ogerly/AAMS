@@ -364,6 +364,55 @@
       "additionalProperties": false
     },
 
+    "security": {
+      "type": "object",
+      "description": "Optional security metadata. Describes the security posture of the agent and its environment. All fields optional.",
+      "properties": {
+        "last_scan":       { "type": "string", "format": "date" },
+        "scan_type":       { "type": "string" },
+        "findings": {
+          "type": "object",
+          "properties": {
+            "_doc":        { "type": "string" },
+            "critical":    { "type": "integer" },
+            "high":        { "type": "integer" },
+            "medium":      { "type": "integer" },
+            "low":         { "type": "integer" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "deployed_services": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "_doc":        { "type": "string" },
+              "name":        { "type": "string" },
+              "type":        { "type": "string" },
+              "version":     { "type": "string" },
+              "last_audit":  { "type": "string", "format": "date" }
+            },
+            "patternProperties": { "^_": true },
+            "additionalProperties": false
+          }
+        },
+        "behavioral_signals": {
+          "type": "object",
+          "properties": {
+            "_doc":            { "type": "string" },
+            "sessions_without_incident": { "type": "integer" },
+            "last_violation":  { "type": ["string", "null"], "format": "date" },
+            "trust_score":     { "type": "number", "minimum": 0, "maximum": 1 }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        }
+      },
+      "patternProperties": { "^_": true },
+      "additionalProperties": false
+    },
+
     "bootstrap_rules": {
       "type": "object",
       "description": "LTM configuration and bootstrap behaviour for the minimal .agent.json manifest. All fields optional.",

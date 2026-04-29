@@ -35,9 +35,11 @@ Absoluter Check des AAMS-Projekts: alle offenen GitHub-Issues, Status aller Work
 | CREATED | `MIGRATION.md` | ✅ v1.x → v2.0 Migration Guide |
 | CLOSED | `2026-04-29-file-safety.md` | ✅ → closed/ (#50 konzipiert + implementiert) |
 | CLOSED | `2026-04-29-skill-konzept.md` | ✅ → closed/ (#51 konzipiert + implementiert) |
+| CLOSED | `2026-04-29-security-signals.md` | ✅ → closed/ (#26 konzipiert + implementiert) |
 | CREATED | `.aams-version` | ✅ JSON state file für upgrade detection |
 | COMMIT | `93322b7` | ✅ feat: AAMS/2.0 — Spec→Contract reorientation + Phase 1+2 RFCT (60 files changed) |
 | COMMIT | `6f97fd9` | ✅ feat: AAMS/2.0 — File Safety (#50) + .aams-version + Git-Tag v2.0.0 (file_safety + skills) |
+| COMMIT | `617ce33` | ✅ feat: AAMS/2.0 — Skills (#51) + Workpaper Updates |
 
 ---
 
@@ -254,13 +256,23 @@ Letzte Schließung: 2026-04-14 (`public-presence-relaunch.md`) — 15 Tage her.
 | 21 | File Safety (`file_safety`-Sektion) konzipieren | #50 | 30 min |
 | 22 | Skill-Konzept als Whitepaper oder Guideline | #51 | 30 min |
 
-### Phase 5 — Whitepaper-Stale-Fix
+### Phase 5 — Security Signals (#26)
+
+| # | Aktion | Issue | Aufwand | Status |
+|---|--------|-------|---------|--------|
+| 26 | `security`-Sektion in `.agent.json` | #26 | 15 min | ✅ |
+| 27 | `security`-Sektion in `AGENT.json` | #26 | 10 min | ✅ |
+| 28 | `security`-Sektion in `AGENT_SCHEMA.json` | #26 | 15 min | ✅ |
+| 29 | `security` in `CONTRACT.md` erwähnen | #26 | 5 min | ✅ |
+| 30 | Issue #7 schließen (Duplikat von #8) | #26 | 1 min | 🟡 Manuell |
+
+### Phase 6 — Whitepaper-Stale-Fix
 
 | # | Aktion | Aufwand |
 |---|--------|---------|
-| 23 | WP-002 update (Related Work — MemPalace + neue Quellen) | 30 min |
-| 24 | WP-003 update (neue Feldberichte) | 20 min |
-| 25 | WP-004 update (neue LHR-Erkenntnisse) | 20 min |
+| 31 | WP-002 update (Related Work — MemPalace + neue Quellen) | 30 min |
+| 32 | WP-003 update (neue Feldberichte) | 20 min |
+| 33 | WP-004 update (neue LHR-Erkenntnisse) | 20 min |
 
 ---
 
@@ -452,11 +464,15 @@ Letzte Schließung: 2026-04-14 (`public-presence-relaunch.md`) — 15 Tage her.
 2. ✅ Phase 2 RFCT abgeschlossen (WP-001, WP-002, WP-003, WP-004 + INDEX.md + README.md + README.en.md + README.zh.md + reference/README-DE.md + docs/outreach + READ-AGENT.md — "Agent Manifest" überall)
 3. ✅ Phase 3 RFCT abgeschlossen (`file_safety` konzipiert + implementiert (#50))
 4. ✅ Phase 4 RFCT abgeschlossen (`skills` konzipiert + implementiert (#51))
-5. ✅ `.aams-version` angelegt + Git-Tag `v2.0.0` (Commits `93322b7` + `943928b` + `6f97fd9`)
-6. Issue #45 schließen (Duplikat) — ⚠️ GitHub-API-Token invalid, manuell nötig
-7. Issue #26 Security Signals konzipieren (Backlog)
+5. ✅ Phase 5 RFCT abgeschlossen (`security` konzipiert + implementiert (#26))
+6. ✅ `.aams-version` angelegt + Git-Tag `v2.0.0` (Commits `93322b7` + `943928b` + `6f97fd9` + `617ce33`)
+7. Issue #45 schließen (Duplikat) — ⚠️ GitHub-API-Token invalid, manuell nötig
+8. Issue #7 schließen (Duplikat von #8) — ⚠️ GitHub-API-Token invalid, manuell nötig
+9. WP-002 update (Related Work — MemPalace + neue Quellen)
+10. WP-003 update (neue Feldberichte)
+11. WP-004 update (neue LHR-Erkenntnisse)
 
-**Blocker:** Keine — Spec→Contract Refactor Phase 1+4 abgeschlossen. WP-001 INDEX vs. Inhalt Widerspruch gelöst. Alle Whitepapers + READMEs konsistent "Agent Manifest". Manifest-Prinzip (D9) verankert. `file_safety` + `skills` implementiert. `.aams-version` + Git-Tag `v2.0.0` erstellt.
+**Blocker:** Keine — Spec→Contract Refactor Phase 1+5 abgeschlossen. WP-001 INDEX vs. Inhalt Widerspruch gelöst. Alle Whitepapers + READMEs konsistent "Agent Manifest". Manifest-Prinzip (D9) verankert. `file_safety` + `skills` + `security` implementiert. `.aams-version` + Git-Tag `v2.0.0` erstellt.
 
 **Phase 2 RFCT Deliverables:**
 1. ✅ WP-001: "Specification" → "Agent Manifest" (Header, Pending Decision, Current Status, governance, agent_contract)
