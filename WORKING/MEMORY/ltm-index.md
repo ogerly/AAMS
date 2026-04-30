@@ -275,3 +275,4 @@ Nach Abschluss der laufenden Session.
  | 134 | 2026-04-30 | LTM | `ltm-index.md` | LTM ingest — entry 134. LTM: 133 entries (audit-log + ChromaDB). Health-Score 10/10. Whitepapers 8 + INDEX.md. Guidelines 12. Active: 2, Observe: 3, Closed: 51. Git-Tag v2.1.0 (10 Commits). |
  | 135 | 2026-04-30 | ARCH | git-cleanup | Git status cleanup — .agent.json + workpaper moves + docs/presenter-image.png | Commit `e43e252` |
  | 136 | 2026-04-30 | ARCH | Naming Schema | Whitepapers → WH-*, Workpapers → WP-* — alle Whitepapers umbenannt (WH-001..WH-008), alle Workpapers umbenannt (WP-DATE-*) | `.agent.json` + `READ-AGENT.md` + `INDEX.md` + `naming-schema.md` + CHANGELOG.md update |
+ | 137 | 2026-04-30 | ARCH | Version v2.2.0 | WH-001 stale references fixed, WH-008 stale data fixed, Diary format updated, `.agent.json` `_version_date` updated, CHANGELOG.md v2.2.0 section, Git-Tag v2.2.0 | Health-Score 10/10 |
