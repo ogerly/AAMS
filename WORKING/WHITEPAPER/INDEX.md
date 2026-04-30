@@ -13,6 +13,10 @@
 | WP-002 | [WP-002-related-work.md](./WP-002-related-work.md) | Related Work — AAMS vs. MemGPT, LangChain Memory, DVC, FIPA, per-tool conventions | 2026-02-22 | Aktiv |
 | WP-003 | [WP-003-field-discourse.md](./WP-003-field-discourse.md) | Field Discourse — Kritische Bewertungen, Gegenargumente, 5+ Feldberichte (Luna-1, Testcenter, Antigravity, OpenClaw, Blind-Execution, MantisClaw), CodeRabbit-Discovery | 2026-03-31 | Aktiv |
 | WP-004 | [WP-004-long-horizon-reasoning.md](./WP-004-long-horizon-reasoning.md) | Long-Horizon-Reasoning — LHR-Diagnose, AAMS als Scaffolding-Layer, Cross-Model-Validierung, Wirtschaft, v1.1-Gaps | 2026-03-27 | Aktiv |
+| WP-005 | [WP-005-workpaper-lifecycle-states.md](./WP-005-workpaper-lifecycle-states.md) | Workpaper-Lifecycle — drei Zustände (active, observe, closed) | 2026-04-30 | Aktiv |
+| WP-006 | [WP-006-readme-consistency.md](./WP-006-readme-consistency.md) | README-Konsistenz — DE/EN/ZH Reality Check + Fixes | 2026-04-30 | Aktiv |
+| WP-007 | [WP-007-spec-contract-stub.md](./WP-007-spec-contract-stub.md) | SPEC.md/CONTRACT.md circular stub problem | 2026-04-30 | Aktiv |
+| WP-008 | [WP-008-health-score-10.md](./WP-008-health-score-10.md) | Health-Score 10/10 — `.aams-version` + Git-Tags + Issue #45 | 2026-04-30 | Aktiv |
 
 ---
 
@@ -38,4 +42,4 @@ WP-002 ←→ WP-003: Related Work → Field Discourse (externe vs. interne Bewe
 
 ---
 
-> Letztes Update: 2026-04-29 — Phase 1 RFCT umgesetzt (`.agent.json`, AGENT_SCHEMA.json, AGENT.json, CHANGELOG.md, READ-AGENT.md). WP-001 selbst noch "Specification" — Phase 3 ausstehend. Manifest-Prinzip (D9): AAMS beschreibt, es schreibt kein Verhalten vor.
+> Letztes Update: 2026-04-30 — WP-005 + WP-006 + WP-007 + WP-008 added. README-Konsistenz **done**. 12 Guidelines created. Health-Score **10/10**. Manifest-Prinzip (D9): AAMS describes, es schreibt kein Verhalten vor.

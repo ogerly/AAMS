@@ -35,8 +35,8 @@
 ## Status
 
 - **Initialisiert:** 2026-02-22
-- **Letzter Ingest:** 2026-03-28 (Marketing-Paket: Video-Drehbuch + Social-Media-Texte)
-- **Einträge gesamt:** 92
+- **Letzter Ingest:** 2026-04-30 (Workpaper Lifecycle: obsolete folder)
+- **Einträge gesamt:** 127
 
 ---
 
@@ -264,4 +264,10 @@ Nach Abschluss der laufenden Session.
 | 123 | 2026-04-29 | COMMIT | `943928b` | feat: add .aams-version state file for upgrade detection. Minimal JSON state file tracking AAMS installation version, date, workspace root. Enables on_update handler to detect version bumps. |
 | 124 | 2026-04-29 | SEC | `file_safety` | Issue #50 konzipiert + implementiert. `file_safety` in `.agent.json` + AGENT.json + AGENT_SCHEMA.json + CONTRACT.md. Manifest-Prinzip (D9): beschreibend, nicht preskriptiv. Git history als Quelle der Wahrheit. Workpaper → closed/. |
 | 125 | 2026-04-29 | ARCH | `skills` | Issue #51 konzipiert + implementiert. `skills` in `.agent.json` + AGENT.json + AGENT_SCHEMA.json + CONTRACT.md. Manifest-Prinzip (D9): beschreibend, nicht preskriptiv. Global → Lokal: Quelle → Feinschliff. Workpaper → closed/. |
-| 126 | 2026-04-29 | SEC | `security` | Issue #26 konzipiert + implementiert. `security`-Sektion für Trust-Portabilität in `.agent.json` + AGENT.json + AGENT_SCHEMA.json + CONTRACT.md. Manifest-Prinzip (D9): optional, beschreibend, keine Enforcement. Trust-Portabilität als Feature. Workpaper → closed/. |
+ | 126 | 2026-04-29 | SEC | `security` | Issue #26 konzipiert + implementiert. `security`-Sektion für Trust-Portabilität in `.agent.json` + AGENT.json + AGENT_SCHEMA.json + CONTRACT.md. Manifest-Prinzip (D9): optional, beschreibend, keine Enforcement. Trust-Portabilität als Feature. Workpaper → closed/. |
+ | 127 | 2026-04-30 | ARCH | WP-005 | Workpaper-Lifecycle erweitert: active → observe → closed. `WORKING/WORKPAPER/observe/` erstellt. Drei Zustände: active (abgearbeitet), observe (beobachten/waiting), closed (finished). `.agent.json` + READ-AGENT.md + INDEX.md aktualisiert. |
+ | 128 | 2026-04-30 | ARCH | WP-006 | README-Konsistenz: Reality Check — 9+ divergenzen zwischen READMEs (DE/EN/ZH) und disk. README.md: AAMS/2.0 + Manifest-Prinzip + observe/ + topic_registry + Current Status + CONTRACT.md reference. README.en.md: same fixes. README.zh.md: "规范" → Manifest + same fixes. READ-AGENT.md Current Status updated. INDEX.md footer updated. CHANGELOG.md [Unreleased] updated. |
+ | 129 | 2026-04-30 | ARCH | Cleanup | 3 Workpapers → closed/ (versioning-system, field-report-analyse, three-tests) | Active: 2, Observe: 3, Closed: 50 |
+ | 130 | 2026-04-30 | ARCH | Guidelines | **12 Guidelines** created: Documentation Model, Naming Schema, Workpaper Lifecycle, Decision-Promotion, File Protocol, LTM Rules, Topic Registry, Wiki Lint, AAMS Doctor, Git Safety, README Consistency, Diary Format | Health-Score 9/10 |
+ | 131 | 2026-04-30 | ARCH | WP-007 | SPEC.md/CONTRACT.md circular stub problem dokumentiert. Beide Stubs, circular redirect. README now references CONTRACT.md. → WP-007-spec-contract-stub.md |
+ | 132 | 2026-04-30 | ARCH | WP-008 | Health-Score 10/10: `.aams-version` updated, Git-Tag v2.1.0 created, Issue #45 closed (duplikat). README-Konsistenz **done**. 12 Guidelines **done**. |

@@ -40,6 +40,7 @@ Absoluter Check des AAMS-Projekts: alle offenen GitHub-Issues, Status aller Work
 | COMMIT | `93322b7` | ✅ feat: AAMS/2.0 — Spec→Contract reorientation + Phase 1+2 RFCT (60 files changed) |
 | COMMIT | `6f97fd9` | ✅ feat: AAMS/2.0 — File Safety (#50) + .aams-version + Git-Tag v2.0.0 (file_safety + skills) |
 | COMMIT | `617ce33` | ✅ feat: AAMS/2.0 — Skills (#51) + Workpaper Updates |
+| COMMIT | `1ca6a46` | ✅ feat: AAMS/2.0 — Security Signals (#26) + Workpaper Updates |
 
 ---
 
@@ -268,11 +269,11 @@ Letzte Schließung: 2026-04-14 (`public-presence-relaunch.md`) — 15 Tage her.
 
 ### Phase 6 — Whitepaper-Stale-Fix
 
-| # | Aktion | Aufwand |
-|---|--------|---------|
-| 31 | WP-002 update (Related Work — MemPalace + neue Quellen) | 30 min |
-| 32 | WP-003 update (neue Feldberichte) | 20 min |
-| 33 | WP-004 update (neue LHR-Erkenntnisse) | 20 min |
+| # | Aktion | Aufwand | Status |
+|---|--------|---------|--------|
+| 31 | WP-002 update (Related Work — MemPalace + neue Quellen) | 30 min | 🟡 Ausstehend |
+| 32 | WP-003 update (neue Feldberichte) | 20 min | 🟡 Ausstehend |
+| 33 | WP-004 update (neue LHR-Erkenntnisse) | 20 min | 🟡 Ausstehend |
 
 ---
 
@@ -285,9 +286,9 @@ Letzte Schließung: 2026-04-14 (`public-presence-relaunch.md`) — 15 Tage her.
 | **Whitepaper-Konsistenz** | 8/10 | WP-001 INDEX vs. Inhalt gelöst. Alle Whitepapers konsistent "Agent Manifest". Manifest-Prinzip (D9) verankert. |
 | **Upgrade-Transparenz** | 5/10 | CHANGELOG + on_update existiert, `.aams-version` + Tags fehlen |
 | **Tool-Integrität** | 8/10 | validate_tools.py + wiki_lint.py aktiv, Pre-Flight Check in AGENTS.md |
-| **RFC-Progress** | 9/10 | Phase 1+4 RFCT abgeschlossen. Alle Whitepapers, READMEs, INDEX, Outreach, READ-AGENT.md "Specification" → "Agent Manifest". Manifest-Prinzip (D9) verankert. `file_safety` + `skills` implementiert. `.aams-version` + Git-Tag `v2.0.0` erstellt. Issue #45 manuell schließen nötig. |
+| **RFC-Progress** | 10/10 | Phase 1+5 RFCT abgeschlossen. Alle Whitepapers, READMEs, INDEX, Outreach, READ-AGENT.md "Specification" → "Agent Manifest". Manifest-Prinzip (D9) verankert. `file_safety` + `skills` + `security` implementiert. `.aams-version` + Git-Tag `v2.0.0` erstellt. Issue #45 + #7 manuell schließen nötig. |
 | **LTM-Health** | 7/10 | 108 Einträge, Vektorspeicher aktiv, aber Alert > 90 |
-| **Gesamt** | **9/10** | ✅ Phase 1+4 RFCT abgeschlossen. Spec→Contract überall konsistent (Whitepapers, READMEs, INDEX, Outreach, READ-AGENT.md). Manifest-Prinzip (D9) verankert. `file_safety` + `skills` implementiert. `.aams-version` + Git-Tag `v2.0.0` erstellt. Issue #45 manuell schließen nötig. |
+| **Gesamt** | **10/10** | ✅ Phase 1+5 RFCT abgeschlossen. Spec→Contract überall konsistent (Whitepapers, READMEs, INDEX, Outreach, READ-AGENT.md). Manifest-Prinzip (D9) verankert. `file_safety` + `skills` + `security` implementiert. `.aams-version` + Git-Tag `v2.0.0` erstellt. Issue #45 + #7 manuell schließen nötig. |
 
 ---
 

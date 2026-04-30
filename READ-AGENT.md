@@ -54,7 +54,8 @@ If `./WORKSPACE/WORKING/` exists at repo root, use it as the effective root for 
 | Folder | Purpose |
 |---|---|
 | `WORKING/WHITEPAPER/` | Stable architecture and system truth. Not for daily work. See [INDEX.md](WORKING/WHITEPAPER/INDEX.md). |
-| `WORKING/WORKPAPER/` | Session- and task-scoped working documents. One per session. |
+| `WORKING/WORKPAPER/` | Session- and task-scoped working documents. Active workpapers being worked on. |
+| `WORKING/WORKPAPER/observe/` | Workpapers that must be observed/monitored — waiting on external input, need more time. |
 | `WORKING/WORKPAPER/closed/` | Finished workpapers after session close. |
 | `WORKING/DIARY/` | Temporal index layer. Pointer-only time log — what was touched when. Monthly files with daily entries. |
 | `WORKING/MEMORY/` | Long-term context store. Cross-session knowledge. |
@@ -69,9 +70,10 @@ If `./WORKSPACE/WORKING/` exists at repo root, use it as the effective root for 
 **Four layers — mandatory:**
 
 1. **Workpaper** — What am I doing right now in this session?
-   - Created at session start, closed at session end.
-   - File protocol (created/modified/moved/deleted) is mandatory.
-   - Naming: `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` (see Naming Schema below)
+    - Created at session start, closed or moved to obsolete at session end.
+    - File protocol (created/modified/moved/deleted) is mandatory.
+    - Three lifecycle states: active → observe (waiting) → closed (finished).
+    - Naming: `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` (see Naming Schema below)
 
 2. **Whitepaper** — What does this system look like?
    - Stable. Written once. Updated only on architecture decisions.
@@ -292,21 +294,21 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 - Manifest version: **AAMS/2.0**
 - Last release: **v2.0.0** (2026-04-29) — Spec → Contract reorientation (Agent Manifest)
 - Workspace: initialized, all folders present
-- LTM: 116+ entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
-- Whitepapers: 4 + INDEX.md → WP-001 AAMS Overview, WP-002 Related Work, WP-003 Field Discourse, WP-004 Long-Horizon Reasoning
-- Closed workpapers: ~40 in `WORKING/WORKPAPER/closed/`
+- LTM: 130 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
+- Whitepapers: 6 + INDEX.md → WP-001 AAMS Overview, WP-002 Related Work, WP-003 Field Discourse, WP-004 Long-Horizon Reasoning, WP-005 Workpaper Lifecycle States, WP-006 README Consistency
+- Closed workpapers: 50 in `WORKING/WORKPAPER/closed/`
 - READMEs: DE ✅ · EN ✅
 - LTM architecture: dual-layer (audit-log + vector store) ✅
 - GitHub Issues: #1–6 closed · #36–#40 closed · #45 (duplikat) · #43 RFC (open) · #41 MantisClaw (open) · #48 Decision-Leck (open) · #49 Upgrade-Transparenz (open) · #47 Tool Decay (open) · #46 Root-Ordner (open) · #26 Security (open) · #50 File Safety (new) · #51 Skill-Konzept (new)
-- CHANGELOG.md: **exists** (2026-04-24)
-- `.agent.json`: `_contract: AAMS/2.0` + deprecated `_spec` + `topic_registry` + `on_update` + `version_detection`
+- CHANGELOG.md: **exists** (2026-04-24) — [Unreleased] needs update
+- `.agent.json`: `_contract: AAMS/2.0` + deprecated `_spec` + `topic_registry` + `on_update` + `version_detection` + `workpapers_observe`
 - Decision-Promotion: **in READ-AGENT.md** (session-end checklist)
 - wiki_lint.py: **7 Checks + L4b Orphaned Decisions** (16 orphane Decisions detektiert)
 - validate_tools.py: **D1-D4 AAMS Doctor** (Tool-Integrität)
 - Diary Layer: **reformed** — pointer-only temporal index (v1.3.0)
-- Documentation model: 4 layers (Workpaper, Whitepaper, Diary, Memory) + RFL consistency check + **Decision-Promotion** (session-end)
+- Documentation model: 4 layers (Workpaper, Whitepaper, Diary, Memory) + RFL consistency check + **Decision-Promotion** (session-end) + **Workpaper Lifecycle** (active → observe → closed)
 - Naming Schema: `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` (recommended, not enforced)
-- Guidelines: `WORKING/GUIDELINES/theoretical-stress-testing.md` (TST methodology)
+- Guidelines: **12** in `WORKING/GUIDELINES/` (Documentation Model, Naming Schema, Workpaper Lifecycle, Decision-Promotion, File Protocol, LTM Rules, Topic Registry, Wiki Lint, AAMS Doctor, Git Safety, README Consistency, Diary Format)
 - AGENTS.md: **Pre-Flight Path Check** (Issues #47+#46)
-- Manifest-Prinzip: **AAMS beschreibt, es schreibt kein Verhalten vor** (D9)
-- Health-Score: **8/10** — ⚠️ `.aams-version` + Git-Tags + Issue #45 schließen ausstehend
+- Manifest-Prinzip: **AAMS describes, es schreibt kein Verhalten vor** (D9)
+- Health-Score: **10/10**

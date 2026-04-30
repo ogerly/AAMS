@@ -9,6 +9,31 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
 ---
 
+## [2.1.0] — 2026-04-30
+
+### Added
+- `WORKING/WORKPAPER/observe/` — third workpaper lifecycle state (active → observe → closed)
+- `workpapers_observe` in `.agent.json` workspace structure
+- WP-005-workpaper-lifecycle-states.md
+- WP-006-readme-consistency.md
+- WP-007-spec-contract-stub.md
+- WP-008-health-score-10.md
+- `topic_registry` maschinenlesbar in `.agent.json`
+- `.aams-version` state file (updated)
+- **12 Guidelines** in `WORKING/GUIDELINES/` (Documentation Model, Naming Schema, Workpaper Lifecycle, Decision-Promotion, File Protocol, LTM Rules, Topic Registry, Wiki Lint, AAMS Doctor, Git Safety, README Consistency, Diary Format)
+
+### Changed
+- Workpaper Lifecycle: active → observe → closed (drei Zustände)
+- README.md, README.en.md, README.zh.md — **done** (Reality Check: 9+ divergenzen fixed)
+- READ-AGENT.md Current Status — Health-Score 10/10, Whitepaper count 6, LTM entries 130
+- INDEX.md — WP-005 + WP-006 + WP-007 + WP-008 entry
+- Git-Tag: v2.1.0
+- Health-Score: 10/10
+
+### Fixed
+- Issue #45 closed (Duplikat von #43)
+- `.aams-version` date updated to 2026-04-30
+
 ## [2.0.0] — 2026-04-29
 
 ### Changed
