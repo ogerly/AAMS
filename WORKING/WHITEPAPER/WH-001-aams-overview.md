@@ -107,14 +107,14 @@ Ein Agent braucht dasselbe, aber explizit und persistent.
 
 **Diary Layer** (Temporal Context Layer) wurde 2026-02-24 als verpflichtender dritter Dokumentations-Layer eingeführt. Der Gap: Entscheidungen entstehen *zwischen* Workpaper und Whitepaper. Strategische Motive verschwinden. Das Diary schließt diesen Gap — chronologisch, monatsweise, max. 10 Zeilen pro Eintrag.
 
-### Naming Schema (eingeführt 2026-04-09)
+### Naming Schema (eingeführt 2026-04-09, aktualisiert 2026-04-30)
 
 Strukturierte Dateinamen ermöglichen thematisches Pattern-Matching über Sessions hinweg:
 
 | Dokument | Schema | Beispiel |
 |----------|--------|----------|
-| Workpaper | `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` | `2026-04-09-ARCH-RFL-reflection-protocol-step.md` |
-| Whitepaper | `WP-{NNN}-{TOPIC}-{description}.md` | `WP-005-ARCH-naming-schema.md` |
+| Workpaper | `WP-{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` | `WP-2026-04-09-ARCH-RFL-reflection-protocol-step.md` |
+| Whitepaper | `WH-{NNN}-{TOPIC}-{description}.md` | `WH-005-ARCH-naming-schema.md` |
 
 TOPIC-Tags (3-4 Buchstaben, UPPERCASE) sind der primäre Ordnungsschlüssel. Sie ermöglichen den RFL-Schritt (siehe unten) und Cross-Referenzierung zwischen Workpapers und Whitepapers.
 
@@ -228,36 +228,41 @@ Kritischer Gap entdeckt: Architektur-Entscheidungen aus Workpapers sickern nicht
 
 | Whitepaper | Beziehung |
 |---|---|
-| [WP-002 — Related Work](./WP-002-related-work.md) | Positionierung AAMS vs. MemGPT, LangChain, DVC, FIPA |
-| [WP-003 — Field Discourse](./WP-003-field-discourse.md) | Feldberichte die Bootstrap/Discovery-Probleme aufzeigten |
-| [WP-004 — Long-Horizon Reasoning](./WP-004-long-horizon-reasoning.md) | AAMS als LHR-Scaffolding; 4-Schichten als Reasoning-Unterstützung |
+| [WH-002 — Related Work](./WH-002-related-work.md) | Positionierung AAMS vs. MemGPT, LangChain, DVC, FIPA |
+| [WH-003 — Field Discourse](./WH-003-field-discourse.md) | Feldberichte die Bootstrap/Discovery-Probleme aufzeigten |
+| [WH-004 — Long-Horizon Reasoning](./WH-004-long-horizon-reasoning.md) | AAMS als LHR-Scaffolding; 4-Schichten als Reasoning-Unterstützung |
 
 ---
 
-## 11. Aktueller Stand (2026-04-29)
+## 11. Aktueller Stand (2026-04-30)
 
 | Bereich | Status |
 |---|---|
-| Agent Manifest (CONTRACT.md / SPEC.md Stub) | v2.0 — SPEC.md als Redirect-Stub, CONTRACT.md als neue Referenz |
-| Referenz-Manifest (AGENT.json) | v2.0 — `_contract: AAMS/2.0` + deprecated `_spec` |
-| JSON Schema (AGENT_SCHEMA.json) | v2.0 — `_contract` required, `_spec` deprecated, `topic_registry` optional |
-| Minimal-Bootstrap (.agent.json) | v2.0 — `_contract: AAMS/2.0` + deprecated `_spec` + `topic_registry` + `agent_conventions` (descriptive) |
+| Agent Manifest (CONTRACT.md / SPEC.md Stub) | v2.2.0 — SPEC.md als Redirect-Stub, CONTRACT.md als neue Referenz |
+| Referenz-Manifest (AGENT.json) | v2.2.0 — `_contract: AAMS/2.0` + deprecated `_spec` |
+| JSON Schema (AGENT_SCHEMA.json) | v2.2.0 — `_contract` required, `_spec` deprecated, `topic_registry` optional |
+| Minimal-Bootstrap (.agent.json) | v2.2.0 — `_contract: AAMS/2.0` + deprecated `_spec` + `topic_registry` + `agent_conventions` (descriptive) + `workpapers_observe` |
 | READ-AGENT.md | Aktiv — Current Status AAMS/2.0, Topic Registry, Manifest-Prinzip (D9) |
 | AGENTS.md | Aktiv — Tagline "agent-contract standard", Pre-Flight Path Check |
 | WORKING/-Struktur | Vollständig aktiv inkl. DIARY/ und GUIDELINES/ |
-| Workpapers (archived) | 42 in WORKPAPER/closed/ |
-| Whitepapers | 4 (WP-001 bis WP-004) + INDEX.md |
-| LTM | 119+ Einträge ltm-index.md + ChromaDB |
+| Workpapers (archived) | 52 in WORKPAPER/closed/ |
+| Active workpapers | 2 in WORKING/WORKPAPER/ |
+| Observe workpapers | 3 in WORKING/WORKPAPER/observe/ |
+| Whitepapers | 8 (WH-001 bis WH-008) + INDEX.md |
+| LTM | 136 Einträge ltm-index.md + ChromaDB |
 | GitHub Issues #1-#20 | Geschlossen |
 | GitHub Issues #21-#26 | #22-#24 geschlossen, #26 Backlog |
 | GitHub Issues #41-#44 | #42, #44 Duplikate geschlossen; #41 offen (Field Report), #43 offen (RFC Tracker) |
+| GitHub Issues #45 | ✅geschlossen (Duplikat von #43) |
 | GitHub Issues #48-#49 | #48 Decision-Leck (teilweise gefixt), #49 Upgrade-Transparenz (teilweise gefixt) |
 | GitHub Issues #50-#51 | #50 File Safety (neu), #51 Skill-Konzept (neu) |
 | GitHub Pages | Live — devmatrose.github.io/AAMS |
 | Field Reports | 5+ unabhängige Berichte |
 | AAMS-MINI | ltm_mode markdown (Track A) + vector (Track B) |
-| GUIDELINES/ | theoretical-stress-testing.md (TST-Methodik) |
-| Versioning | v2.0.0 — CHANGELOG.md + MIGRATION.md existieren, Git-Tags ausstehend |
+| GUIDELINES/ | **12 Guidelines** (Documentation Model, Naming Schema, Workpaper Lifecycle, Decision-Promotion, File Protocol, LTM Rules, Topic Registry, Wiki Lint, AAMS Doctor, Git Safety, README Consistency, Diary Format) |
+| Versioning | v2.2.0 — CHANGELOG.md + MIGRATION.md existieren, Git-Tags v2.1.0 + v2.2.0 |
 | Decision-Promotion | Checklist in READ-AGENT.md ✅, wiki_lint.py L4b ✅ |
 | Manifest-Prinzip (D9) | ✅ **AAMS beschreibt, es schreibt kein Verhalten vor** |
-| **Neu (v2.0.0)** | **Agent Manifest (not Specification), `_contract: AAMS/2.0`, `topic_registry` maschinenlesbar, `agent_conventions` (descriptive), Manifest-Prinzip (D9)** |
+| Workpaper Lifecycle | ✅ active → observe → closed (drei Zustände) |
+| Naming Schema | ✅ Whitepapers → WH-*, Workpapers → WP-* |
+| **Neu (v2.2.0)** | **observe/ folder, Naming Schema (WH-*, WP-*), 12 Guidelines, Health-Score 10/10** |

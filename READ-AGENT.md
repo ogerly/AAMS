@@ -292,9 +292,9 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 
 - Bootstrap: **complete** (2026-02-22)
 - Manifest version: **AAMS/2.0**
-- Last release: **v2.0.0** (2026-04-29) — Spec → Contract reorientation (Agent Manifest)
+- Last release: **v2.2.0** (2026-04-30) — Naming Schema + Health-Score 10/10
 - Workspace: initialized, all folders present
-- LTM: 130 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
+- LTM: 136 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
 - Whitepapers: 8 + INDEX.md → WP-001 AAMS Overview, WP-002 Related Work, WP-003 Field Discourse, WP-004 Long-Horizon Reasoning, WP-005 Workpaper Lifecycle States, WP-006 README Consistency, WP-007 SPEC/CONTRACT Stub, WP-008 Health-Score 10/10
 - Closed workpapers: 50 in `WORKING/WORKPAPER/closed/`
 - READMEs: DE ✅ · EN ✅

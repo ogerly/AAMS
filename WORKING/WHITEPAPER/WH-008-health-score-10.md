@@ -68,8 +68,10 @@ Health-Score 10/10 finalisieren.
 | Last release | ✅ v2.1.0 |
 | Workspace | ✅ initialized |
 | LTM | ✅ 130 entries |
-| Whitepapers | ✅ 6 + INDEX.md |
-| Closed workpapers | ✅ 50 |
+| Whitepapers | ✅ 8 + INDEX.md |
+| Closed workpapers | ✅ 52 |
+| Active workpapers | ✅ 2 |
+| Observe workpapers | ✅ 3 |
 | READMEs | ✅ DE ✅ · EN ✅ · ZH ✅ |
 | LTM architecture | ✅ dual-layer |
 | GitHub Issues | ✅ #45 closed (duplikat) |
@@ -80,12 +82,12 @@ Health-Score 10/10 finalisieren.
 | validate_tools.py | ✅ D1-D4 |
 | Diary Layer | ✅ pointer-only |
 | Documentation model | ✅ 4 layers + RFL + Decision-Promotion + Workpaper Lifecycle |
-| Naming Schema | ✅ `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` |
+| Naming Schema | ✅ Whitepapers → WH-*, Workpapers → WP-* |
 | Guidelines | ✅ **12** |
 | AGENTS.md | ✅ Pre-Flight Path Check |
 | Manifest-Prinzip | ✅ AAMS describes, not prescribes |
 | `.aams-version` | ✅ exists + updated |
-| Git-Tags | ✅ v2.1.0 |
+| Git-Tags | ✅ v2.2.0 |
 | Health-Score | **10/10** |
 
 ## Rule

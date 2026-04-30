@@ -4,7 +4,7 @@
   "_doc": "Minimal Agent Manifest for workspace and documentation conventions. Drop this file into any repository. Idempotent: safe to read multiple times.",
   "_source": "https://github.com/DEVmatrose/AAMS",
   "_contract": "AAMS/2.0",
-  "_version_date": "2026-04-29",
+  "_version_date": "2026-04-30",
 
   "workspace": {
     "root": "./WORKING",

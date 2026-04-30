@@ -9,6 +9,30 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
 ---
 
+## [2.2.0] — 2026-04-30
+
+### Added
+- WH-001-aams-overview.md (renamed from WP-001)
+- WH-002-related-work.md (renamed from WP-002)
+- WH-003-field-discourse.md (renamed from WP-003)
+- WH-004-long-horizon-reasoning.md (renamed from WP-004)
+- WH-007-spec-contract-stub.md
+- WH-008-health-score-10.md
+- `.agent.json` `_version_date` updated to 2026-04-30
+
+### Changed
+- Naming Schema: Whitepapers → WH-*, Workpapers → WP-*
+- WH-001 stale references fixed
+- WH-008 stale data fixed
+- Diary format updated to new naming convention
+- Health-Score: 10/10
+
+### Fixed
+- Issue #45 closed (Duplikat von #43)
+- `.aams-version` date updated to 2026-04-30
+
+---
+
 ## [2.1.0] — 2026-04-30
 
 ### Added

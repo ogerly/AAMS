@@ -42,4 +42,4 @@ WH-002 ←→ WH-003: Related Work → Field Discourse (externe vs. interne Bewe
 
 ---
 
-> Letztes Update: 2026-04-30 — Naming Schema: Whitepapers → WH-*, Workpapers → WP-*. 8 Whitepapers (WH-001..WH-008). README-Konsistenz **done**. 12 Guidelines **done**. presenter-image.png in README.md + README.en.md. Health-Score **10/10**. Manifest-Prinzip (D9): AAMS describes, es schreibt kein Verhalten vor.
+> Letztes Update: 2026-04-30 — Naming Schema: Whitepapers → WH-*, Workpapers → WP-*. 8 Whitepapers (WH-001..WH-008). README-Konsistenz **done**. 12 Guidelines **done**. presenter-image.png in README.md + README.en.md. Health-Score **10/10**. Manifest-Prinzip (D9): AAMS describes, es schreibt kein Verhalten vor. Version: v2.2.0.

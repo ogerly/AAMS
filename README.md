@@ -233,17 +233,18 @@ Lange tool-spezifische Dateien (z.B. `CLAUDE.md` >150 Zeilen) verschlechtern nac
 
 **Current Status:**
 - Manifest version: **AAMS/2.0**
-- Whitepapers: **6** + INDEX.md
-- Closed workpapers: **50** in `WORKING/WORKPAPER/closed/`
+- Whitepapers: **8** + INDEX.md → WH-001..WH-008
+- Closed workpapers: **52** in `WORKING/WORKPAPER/closed/`
 - Active workpapers: **2** in `WORKING/WORKPAPER/`
 - Observe workpapers: **3** in `WORKING/WORKPAPER/observe/`
-- LTM: **130** entries (audit-log + ChromaDB)
+- LTM: **136** entries (audit-log + ChromaDB)
 - topic_registry: maschinenlesbar in `.agent.json`
 - `.aams-version`: exists (upgrade detection)
 - Workpaper Lifecycle: active → observe → closed
 - Guidelines: **12** in `WORKING/GUIDELINES/`
 - Health-Score: **10/10**
 - Naming Schema: Whitepapers → WH-*, Workpapers → WP-*
+- Last release: **v2.2.0** (2026-04-30)
 
 ---
 
