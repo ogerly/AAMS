@@ -44,6 +44,8 @@ Read .agent.json and execute the full agent_contract.on_first_entry. Start immed
 
 代理会创建 `WORKING/` 结构、扫描仓库、编写第一份工作简报，并索引到长期记忆中。适用于 Cursor、Claude Code、Copilot、Aider、Codex、Windsurf、Continue.dev。
 
+**⚠️ WSL/PowerShell:** Git Credential Helper in WSL (`git-credential-manager`) 在 Windows 上不起作用。在 PowerShell 中 push: `git push https://DEVmatrose:<PAT>@github.com/DEVmatrose/AAMS.git main` 或 `git config --global credential.helper manager` (Browser prompt)。
+
 → 扩展变体和会话启动提示：[`reference/prompts/bootstrap.md`](./reference/prompts/bootstrap.md)
 
 ---
