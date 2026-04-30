@@ -20,7 +20,7 @@ Strukturierte Filenamen ermöglichen:
 ## Workpaper Naming
 
 ```
-{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md
+WP-{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md
 ```
 
 | Variable | Format | Beispiel |
@@ -30,14 +30,14 @@ Strukturierte Filenamen ermöglichen:
 | `SUBTOPIC` | 3-4 letters, UPPERCASE | `WPSTRUCT`, `RFL`, `LTM` |
 | `description` | kebab-case, lowercase | `workpaper-observe-folder` |
 
-**Beispiel:** `2026-04-30-ARCH-WPSTRUCT-workpaper-observe-folder.md`
+**Beispiel:** `WP-2026-04-30-ARCH-WPSTRUCT-workpaper-observe-folder.md`
 
 ---
 
 ## Whitepaper Naming
 
 ```
-WP-{NNN}-{TOPIC}-{description}.md
+WH-{NNN}-{TOPIC}-{description}.md
 ```
 
 | Variable | Format | Beispiel |
@@ -47,7 +47,7 @@ WP-{NNN}-{TOPIC}-{description}.md
 | `TOPIC` | 3-4 letters, UPPERCASE | `ARCH`, `SPEC` |
 | `description` | kebab-case, lowercase | `aams-overview` |
 
-**Beispiel:** `WP-005-workpaper-lifecycle-states.md`
+**Beispiel:** `WH-005-workpaper-lifecycle-states.md`
 
 ---
 

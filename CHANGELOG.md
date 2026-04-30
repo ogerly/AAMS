@@ -14,10 +14,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 ### Added
 - `WORKING/WORKPAPER/observe/` — third workpaper lifecycle state (active → observe → closed)
 - `workpapers_observe` in `.agent.json` workspace structure
-- WP-005-workpaper-lifecycle-states.md
-- WP-006-readme-consistency.md
-- WP-007-spec-contract-stub.md
-- WP-008-health-score-10.md
+- WH-005-workpaper-lifecycle-states.md
+- WH-006-readme-consistency.md
+- WH-007-spec-contract-stub.md
+- WH-008-health-score-10.md
 - `topic_registry` maschinenlesbar in `.agent.json`
 - `.aams-version` state file (updated)
 - **12 Guidelines** in `WORKING/GUIDELINES/` (Documentation Model, Naming Schema, Workpaper Lifecycle, Decision-Promotion, File Protocol, LTM Rules, Topic Registry, Wiki Lint, AAMS Doctor, Git Safety, README Consistency, Diary Format)
@@ -26,10 +26,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 ### Changed
 - Workpaper Lifecycle: active → observe → closed (drei Zustände)
 - README.md, README.en.md, README.zh.md — **done** (Reality Check: 9+ divergenzen fixed)
-- READ-AGENT.md Current Status — Health-Score 10/10, Whitepaper count 6, LTM entries 130
-- INDEX.md — WP-005 + WP-006 + WP-007 + WP-008 entry
+- READ-AGENT.md Current Status — Health-Score 10/10, Whitepaper count 8, LTM entries 135
+- INDEX.md — WH-005 + WH-006 + WH-007 + WH-008 entry
 - Git-Tag: v2.1.0
 - Health-Score: 10/10
+- **Naming Schema: Whitepapers → WH-*, Workpapers → WP-***
 
 ### Fixed
 - Issue #45 closed (Duplikat von #43)

@@ -274,3 +274,4 @@ Nach Abschluss der laufenden Session.
  | 133 | 2026-04-30 | README | `docs/presenter-image.png` | presenter-image.png in README.md + README.en.md (Live Demo section) | Commit `b52ea5e` |
  | 134 | 2026-04-30 | LTM | `ltm-index.md` | LTM ingest — entry 134. LTM: 133 entries (audit-log + ChromaDB). Health-Score 10/10. Whitepapers 8 + INDEX.md. Guidelines 12. Active: 2, Observe: 3, Closed: 51. Git-Tag v2.1.0 (10 Commits). |
  | 135 | 2026-04-30 | ARCH | git-cleanup | Git status cleanup — .agent.json + workpaper moves + docs/presenter-image.png | Commit `e43e252` |
+ | 136 | 2026-04-30 | ARCH | Naming Schema | Whitepapers → WH-*, Workpapers → WP-* — alle Whitepapers umbenannt (WH-001..WH-008), alle Workpapers umbenannt (WP-DATE-*) | `.agent.json` + `READ-AGENT.md` + `INDEX.md` + `naming-schema.md` + CHANGELOG.md update |

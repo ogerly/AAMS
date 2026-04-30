@@ -98,20 +98,20 @@ Structured filenames enable cross-session consistency checks (RFL). Agents SHOUL
 
 **Workpapers:**
 
-`{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md`
+`WP-{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md`
 
 - `DATE` — `YYYY-MM-DD`
 - `TOPIC` — 3-4 letter tag, UPPERCASE (primary key for RFL pattern-matching)
 - `SUBTOPIC` — 3-4 letter tag, UPPERCASE
 - `description` — kebab-case, lowercase
 
-Example: `2026-04-09-ARCH-RFL-reflection-protocol-step.md`
+Example: `WP-2026-04-09-ARCH-RFL-reflection-protocol-step.md`
 
 **Whitepapers:**
 
-`WP-{NNN}-{TOPIC}-{description}.md`
+`WH-{NNN}-{TOPIC}-{description}.md`
 
-Example: `WP-005-ARCH-naming-schema.md`
+Example: `WH-005-ARCH-naming-schema.md`
 
 **Topic Registry:**
 
@@ -306,7 +306,7 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 - wiki_lint.py: **7 Checks + L4b Orphaned Decisions** (16 orphane Decisions detektiert)
 - validate_tools.py: **D1-D4 AAMS Doctor** (Tool-Integrität)
 - Diary Layer: **reformed** — pointer-only temporal index (v1.3.0)
-- Documentation model: 4 layers (Workpaper, Whitepaper, Diary, Memory) + RFL consistency check + **Decision-Promotion** (session-end) + **Workpaper Lifecycle** (active → observe → closed)
+- Documentation model: 4 layers (Workpaper, Whitepaper, Diary, Memory) + RFL consistency check + **Decision-Promotion** (session-end) + **Workpaper Lifecycle** (active → observe → closed) + **Naming Schema** (Whitepapers → WH-*, Workpapers → WP-*)
 - Naming Schema: `{DATE}-{TOPIC}-{SUBTOPIC}-{description}.md` (recommended, not enforced)
 - Guidelines: **12** in `WORKING/GUIDELINES/` (Documentation Model, Naming Schema, Workpaper Lifecycle, Decision-Promotion, File Protocol, LTM Rules, Topic Registry, Wiki Lint, AAMS Doctor, Git Safety, README Consistency, Diary Format)
 - AGENTS.md: **Pre-Flight Path Check** (Issues #47+#46)
