@@ -58,9 +58,6 @@ Der Agent erstellt die `WORKING/`-Struktur, scannt das Repo, schreibt das erste 
   <img src="docs/aams-das-kochbuch-fuer-dein-repro.jpg" alt="AAMS – Das Kochbuch für dein Repo" width="560">
 </p>
 
-<p align="center">
-  <img src="docs/aams-function-img.png" alt="AAMS Funktionsdiagramm" width="700">
-</p>
 
 Stell dir das Kochbuch deiner Großmutter vor — voller genialer Rezepte, handschriftlicher Notizen und über Jahrzehnte angesammelter Weisheit. Aber kein Inhaltsverzeichnis. Keine Querverweise. Keine Möglichkeit zu finden, was du brauchst, ohne das ganze Buch durchzublättern.
 
