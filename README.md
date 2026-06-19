@@ -22,7 +22,7 @@
 > **AAMS — Agent Manifest**  
 > `README.md` ist für Menschen. `AGENT.json` ist für Maschinen.
 
-**[→ devmatrose.github.io/AAMS](https://devmatrose.github.io/AAMS/)**
+**[→ ogerly.github.io/AAMS](https://ogerly.github.io/AAMS/)**
 
 ---
 
