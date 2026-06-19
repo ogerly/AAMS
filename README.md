@@ -44,7 +44,7 @@ Read .agent.json and execute the full agent_contract.on_first_entry. Start immed
 
 Der Agent erstellt die `WORKING/`-Struktur, scannt das Repo, schreibt das erste Workpaper und indiziert ins LTM. Funktioniert mit Cursor, Claude Code, Copilot, Aider, Codex, Windsurf, Continue.dev.
 
-**⚠️ WSL/PowerShell:** Git Credential Helper in WSL (`git-credential-manager`) funktioniert nicht auf Windows. Pushen in PowerShell: `git push https://DEVmatrose:<PAT>@github.com/DEVmatrose/AAMS.git main` oder `git config --global credential.helper manager` (Browser-Prompt).
+**⚠️ WSL/PowerShell:** Git Credential Helper in WSL (`git-credential-manager`) funktioniert nicht auf Windows. Pushen in PowerShell: `git push https://Ogerly:<PAT>@github.com/ogerly/AAMS.git main` oder `git config --global credential.helper manager` (Browser-Prompt).
 
 → Erweiterte Varianten und Session-Start-Prompt: [`reference/prompts/bootstrap.md`](./reference/prompts/bootstrap.md)
 
