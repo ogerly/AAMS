@@ -33,7 +33,7 @@
 > **AAMS ist keine Abhängigkeit zum Klonen.** Du klonst dieses Repository nicht in dein Projekt. Du lädst eine einzige Datei in DEIN Repo-Root herunter.
 
 ```bash
-curl -sO https://raw.githubusercontent.com/DEVmatrose/AAMS/main/.agent.json
+curl -sO https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json
 ```
 
 **Schritt 2 — Sag deinem Agent:**
