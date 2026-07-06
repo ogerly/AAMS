@@ -159,13 +159,13 @@ WH-009 Guard-Pattern in INDEX.md Tabelle + Footer-Update.
 ## Session Closing Checklist
 
 - [x] File protocol complete (created/modified)
-- [ ] No temporary test files in repo
+- [x] No temporary test files in repo
 - [x] No secrets/passwords/tokens in plain text
-- [ ] Whitepapers checked for currency (WH-009 created)
+- [x] Whitepapers checked for currency (WH-009 created)
 - [x] Architecture decisions noted (Guard-Pattern)
-- [ ] Next steps concretely formulated
-- [ ] Cleanup tasks named
-- [ ] LTM re-ingest performed
+- [x] Next steps concretely formulated
+- [x] Cleanup tasks named
+- [x] LTM re-ingest performed
 
 ---
 

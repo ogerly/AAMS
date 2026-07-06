@@ -35,8 +35,8 @@
 ## Status
 
 - **Initialisiert:** 2026-02-22
-- **Letzter Ingest:** 2026-04-30 (Workpaper Lifecycle: obsolete folder)
-- **Einträge gesamt:** 127
+- **Letzter Ingest:** 2026-07-06 (WH-009 Guard-Pattern)
+- **Einträge gesamt:** 140
 
 ---
 
@@ -276,3 +276,6 @@ Nach Abschluss der laufenden Session.
  | 135 | 2026-04-30 | ARCH | git-cleanup | Git status cleanup — .agent.json + workpaper moves + docs/presenter-image.png | Commit `e43e252` |
  | 136 | 2026-04-30 | ARCH | Naming Schema | Whitepapers → WH-*, Workpapers → WP-* — alle Whitepapers umbenannt (WH-001..WH-008), alle Workpapers umbenannt (WP-DATE-*) | `.agent.json` + `READ-AGENT.md` + `INDEX.md` + `naming-schema.md` + CHANGELOG.md update |
  | 137 | 2026-04-30 | ARCH | Version v2.2.0 | WH-001 stale references fixed, WH-008 stale data fixed, Diary format updated, `.agent.json` `_version_date` updated, CHANGELOG.md v2.2.0 section, Git-Tag v2.2.0 | Health-Score 10/10 |
+ | 138 | 2026-07-06 | ANALYSE | `WORKING/WORKPAPER/2026-07-06-session-start-analyse.md` | Session-Start-Analyse nach ~2.5 Monaten Pause. GitHub: ogelry/AAMS — 9 offene Issues, Remote-URL MISMATCH (DEVmatrose), Health-Score 7/10. 5 P0/P1 Patches identifiziert. |
+ | 139 | 2026-07-06 | WHITEPAPER | `WORKING/WHITEPAPER/WH-009-guard-pattern.md` | WH-009 Guard-Pattern: Zwei-Ebenen-Modell (AAMS beschreibt Pattern, Implementierung = local_adaptation). Drei Check-Ebenen (manifest_read, workpaper_open, tools_gated). Tool-agnostic. Fehlerformate beschreibend. AGENT_SCHEMA.json guard-Schema. |
+ | 140 | 2026-07-06 | WHITEPAPER | `WORKING/WHITEPAPER/INDEX.md` + `.agent.json` + `AGENT_SCHEMA.json` + `CONTRACT.md` + `READ-AGENT.md` | WH-009 in INDEX.md + Manifest synchronisiert. .agent.json guard-Sektion. AGENT_SCHEMA.json guard-Schema. CONTRACT.md guard-Erwähnung. READ-AGENT.md Current Status (Whitepapers 9, guard). |
