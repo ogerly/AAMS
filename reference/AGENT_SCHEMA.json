@@ -413,6 +413,81 @@
       "additionalProperties": false
     },
 
+    "guard": {
+      "type": "object",
+      "description": "Optional guard configuration for contract enforcement. Describes WHAT to check, not HOW. Each tool implements differently. All fields optional.",
+      "properties": {
+        "_doc": { "type": "string" },
+        "checks": {
+          "type": "object",
+          "properties": {
+            "manifest_read": {
+              "type": "object",
+              "properties": {
+                "_doc":        { "type": "string" },
+                "required_reads": { "type": "array", "items": { "type": "string" } },
+                "description": { "type": "string" }
+              },
+              "patternProperties": { "^_": true },
+              "additionalProperties": false
+            },
+            "workpaper_open": {
+              "type": "object",
+              "properties": {
+                "_doc":        { "type": "string" },
+                "check":       { "type": "string" },
+                "description": { "type": "string" }
+              },
+              "patternProperties": { "^_": true },
+              "additionalProperties": false
+            },
+            "tools_gated": {
+              "type": "object",
+              "properties": {
+                "_doc":        { "type": "string" },
+                "gated_tools": { "type": "array", "items": { "type": "string" } }
+              },
+              "patternProperties": { "^_": true },
+              "additionalProperties": false
+            }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "error_format": {
+          "type": "object",
+          "description": "Error messages describe the state, not the command. Descriptive, not imperative.",
+          "properties": {
+            "_doc":        { "type": "string" },
+            "manifest_not_read": { "type": "string" },
+            "no_workpaper":    { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "implementation": {
+          "type": "object",
+          "description": "Tool-specific implementations are local adaptations. See WORKING/TOOLS/ for reference implementations.",
+          "properties": {
+            "_doc":        { "type": "string" },
+            "opencode":    { "type": "string" },
+            "cursor":      { "type": "string" },
+            "claude":      { "type": "string" },
+            "copilot":     { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "status": {
+          "type": "string",
+          "enum": ["descriptive_only", "enforced"],
+          "description": "Whether the guard is descriptive only or actively enforced by the tool."
+        }
+      },
+      "patternProperties": { "^_": true },
+      "additionalProperties": false
+    },
+
     "bootstrap_rules": {
       "type": "object",
       "description": "LTM configuration and bootstrap behaviour for the minimal .agent.json manifest. All fields optional.",

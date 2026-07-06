@@ -17,4 +17,5 @@
 > Includes optional `file_safety` guidance for safe file deletion outside WORKING/ (Issue #50).
 > Includes optional `skills` guidance for community knowledge reuse (Issue #51).
 > Includes optional `security` metadata for trust-portability (Issue #26).
+> Includes optional `guard` pattern for contract enforcement — tool-agnostic specification (WH-009).
 > [Learn more](https://github.com/DEVmatrose/AAMS)

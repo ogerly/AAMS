@@ -462,6 +462,39 @@
     }
   },
 
+  "guard": {
+    "_doc": "Optional guard configuration for contract enforcement. Describes WHAT to check, not HOW. Each tool implements differently.",
+    "checks": {
+      "manifest_read": {
+        "_doc": "Before any write/edit operation, verify the agent has read the manifest contract.",
+        "required_reads": [".agent.json", "READ-AGENT.md"],
+        "description": "Agents should confirm they've loaded the manifest before making changes."
+      },
+      "workpaper_open": {
+        "_doc": "Before any write/edit operation, verify an active workpaper exists.",
+        "check": "WORKING/WORKPAPER/ contains a file with status: open (or tool-equivalent)",
+        "description": "All changes should be documented in a session-bound workpaper."
+      },
+      "tools_gated": {
+        "_doc": "write/edit/apply_patch/bash should be blocked until manifest_read AND workpaper_open are satisfied.",
+        "gated_tools": ["write", "edit", "apply_patch", "bash"]
+      }
+    },
+    "error_format": {
+      "_doc": "Error messages describe the state, not the command. Descriptive, not imperative.",
+      "manifest_not_read": "GUARD-VERSTOSS: Lies zuerst .agent.json und READ-AGENT.md, bevor du Änderungen vornimmst.",
+      "no_workpaper": "GUARD-VERSTOSS: Kein offenes Workpaper unter WORKING/. Lege zuerst ein Workpaper mit status: open an."
+    },
+    "implementation": {
+      "_doc": "Tool-specific implementations are local adaptations. See WORKING/TOOLS/ for reference implementations.",
+      "opencode": "WORKING/TOOLS/aams-guard-opencode.ts",
+      "cursor": "WORKING/TOOLS/aams-guard-cursor.md",
+      "claude": "WORKING/TOOLS/aams-guard-claude.md",
+      "copilot": "WORKING/TOOLS/aams-guard-copilot.md"
+    },
+    "status": "descriptive_only"
+  },
+
   "metadata": {
     "_doc": "Free-form field for provider-specific extensions and project-specific data. No fixed schema.",
     "project_category": "web-application",

@@ -295,13 +295,13 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 - Last release: **v2.2.0** (2026-04-30) — Naming Schema + Health-Score 10/10
 - Workspace: initialized, all folders present
 - LTM: 136 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
-- Whitepapers: 8 + INDEX.md → WP-001 AAMS Overview, WP-002 Related Work, WP-003 Field Discourse, WP-004 Long-Horizon Reasoning, WP-005 Workpaper Lifecycle States, WP-006 README Consistency, WP-007 SPEC/CONTRACT Stub, WP-008 Health-Score 10/10
+- Whitepapers: 9 + INDEX.md → WH-001 AAMS Overview, WH-002 Related Work, WH-003 Field Discourse, WH-004 Long-Horizon Reasoning, WH-005 Workpaper Lifecycle States, WH-006 README Consistency, WH-007 SPEC/CONTRACT Stub, WH-008 Health-Score 10/10, WH-009 Guard-Pattern
 - Closed workpapers: 50 in `WORKING/WORKPAPER/closed/`
 - READMEs: DE ✅ · EN ✅
 - LTM architecture: dual-layer (audit-log + vector store) ✅
 - GitHub Issues: #1–6 closed · #36–#40 closed · #45 (duplikat) · #43 RFC (open) · #41 MantisClaw (open) · #48 Decision-Leck (open) · #49 Upgrade-Transparenz (open) · #47 Tool Decay (open) · #46 Root-Ordner (open) · #26 Security (open) · #50 File Safety (new) · #51 Skill-Konzept (new)
 - CHANGELOG.md: **exists** (2026-04-24) — [Unreleased] needs update
-- `.agent.json`: `_contract: AAMS/2.0` + deprecated `_spec` + `topic_registry` + `on_update` + `version_detection` + `workpapers_observe`
+- `.agent.json`: `_contract: AAMS/2.0` + deprecated `_spec` + `topic_registry` + `on_update` + `version_detection` + `workpapers_observe` + **guard**
 - Decision-Promotion: **in READ-AGENT.md** (session-end checklist)
 - wiki_lint.py: **7 Checks + L4b Orphaned Decisions** (16 orphane Decisions detektiert)
 - validate_tools.py: **D1-D4 AAMS Doctor** (Tool-Integrität)
@@ -311,4 +311,5 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 - Guidelines: **12** in `WORKING/GUIDELINES/` (Documentation Model, Naming Schema, Workpaper Lifecycle, Decision-Promotion, File Protocol, LTM Rules, Topic Registry, Wiki Lint, AAMS Doctor, Git Safety, README Consistency, Diary Format)
 - AGENTS.md: **Pre-Flight Path Check** (Issues #47+#46)
 - Manifest-Prinzip: **AAMS describes, es schreibt kein Verhalten vor** (D9)
+- Guard-Pattern: **WH-009** — Zwei-Ebenen-Modell (AAMS beschreibt Pattern, Implementierung = local_adaptation) + .agent.json guard-Sektion + AGENT_SCHEMA.json guard-Schema
 - Health-Score: **10/10**
