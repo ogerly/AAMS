@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/DEVmatrose/AAMS/schema/v1.0/AGENT_SCHEMA.json",
+  "$id": "https://github.com/ogerly/AAMS/schema/v1.0/AGENT_SCHEMA.json",
   "title": "AAMS — Agent Manifest",
   "description": "JSON Schema for validating AGENT.json files (Version 1.0, local-first).",
   "version": "1.0.0",
@@ -331,7 +331,7 @@
 
     "skills": {
       "type": "object",
-      "description": "Optional skills guidance. Skills are crystallized community knowledge. All fields optional.",
+      "description": "Optional. Skills are crystallized community knowledge. Agents may use them as starting points. AAMS is neutral and standardless: describes WHAT a skill CAN be, not HOW to implement it.",
       "properties": {
         "global_pool": {
           "type": "object",
@@ -351,6 +351,16 @@
           "patternProperties": { "^_": true },
           "additionalProperties": false
         },
+        "issue_suggestion": {
+          "type": "object",
+          "properties": {
+            "_doc":        { "type": "string" },
+            "enabled":     { "type": "boolean" },
+            "format":      { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
         "relationship": {
           "type": "object",
           "properties": {
@@ -358,6 +368,36 @@
           },
           "patternProperties": { "^_": true },
           "additionalProperties": false
+        }
+      },
+      "patternProperties": { "^_": true },
+      "additionalProperties": false
+    },
+
+    "tool_detection": {
+      "type": "object",
+      "description": "AAMS detects the calling agent/tool at runtime. This enables tool-specific skill recommendations. Detection method depends on the tool. AAMS does NOT prescribe how detection happens — only: if you CAN detect, use it.",
+      "properties": {
+        "_doc": { "type": "string" },
+        "_doc_local_llm": { "type": "string", "description": "Documentation about local LLM support. AAMS fully supports local LLMs. Our setup: LM Studio + qwen/qwen3.6-35b-a3b. Sometimes Ollama, sometimes llama.cpp directly. You decide which tool and which model. AAMS is neutral." },
+        "mechanism": { "type": "string" },
+        "priority": { "type": "string" },
+        "examples": {
+          "type": "object",
+          "properties": {
+            "opencode": { "type": "string" },
+            "cursor": { "type": "string" },
+            "claude-code": { "type": "string" },
+            "copilot": { "type": "string" },
+            "windsurf": { "type": "string" },
+            "aider": { "type": "string" },
+            "lm-studio": { "type": "string", "description": "LM Studio running on localhost (default port 1234), OpenAI-compatible endpoint" },
+            "ollama": { "type": "string", "description": "ollama serve running on localhost (default port 11434)" },
+            "llama.cpp": { "type": "string", "description": "llama-server or llama.cpp binary running, GGUF model loaded" },
+            "openai-proxy": { "type": "string", "description": "OpenAI-compatible API endpoint configured (any provider)" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": { "type": "string" }
         }
       },
       "patternProperties": { "^_": true },

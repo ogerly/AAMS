@@ -2,7 +2,7 @@
   "_spec": "AAMS-MINI/1.0",
   "_spec_note": "DEPRECATED — use _contract.",
   "_contract": "AAMS/2.0",
-  "_doc": "Autonomous Agent Manifest — https://github.com/DEVmatrose/AAMS",
+  "_doc": "Autonomous Agent Manifest — https://github.com/ogerly/AAMS",
   "_focus": "local-first",
 
   "identity": {
@@ -400,8 +400,8 @@
     "_doc": "Governance and compliance metadata.",
     "contract_version": "2.0",
     "spec_version": "1.0",
-    "contract_url": "https://github.com/DEVmatrose/AAMS",
-    "spec_url": "https://github.com/DEVmatrose/AAMS",
+    "contract_url": "https://github.com/ogerly/AAMS",
+    "spec_url": "https://github.com/ogerly/AAMS",
     "validated_with": "aams-validator",
     "last_reviewed": "2026-02-18",
     "review_interval_days": 90,
@@ -420,18 +420,41 @@
   },
 
   "skills": {
-    "_doc": "Optional skills guidance. Skills are crystallized community knowledge — agents may use them as starting points.",
+    "_doc": "Optional. Skills are crystallized community knowledge. Agents may use them as starting points, not as requirements. AAMS is neutral and standardless: describes WHAT a skill CAN be, not HOW to implement it.",
     "global_pool": {
       "_doc": "A global pool of skills is the source of truth. Not to be modified — only referenced.",
       "reference": "https://skills.sh"
     },
     "local_adaptation": {
       "_doc": "When a skill is adapted for a project, it carries its origin as a header comment (# source: origin/skill-name) and may be tailored to the project context.",
-      "storage": ".github/skills/ or WORKING/TOOLS/"
+      "storage": "WORKING/TOOLS/skills/<tool-name>/"
+    },
+    "issue_suggestion": {
+      "_doc": "When a detected tool has no skills in the builder, AAMS may suggest creating a new skill entry.",
+      "enabled": true
     },
     "relationship": {
-      "_doc": "Global → Lokal: Quelle → Feinschliff. Exploration → direkter Griff."
+      "_doc": "Global → Local: Source → Refinement. Exploration → direct reach."
     }
+  },
+
+  "tool_detection": {
+    "_doc": "AAMS detects the calling agent/tool at runtime. This enables tool-specific skill recommendations. Detection method depends on the tool. AAMS does NOT prescribe how detection happens — only: if you CAN detect, use it.",
+    "mechanism": "environment_variable or config_file_inference",
+    "priority": "mandatory_if_present",
+    "examples": {
+      "opencode": "OPCODE_SESSION_ID present or .opencode/ directory exists",
+      "cursor": ".cursor/rules/ present + CLAUDE.md",
+      "claude-code": "CLAUDE.md in root",
+      "copilot": ".github/copilot-instructions.md present",
+      "windsurf": ".windsurfrules present",
+      "aider": ".aider.conf.yaml present",
+      "lm-studio": "LM Studio running on localhost (default port 1234), OpenAI-compatible endpoint",
+      "ollama": "ollama serve running on localhost (default port 11434)",
+      "llama.cpp": "llama-server or llama.cpp binary running, GGUF model loaded",
+      "openai-proxy": "OpenAI-compatible API endpoint configured (any provider)"
+    },
+    "_doc_local_llm": "AAMS voll unterstützt lokale LLMs. Unser Setup: LM Studio + qwen/qwen3.6-35b-a3b. Manchmal Ollama, manchmal llama.cpp direkt. Du entscheidest welches Tool und welches Modell. AAMS ist neutral."
   },
 
   "security": {

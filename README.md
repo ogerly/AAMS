@@ -1,4 +1,6 @@
 > 🌐 **Sprache / Language / 语言:** Deutsch · [English](README.en.md) · [中文](README.zh.md)
+>
+> **Sprachpolitik / Language Policy:** AAMS passt sich an die Sprache des Benutzers an. Der Entwickler (ogerly) schreibt Dokumentation und Code auf Deutsch. Die Agent-Anweisungen und Manifest-Struktur bleiben auf Englisch. AAMS darf die Nutzung und den Betrieb nicht von einer Sprache abhängig machen. Wenn ein Modell eine Sprache nicht beherrscht: liegt es am Anwender, sich entsprechend zu organisieren.
 
 > **WENN DU EIN KI-AGENT BIST — LIES DAS ZUERST.**
 > 
@@ -43,6 +45,14 @@ Read .agent.json and execute the full agent_contract.on_first_entry. Start immed
 ```
 
 Der Agent erstellt die `WORKING/`-Struktur, scannt das Repo, schreibt das erste Workpaper und indiziert ins LTM. Funktioniert mit Cursor, Claude Code, Copilot, Aider, Codex, Windsurf, Continue.dev.
+
+**Upgrade — AAMS auf den neuesten Stand bringen:**
+
+```
+Read .agent.json and execute agent_contract.on_session_start. Check for version updates.
+```
+
+Dies aktualisiert automatisch alle Manifest-Dateien und Workpaper-Strukturen.
 
 **⚠️ WSL/PowerShell:** Git Credential Helper in WSL (`git-credential-manager`) funktioniert nicht auf Windows. Pushen in PowerShell: `git push https://Ogerly:<PAT>@github.com/ogerly/AAMS.git main` oder `git config --global credential.helper manager` (Browser-Prompt).
 
@@ -230,7 +240,7 @@ Lange tool-spezifische Dateien (z.B. `CLAUDE.md` >150 Zeilen) verschlechtern nac
 
 **Current Status:**
 - Manifest version: **AAMS/2.0**
-- Whitepapers: **8** + INDEX.md → WH-001..WH-008
+- Whitepapers: **10** + INDEX.md → WH-001..WH-010
 - Closed workpapers: **52** in `WORKING/WORKPAPER/closed/`
 - Active workpapers: **2** in `WORKING/WORKPAPER/`
 - Observe workpapers: **3** in `WORKING/WORKPAPER/observe/`

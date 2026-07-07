@@ -9,6 +9,60 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
 ---
 
+## [2.3.0] — 2026-07-07
+
+### Added
+
+- **Skill-Baukasten** — `WORKING/TOOLS/skills/` mit Platzhaltern für alle bekannten Tools
+- **Lokale LLMs als First-Class-Citizen** — LM Studio, Ollama, llama.cpp, OpenAI-Proxy als Skill-Kategorien
+- **WH-010-skills.md** — Skills als kristallisiertes Wissen, Tool-Erkennung, Skill-Baukasten, Issue-Vorschlag, Absolute Neutralität, Lokale LLMs
+- **Passive Tool-Detection** — `passive_only: true` in `.agent.json` — Agents sollen NICHT aktiv nach Tools suchen
+- **Passive Detection Documentation** — Klarstellung: "if you CAN detect, use it" ≠ "search for every tool"
+
+### Changed
+
+- **Passive Tool Detection** — `tool_detection` in `.agent.json`, `reference/AGENT.json`, `reference/AGENT_SCHEMA.json` — Klarstellung: passive Erkennung, keine aktive Suche nach 10+ Tools
+- **Skills-Erweiterung** — Lokale LLMs (LM Studio, Ollama, llama.cpp, OpenAI-Proxy) als Skill-Kategorien
+- **README.md** — Current Status auf 10 Whitepapers aktualisiert
+- **INDEX.md** — WH-010 Eintrag hinzugefügt
+
+### Removed
+
+- **`.github/copilot-instructions.md`** — Copilot-Brücke entfernt. AAMS ist standardlos: keine tool-spezifische Datei darf im Repo liegen. Bridge = `AGENTS.md` → `READ-AGENT.md` → `.agent.json`. Die Bridge-Datei war ein Relikt aus alter Copilot-Nutzung.
+
+### Security
+
+- **Tool Decay Prävention** — Entfernt was nicht mehr genutzt wird. AAMS ist standardlos: keine tool-spezifischen Dateien im Repo.
+
+---
+
+## [2.3.0] — 2026-07-07
+
+### Added
+
+- **Skill-Baukasten** — `WORKING/TOOLS/skills/` mit Platzhaltern für alle bekannten Tools
+- **Lokale LLMs als First-Class-Citizen** — LM Studio, Ollama, llama.cpp, OpenAI-Proxy als Skill-Kategorien
+- **WH-010-skills.md** — Skills als kristallisiertes Wissen, Tool-Erkennung, Skill-Baukasten, Issue-Vorschlag, Absolute Neutralität, Lokale LLMs
+- **Passive Tool-Detection** — `passive_only: true` in `.agent.json` — Agents sollen NICHT aktiv nach Tools suchen
+- **Passive Detection Documentation** — Klarstellung: "if you CAN detect, use it" ≠ "search for every tool"
+
+### Changed
+
+- **Passive Tool Detection** — `tool_detection` in `.agent.json`, `reference/AGENT.json`, `reference/AGENT_SCHEMA.json` — Klarstellung: passive Erkennung, keine aktive Suche nach 10+ Tools
+- **Skills-Erweiterung** — Lokale LLMs (LM Studio, Ollama, llama.cpp, OpenAI-Proxy) als Skill-Kategorien
+- **README.md** — Current Status auf 10 Whitepapers aktualisiert
+- **INDEX.md** — WH-010 Eintrag hinzugefügt
+
+### Removed
+
+- **`.github/copilot-instructions.md`** — Copilot-Brücke entfernt. AAMS ist standardlos: keine tool-spezifische Datei darf im Repo liegen. Bridge = `AGENTS.md` → `READ-AGENT.md` → `.agent.json`. Die Bridge-Datei war ein Relikt aus alter Copilot-Nutzung.
+
+### Security
+
+- **Tool Decay Prävention** — Entfernt was nicht mehr genutzt wird. AAMS ist standardlos: keine tool-spezifischen Dateien im Repo.
+
+---
+
 ## [2.2.0] — 2026-04-30
 
 ### Added
