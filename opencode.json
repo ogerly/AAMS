@@ -1,27 +1,61 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+  "model": "mantis/qwen/qwen3.6-35b-a3b",
   "provider": {
-    "lmstudio": {
+    "mantis": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "LM Studio (local)",
+      "name": "MANTIS LLM Gateway",
       "options": {
-        "baseURL": "http://192.168.0.70:1234/v1/",
-        "apiKey": "{env:LM_API_TOKEN}"
+        "baseURL": "http://192.168.0.70:9876/v1",
+        "apiKey": "mantis-local-proxy"
       },
       "models": {
-        "qwen/qwen3-coder-30b": {
-          "name": "Qwen3 Coder 30B"
-        },
-        "qwen/qwen3-coder-next": {
-        "name": "Qwen3 Coder Next"
-        },
-        "qwen/qwen3.6-27b": {
-          "name": "Qwen3.6 27B"
-        },
         "qwen/qwen3.6-35b-a3b": {
-          "name": "Qwen3.6 35B"
+          "name": "LM Studio: Qwen 3.6 35B A3B (lokal)"
+        },
+        "google/gemma-4-31b-qat": {
+          "name": "LM Studio: google/gemma-4-31b-qat (lokal)"
+        },
+        "local-model": {
+          "name": "LM Studio: local-model"
+        },
+        "devstral-small-2:24b-cloud": {
+          "name": "Ollama Cloud: Devstral Small 2 24B (Coding-Agent, Free)"
+        },
+        "minimax-m2.7:cloud": {
+          "name": "Ollama Cloud: MiniMax M2.7 229B (Coding+Agentic, Free)"
+        },
+        "gemma4:31b-cloud": {
+          "name": "Ollama Cloud: Gemma4 31B (Vision+Tools, Free)"
+        },
+        "openrouter/free": {
+          "name": "OpenRouter: Free Models Router (automatisch)"
+        },
+        "openrouter/auto": {
+          "name": "OpenRouter: Auto Router (automatisch)"
+        },
+        "nvidia/nemotron-3-super-120b-a12b:free": {
+          "name": "OpenRouter: Nemotron 3 Super (preferred, effizient)"
+        },
+        "poolside/laguna-m.1:free": {
+          "name": "OpenRouter: Poolside Laguna M.1 (preferred, Coding)"
+        },
+        "openai/gpt-oss-120b:free": {
+          "name": "OpenRouter: gpt-oss-120b (preferred, Reasoning)"
+        },
+        "z-ai/glm-4.5-air:free": {
+          "name": "OpenRouter: GLM 4.5 Air (preferred, schnell)"
         }
       }
+    }
+  },
+  "permission": {
+    "edit": {
+      ".env": "ask",
+      ".env.*": "ask",
+      ".env.backup": "ask",
+      "*": "allow"
     }
   }
 }
