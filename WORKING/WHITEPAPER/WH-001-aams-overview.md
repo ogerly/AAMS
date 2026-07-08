@@ -266,3 +266,28 @@ Kritischer Gap entdeckt: Architektur-Entscheidungen aus Workpapers sickern nicht
 | Workpaper Lifecycle | ✅ active → observe → closed (drei Zustände) |
 | Naming Schema | ✅ Whitepapers → WH-*, Workpapers → WP-* |
 | **Neu (v2.2.0)** | **observe/ folder, Naming Schema (WH-*, WP-*), 12 Guidelines, Health-Score 10/10** |
+
+---
+
+## 10. Credentials und Secrets
+
+### .env — GitHub Personal Access Token
+
+Im Repository-Root liegt `.env` mit einem GitHub Personal Access Token (`GITHUB_TOKEN`).
+
+**Verwendung:**
+- `curl`-Aufrufe gegen die GitHub API (Release-Erstellung, CHANGELOG-Updates, Repo-Abfragen)
+- Authentifizierung für `gh` CLI-Befehle
+
+**WICHTIG:**
+- Der Token-Wert steht **niemals** in Whitepapers, Workpapers, Memory oder im Manifest
+- Der Token ist ein PAT (Personal Access Token) mit Repo-Scope
+- Bei Verdacht auf Kompromittierung: Token im GitHub Settings → Developer Settings → Personal Access Tokens → Revoke
+- Neue Repos müssen `.env` in `.gitignore` haben
+- Dieser Token ist nur für AAMS-Repo-Operationen gedacht, nicht für andere Services
+
+**Referenz:**
+- `.agent.json` → `secrets_policy.never_in_workpapers` = true
+- `.agent.json` → `secrets_policy.never_in_whitepapers` = true
+- `.agent.json` → `secrets_policy.never_in_manifest` = true
+- `.agent.json` → `secrets_policy.use` = ".env or external secret manager only"
