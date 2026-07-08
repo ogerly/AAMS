@@ -268,11 +268,17 @@
     "on_update": [
       "Compare `_contract` (priority) or `_spec` (legacy fallback) version with local .aams-version",
       "If discrepancy detected: read CHANGELOG.md section for new version",
+      "Parse CHANGELOG 'Added' and 'Changed' sections for new workspace.structure paths and conventions",
       "For Minor-Bump (1.x → 1.y): write READ-CHANGELOG.md with new features",
       "For Major-Bump (x.0 → y.0): inform about potential Breaking Changes, read MIGRATIONS.md",
-      "Write updated READ-AGENT.md",
+      "MIGRATE: Create all new workspace.structure paths in local repo if missing (e.g. WORKING/TOOLS/skills/, workpapers_observe)",
+      "MIGRATE: Apply new conventions described in CHANGELOG (e.g. new folder structures, skill definitions, detection patterns)",
+      "MIGRATE: Check if new tool_detection examples are relevant for this repo — if so, implement passive detection",
+      "MIGRATE: If CHANGELOG mentions 'Removed' files that exist in local repo — flag for review (do NOT auto-delete)",
+      "Write updated READ-AGENT.md with new conventions and structure",
       "Set .aams-version in target repo to new version",
-      "Update _version_date in .agent.json to current date (YYYY-MM-DD)"
+      "Update _version_date in .agent.json to current date (YYYY-MM-DD)",
+      "Log migration actions in DIARY/{YYYY-MM-DD}.md: which paths created, which conventions applied"
     ],
     "version_detection": {
       "_doc": "Mechanism to detect if .agent.json has been updated via curl. Compare _contract (priority) with stored .aams-version. _spec (legacy fallback) used only if _contract not present. Since 2.3.1: also compare _version_date with .aams-version.installed_date.",

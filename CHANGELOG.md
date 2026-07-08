@@ -9,6 +9,27 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
 ---
 
+## [2.3.2] — 2026-07-08
+
+### Fixed
+
+- **on_update zu mechanisch** — Consumer-Repos erhielten nur Versionsnummer-Änderungen, aber keine Migration der neuen Konventionen. Beispiel: Nach `curl .agent.json` wurde `WORKING/TOOLS/skills/` nicht erstellt, obwohl CHANGELOG v2.3.0 "Skill-Baukasten" als Added auflistet.
+- **on_update ignorierte CHANGELOG-Inhalte** — Der Contract las CHANGELOG, führte aber nur Versions-Updates aus. Neue workspace.structure-Pfade, neue Sektionen und neue Konventionen wurden nicht migriert.
+- **Keine Migration neuer Pfade** — Consumer-Repos wussten nicht, dass sie neue Ordner anlegen müssen.
+
+### Changed
+
+- **`on_update` erweitert** — Neue Schritte:
+  - Parse CHANGELOG "Added" und "Changed" für neue workspace.structure-Pfade
+  - MIGRATE: Erstelle alle neuen workspace.structure-Pfade im Consumer-Repo wenn fehlend
+  - MIGRATE: Wende neue Konventionen aus CHANGELOG an (Folder-Strukturen, Skill-Definitionen, Detection-Patterns)
+  - MIGRATE: Prüfe ob neue tool_detection-Beispiele relevant sind
+  - MIGRATE: Flagge "Removed"-Dateien im lokalen Repo zur Review (kein Auto-Delete)
+  - Log Migration-Aktionen in DIARY/{YYYY-MM-DD}.md
+- **`on_update` schreibt jetzt Migrationen statt nur Zahlen**
+
+---
+
 ## [2.3.1] — 2026-07-08
 
 ### Fixed
