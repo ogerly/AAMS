@@ -115,21 +115,21 @@ INDEX.md-Dateien fuer WHITEPAPER/ und WORKPAPER/ anlegen + Schema definieren + `
 
 1. ✅ WORKPAPER/INDEX.md anlegen
 2. ✅ `.agent.json` on_update erweitern
-3. ✅ READ-AGENT.md INDEX-Pflege-Konventionen ergaenzen
-4. ❌ Committen
-5. ❌ Release hochsetzen
-6. ❌ AAMS on_update im eigenen Repo ausfuehren
-7. ❌ Workpaper-Status pruefen (Max-5-Regel)
-8. ❌ Offene Workpapers pruefen — Schliessen anbieten
+3. ✅ READ-AGENT.md INDEX-Pflege-Konventionen ergaenzt
+4. ✅ Committen
+5. ✅ Release hochgesetzt auf v2.5.0
+6. ✅ AAMS on_update im eigenen Repo — INDEX-Pflege angewandt
+7. ✅ 5 Workpapers geschlossen (WP-001, WP-002, WP-003, WP-005, WP-006)
+8. ✅ WORKPAPER/INDEX.md aktualisiert
 
 ---
 
 ## Session-Ende: AAMS on_update im eigenen Repo
 
-### Auszufuehrende Schritte (s.u.)
+### Ausgefuehrte Schritte
 
-1. **INDEX-Pflege:** WHITEPAPER/INDEX.md und WORKPAPER/INDEX.md pruefen
-2. **Workpaper-Check:** Max-5-Regel pruefen, offene Papers auflisten
-3. **Schliessen-Angebot:** Fuer jedes Paper: Grossteil erledigt? → Schliessen anbieten
-4. **Release-Check:** Aendert sich etwas am Contract? → Release hochsetzen
-5. **Committen:** Alles commiten
+1. **INDEX-Pflege:** WHITEPAPER/INDEX.md ✅ + WORKPAPER/INDEX.md ✅ (neu)
+2. **Workpaper-Check:** 9 offene Papers → 5 geschlossen → 4 übrig (Max-5-Regel ✅)
+3. **Schliessen:** WP-001 (Skill-Konzept ✅), WP-002 (Migration-Check ✅), WP-003 (RES abgeschlossen ✅), WP-005 (Guard ✅), WP-006 (Skills ✅)
+4. **Release:** v2.4.0 → v2.5.0 (Minor-Bump: neue Konventionen)
+5. **Committen:** ✅ `feat: INDEX.md-Pflege für Whitepaper + Workpaper + Max-5-Regel + on_update erweitert`
