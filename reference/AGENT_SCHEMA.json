@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/ogerly/AAMS/schema/v1.0/AGENT_SCHEMA.json",
+  "$id": "https://github.com/ogerly/AAMS/schema/v2.3.0/AGENT_SCHEMA.json",
   "title": "AAMS — Agent Manifest",
-  "description": "JSON Schema for validating AGENT.json files (Version 1.0, local-first).",
-  "version": "1.0.0",
+  "description": "JSON Schema for validating AGENT.json files (Version 2.3.0, local-first).",
+  "version": "2.3.0",
   "type": "object",
   "required": ["_contract", "identity", "runtime", "skills", "permissions", "memory", "session", "tools", "workspace"],
 

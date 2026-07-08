@@ -3,8 +3,8 @@
   "_spec_note": "DEPRECATED — use _contract. _spec retained for backward compatibility with AAMS/1.x tooling.",
   "_doc": "Minimal Agent Manifest for workspace and documentation conventions. Drop this file into any repository. Idempotent: safe to read multiple times.",
   "_source": "https://github.com/ogerly/AAMS",
-  "_contract": "AAMS/2.0",
-  "_version_date": "2026-04-30",
+  "_contract": "AAMS/2.3.1",
+  "_version_date": "2026-07-08",
 
   "workspace": {
     "root": "./WORKING",
@@ -251,7 +251,7 @@
       "next_steps"
     ],
     "on_session_start": [
-      "0. VERSION-CHECK: Compare _contract (priority) with local ./.aams-version (if exists). If _contract not present, compare _spec (legacy fallback). _spec is a constant value.",
+      "0. VERSION-CHECK: Compare _contract (priority) with local ./.aams-version.installed_version AND _version_date with ./.aams-version.installed_date. If either differs, execute on_update. If _contract not present, compare _spec (legacy fallback).",
       "0a. FALLBACK: If version discrepancy detected, execute on_update before continuing.",
       "1. Read READ-AGENT.md",
       "2. Query memory for session topic",
@@ -271,12 +271,13 @@
       "For Minor-Bump (1.x → 1.y): write READ-CHANGELOG.md with new features",
       "For Major-Bump (x.0 → y.0): inform about potential Breaking Changes, read MIGRATIONS.md",
       "Write updated READ-AGENT.md",
-      "Set .aams-version in target repo to new version"
+      "Set .aams-version in target repo to new version",
+      "Update _version_date in .agent.json to current date (YYYY-MM-DD)"
     ],
     "version_detection": {
-      "_doc": "Mechanism to detect if .agent.json has been updated via curl. Compare _contract (priority) with stored .aams-version. _spec (legacy fallback) used only if _contract not present.",
+      "_doc": "Mechanism to detect if .agent.json has been updated via curl. Compare _contract (priority) with stored .aams-version. _spec (legacy fallback) used only if _contract not present. Since 2.3.1: also compare _version_date with .aams-version.installed_date.",
       "local_version_file": "./.aams-version",
-      "check": "if exists(local_version_file) and local_version != _contract: trigger on_update",
+      "check": "if exists(local_version_file) and (local_version != _contract OR local_date != _version_date): trigger on_update",
       "fallback_check": "if exists(local_version_file) and _contract not present and local_version != _spec: trigger on_update (legacy)",
       "update": "write new _contract value to local_version_file after on_update completes"
     }

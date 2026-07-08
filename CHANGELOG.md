@@ -9,6 +9,24 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
 ---
 
+## [2.3.1] — 2026-07-08
+
+### Fixed
+
+- **Update-Detection kaputt** — `version_detection` verglich nur `_contract` mit `.aams-version`. Da `_contract` immer `AAMS/2.0` war, merkten Consumer-Repos keine Änderung. Jetzt: `_contract` trägt Patch-Version (`AAMS/2.3.1`), `version_detection` vergleicht zusätzlich `_version_date` mit `.aams-version.installed_date`. Bei Diskrepanz → `on_update` wird ausgeführt.
+- **`_version_date` nicht in `on_update`** — Der `on_update`-Contract hat `_version_date` in `.agent.json` nicht aktualisiert. Neue Zeile hinzugefügt: "Update `_version_date` in `.agent.json` to current date (YYYY-MM-DD)".
+- **Andere Consumer-Repos blind** — Ohne Patch-Version im `_contract` und ohne `_version_date`-Vergleich bleibt ein Upgrade für alle Repos unsichtbar. Fix: semver im `_contract` + `_version_date`-Vergleich in `version_detection`.
+
+### Changed
+
+- **`_contract`** — `AAMS/2.0` → `AAMS/2.3.1` (Patch-Version für Update-Detection)
+- **`.aams-version`** — `installed_version` → `AAMS/2.3.1`, `install_type` → `upgrade`
+- **`version_detection.check`** — Erweitert: vergleicht nun `_contract` UND `_version_date` mit `.aams-version`
+- **`reference/AGENT_SCHEMA.json`** — `$id` und `version` auf `2.3.0` aktualisiert
+- **`reference/AGENT.json`** — `_version_date: 2026-07-08` hinzugefügt
+
+---
+
 ## [2.3.0] — 2026-07-07
 
 ### Added

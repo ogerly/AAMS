@@ -1,9 +1,9 @@
 {
-  "installed_version": "AAMS/2.0",
-  "installed_date": "2026-04-29",
+  "installed_version": "AAMS/2.3.1",
+  "installed_date": "2026-07-08",
   "workspace_root": "./WORKING",
   "workspace_container": null,
-  "last_update": "2026-04-30",
-  "install_type": "fresh",
+  "last_update": "2026-07-08",
+  "install_type": "upgrade",
   "_schema": "1"
 }

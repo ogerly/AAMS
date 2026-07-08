@@ -1,7 +1,8 @@
 {
   "_spec": "AAMS-MINI/1.0",
   "_spec_note": "DEPRECATED — use _contract.",
-  "_contract": "AAMS/2.0",
+  "_contract": "AAMS/2.3.1",
+  "_version_date": "2026-07-08",
   "_doc": "Autonomous Agent Manifest — https://github.com/ogerly/AAMS",
   "_focus": "local-first",
 
