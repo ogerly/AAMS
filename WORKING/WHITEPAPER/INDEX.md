@@ -19,6 +19,7 @@
 | WH-008 | [WH-008-health-score-10.md](./WH-008-health-score-10.md) | Health-Score 10/10 — `.aams-version` + Git-Tags + Issue #45 | 2026-04-30 | Aktiv |
 | WH-009 | [WH-009-guard-pattern.md](./WH-009-guard-pattern.md) | Guard-Pattern — Zwei-Ebenen-Modell: AAMS beschreibt Pattern (WHAT), Implementierung ist local_adaptation (HOW) | 2026-07-06 | Aktiv |
 | WH-010 | [WH-010-skills.md](./WH-010-skills.md) | Skills — Kristallisiertes Wissen, Tool-Erkennung, Skill-Baukasten, Issue-Vorschlag, Absolute Neutralität, Lokale LLMs (LM Studio + qwen/qwen3.6-35b-a3b) | 2026-07-07 | Aktiv |
+| WH-011 | [WH-011-upgrade-system.md](./WH-011-upgrade-system.md) | Upgrade-System — 4-Schichten-Modell: Versions-Detection, Migration, Backup+Merge, Feedback-Loop | 2026-07-08 | Aktiv |
 
 ---
 

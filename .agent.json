@@ -3,7 +3,7 @@
   "_spec_note": "DEPRECATED — use _contract. _spec retained for backward compatibility with AAMS/1.x tooling.",
   "_doc": "Minimal Agent Manifest for workspace and documentation conventions. Drop this file into any repository. Idempotent: safe to read multiple times.",
   "_source": "https://github.com/ogerly/AAMS",
-  "_contract": "AAMS/2.3.1",
+  "_contract": "AAMS/2.4.0",
   "_version_date": "2026-07-08",
 
   "workspace": {
@@ -275,6 +275,10 @@
       "MIGRATE: Apply new conventions described in CHANGELOG (e.g. new folder structures, skill definitions, detection patterns)",
       "MIGRATE: Check if new tool_detection examples are relevant for this repo — if so, implement passive detection",
       "MIGRATE: If CHANGELOG mentions 'Removed' files that exist in local repo — flag for review (do NOT auto-delete)",
+      "INDEX: Prüfen ob WHITEPAPER/INDEX.md existiert — falls nicht, erstellen + bestehende Whitepapers indexieren",
+      "INDEX: Prüfen ob WORKPAPER/INDEX.md existiert — falls nicht, erstellen + bestehende Workpapers indexieren",
+      "INDEX: Bei neuem Whitepaper/Workpaper: entsprechende INDEX.md aktualisieren",
+      "INDEX: Max-5-Regel prüfen — mehr als 5 offene Workpapers? Falls ja: Warnung + Vorschlag zum Schliessen",
       "Write updated READ-AGENT.md with new conventions and structure",
       "Set .aams-version in target repo to new version",
       "Update _version_date in .agent.json to current date (YYYY-MM-DD)",

@@ -92,6 +92,66 @@ If `./WORKSPACE/WORKING/` exists at repo root, use it as the effective root for 
 
 ---
 
+## INDEX.md-Pflege
+
+### WHITEPAPER/INDEX.md
+
+Jedes Whitepaper wird in `WHITEPAPER/INDEX.md` eingetragen:
+
+| Spalte | Inhalt |
+|--------|--------|
+| `#` | Whitepaper-Nummer (WH-001) |
+| `Datei` | Link zur Datei |
+| `Thema` | Kurzbeschreibung des Inhalts (1-2 Zeilen) |
+| `Stand` | Erstellungsdatum |
+| `Status` | Aktiv / Archiviert |
+
+**Zusaetzliche Sektionen:** Cross-Referenzen, Offene Widersprueche / Pending Decisions.
+
+**Pflege:** Bei jedem neuen Whitepaper oder Whitepaper-Update → INDEX.md pruefen und aktualisieren.
+
+### WORKPAPER/INDEX.md
+
+Jedes Workpaper wird in `WORKPAPER/INDEX.md` eingetragen:
+
+| Spalte | Inhalt |
+|--------|--------|
+| `#` | Workpaper-Nummer (WP-001) |
+| `Datei` | Link zur Datei |
+| `Datum` | Erstellungsdatum |
+| `TOPIC` | Topic-Tag (ARCH, SPEC, LTM, etc.) |
+| `Thema` | Kurzbeschreibung (1-2 Zeilen) |
+| `Status` | offen / observe / closed |
+| `Naechstes` | Offene To-Dos / naechste Schritte |
+
+**Pflege:** Bei jedem neuen Workpaper → INDEX.md pruefen und aktualisieren.
+
+### INDEX.md-Erstellung (on_update)
+
+Wenn `.agent.json` upgedatet wird und keine INDEX.md existiert:
+
+1. **WHITEPAPER/INDEX.md:** Falls nicht vorhanden → erstellen + alle bestehenden Whitepapers indexieren
+2. **WORKPAPER/INDEX.md:** Falls nicht vorhanden → erstellen + alle bestehenden Workpapers indexieren
+3. **Schema:** Siehe oben — Spalten und Format strikt einhalten
+4. **Pflege:** Bei jedem neuen Whitepaper/Workpaper → INDEX.md aktualisieren
+
+### Max 5 offene Workpapers
+
+- Wenn mehr als 5 Workpapers offen → Warnung beim naechsten Workpaper-Erstellen
+- Alte Workpapers auf `observe` setzen oder nach `closed/` verschieben
+- Regel in `on_session_start` pruefen
+
+### Observer-Pattern
+
+- WORKPAPER/observe/ — Workpapers die beobachtet werden muessen (warten auf externes Feedback)
+- Observer prueft automatisch:
+  - Gibt es INDEX.md? Falls nicht → erstellen
+  - Sind alle Whitepapers im INDEX? Falls nein → aktualisieren
+  - Mehr als 5 offene Workpapers? Falls ja → warnen
+  - Closed Workpapers noch im INDEX? Falls ja → entfernen oder markieren
+
+---
+
 ### Naming Schema
 
 Structured filenames enable cross-session consistency checks (RFL). Agents SHOULD follow this schema. Frameworks MAY enforce it.
@@ -291,11 +351,11 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 ## Current Status
 
 - Bootstrap: **complete** (2026-02-22)
-- Manifest version: **AAMS/2.0**
-- Last release: **v2.2.0** (2026-04-30) — Naming Schema + Health-Score 10/10
+- Manifest version: **AAMS/2.4.0**
+- Last release: **v2.4.0** (2026-07-08) — Upgrade-Report, Upgrade-Sicherheit, UPGRADE.md
 - Workspace: initialized, all folders present
 - LTM: 136 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
-- Whitepapers: 9 + INDEX.md → WH-001 AAMS Overview, WH-002 Related Work, WH-003 Field Discourse, WH-004 Long-Horizon Reasoning, WH-005 Workpaper Lifecycle States, WH-006 README Consistency, WH-007 SPEC/CONTRACT Stub, WH-008 Health-Score 10/10, WH-009 Guard-Pattern
+- Whitepapers: 11 + INDEX.md → WH-001 AAMS Overview, WH-002 Related Work, WH-003 Field Discourse, WH-004 Long-Horizon Reasoning, WH-005 Workpaper Lifecycle States, WH-006 README Consistency, WH-007 SPEC/CONTRACT Stub, WH-008 Health-Score 10/10, WH-009 Guard-Pattern, WH-010 Skills, WH-011 Upgrade-System
 - Closed workpapers: 50 in `WORKING/WORKPAPER/closed/`
 - READMEs: DE ✅ · EN ✅
 - LTM architecture: dual-layer (audit-log + vector store) ✅
