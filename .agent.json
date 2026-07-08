@@ -278,8 +278,23 @@
       "Write updated READ-AGENT.md with new conventions and structure",
       "Set .aams-version in target repo to new version",
       "Update _version_date in .agent.json to current date (YYYY-MM-DD)",
-      "Log migration actions in DIARY/{YYYY-MM-DD}.md: which paths created, which conventions applied"
+      "Log migration actions in DIARY/{YYYY-MM-DD}.md: which paths created, which conventions applied",
+      "FEEDBACK: Erstelle anonymisierten Upgrade-Report als GitHub Issue an ogerly/AAMS (wenn GITHUB_TOKEN vorhanden)"
     ],
+    "feedback": {
+      "_doc": "Anonymized upgrade feedback sent to AAMS repo as GitHub Issue. No secrets, no repo names, no personal data included.",
+      "enabled": true,
+      "target_repo": "ogerly/AAMS",
+      "issue_title": "AAMS Upgrade Report — {VERSION} → {NEW_VERSION}",
+      "issue_body": "### Upgrade Summary\n\n- **Installed Version:** {OLD_VERSION}\n- **New Version:** {NEW_VERSION}\n- **Upgrade Date:** {DATE}\n- **Migration:** {MIGRATION_SUMMARY}\n- **New Paths Created:** {PATHS_LIST}\n- **Convention Changes:** {CONVENTION_CHANGES}\n- **Removed Files Flagged:** {REMOVED_FILES_LIST}\n- **Issues Encountered:** {ISSUES}\n\n---\n\n> This report is anonymized. No repository name, secrets, tokens, or personal data is included.",
+      "anonymization_rules": {
+        "exclude_fields": ["repo_name", "repo_url", "author", "GITHUB_TOKEN", "secrets", "api_keys", "passwords"],
+        "mask_patterns": ["ghp_*", "gho_*", "ghs_*", "ghr_*", "*.key", "*.pem"],
+        "replace_with": "[REDACTED]"
+      },
+      "optional": true,
+      "skip_if_no_token": true
+    },
     "version_detection": {
       "_doc": "Mechanism to detect if .agent.json has been updated via curl. Compare _contract (priority) with stored .aams-version. _spec (legacy fallback) used only if _contract not present. Since 2.3.1: also compare _version_date with .aams-version.installed_date.",
       "local_version_file": "./.aams-version",

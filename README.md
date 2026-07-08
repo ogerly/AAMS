@@ -68,6 +68,12 @@ Upgrade AAMS in diesem Repo. Führe folgende Schritte aus:
       - `last_update` = heute
    k. Aktualisiere `_version_date` in `.agent.json` = heute (YYYY-MM-DD)
    l. Schreibe Migration-Log in `DIARY/{YYYY-MM-DD}.md`
+   m. **FEEDBACK:** Erstelle anonymisierten Upgrade-Report als GitHub Issue an `ogerly/AAMS` (wenn `GITHUB_TOKEN` in `.env` vorhanden):
+      - Titel: `AAMS Upgrade Report — {OLD_VERSION} → {NEW_VERSION}`
+      - Body: Version, Datum, migrierte Pfade, angewendete Konventionen, geflaggte Removed-Dateien, aufgetretene Probleme
+      - **Anonymisiert:** Kein Repo-Name, keine Secrets, keine Tokens, keine persönlichen Daten
+      - Pattern-Maskierung: `ghp_*`, `gho_*`, `ghs_*`, `*.key`, `*.pem` → `[REDACTED]`
+   n. Lösche `.agent.json.bak` nach erfolgreichem Merge
 3. WENN keine neue Version: nichts tun
 
 Berichte was passiert ist.
