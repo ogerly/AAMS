@@ -11,8 +11,10 @@ Upgrade AAMS in diesem Repo. Führe folgende Schritte aus:
 
 1. VERSION-CHECK: Lies `.aams-version` und vergleiche `installed_version` mit Remote `https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json` → `_contract`
 2. WENN Version unterschiedlich:
-   a. `curl -sO https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json` — überschreibe lokale `.agent.json`
-   b. Lies CHANGELOG.md von AAMS (Remote: `https://raw.githubusercontent.com/ogerly/AAMS/main/CHANGELOG.md`)
+   a. **Backup:** Kopiere `.agent.json` nach `.agent.json.bak`
+   b. **Lade Remote:** `curl -sO https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json`
+   c. **Merge:** Vergleiche `.agent.json.bak` mit neuer `.agent.json` — behalte lokale Anpassungen (z.B. identity, runtime, permissions)
+   d. Lies CHANGELOG.md von AAMS (Remote: `https://raw.githubusercontent.com/ogerly/AAMS/main/CHANGELOG.md`)
    c. Finde den Abschnitt für die neue Version
    d. Parse "Added" und "Changed" Sektionen für neue workspace.structure-Pfade
    e. MIGRATE: Erstelle alle neuen Pfade in WORKING/ z.B. `WORKING/TOOLS/skills/`, `WORKING/WORKPAPER/observe/`
@@ -39,7 +41,11 @@ curl -s https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json | grep '"
 cat .aams-version | grep 'installed_version'
 
 # 3. Wenn unterschiedlich — Upgrade:
+# Backup vor Überschreiben!
+cp .agent.json .agent.json.bak
 curl -sO https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json
+# Diff vergleichen: diff .agent.json.bak .agent.json
+# Lokale Anpassungen aus .agent.json.bak übernehmen
 
 # 4. CHANGELOG prüfen für neue Konventionen
 curl -s https://raw.githubusercontent.com/ogerly/AAMS/main/CHANGELOG.md | head -100
@@ -60,6 +66,7 @@ mkdir -p WORKING/WORKPAPER/observe
 - **Kein Auto-Delete** — "Removed" Dateien werden nur flaggt, nicht gelöscht
 - **Migration wird geloggt** — Alle Änderungen in `DIARY/{YYYY-MM-DD}.md`
 - **`.env` nicht überschreiben** — `.agent.json` enthält keine Secrets
+- **`.agent.json.bak` nach Merge löschen** — nur so lange zum Vergleichen nötig
 - **`WORKING/` nicht löschen** — nur neue Pfade erstellen
 
 ### Troubleshooting

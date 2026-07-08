@@ -49,10 +49,31 @@ Der Agent erstellt die `WORKING/`-Struktur, scannt das Repo, schreibt das erste 
 **Upgrade — AAMS auf den neuesten Stand bringen:**
 
 ```
-Read .agent.json and execute agent_contract.on_session_start. Check for version updates.
+Upgrade AAMS in diesem Repo. Führe folgende Schritte aus:
+
+1. VERSION-CHECK: Lies `.aams-version` und vergleiche `installed_version` mit Remote `https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json` → `_contract`
+2. WENN Version unterschiedlich:
+   a. **Backup:** Kopiere lokale `.agent.json` nach `.agent.json.bak`
+   b. **Lade Remote:** `curl -sO https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json`
+   c. **Merge:** Vergleiche `.agent.json.bak` mit neuer `.agent.json` — behalte lokale Anpassungen (z.B. identity, runtime, permissions)
+   d. Lies CHANGELOG.md von AAMS (Remote: `https://raw.githubusercontent.com/ogerly/AAMS/main/CHANGELOG.md`)
+   e. Finde den Abschnitt für die neue Version
+   f. Parse "Added" und "Changed" Sektionen für neue workspace.structure-Pfade
+   g. MIGRATE: Erstelle alle neuen Pfade in WORKING/ z.B. `WORKING/TOOLS/skills/`, `WORKING/WORKPAPER/observe/`
+   h. MIGRATE: Wende neue Konventionen an (Skills-Struktur, tool_detection, etc.)
+   i. MIGRATE: Prüfe ob "Removed" Dateien im lokalen Repo existieren — flagge zur Review (kein Auto-Delete)
+   j. Aktualisiere `.aams-version`:
+      - `installed_version` = neue `_contract` aus `.agent.json`
+      - `installed_date` = heute (YYYY-MM-DD)
+      - `last_update` = heute
+   k. Aktualisiere `_version_date` in `.agent.json` = heute (YYYY-MM-DD)
+   l. Schreibe Migration-Log in `DIARY/{YYYY-MM-DD}.md`
+3. WENN keine neue Version: nichts tun
+
+Berichte was passiert ist.
 ```
 
-Dies aktualisiert automatisch alle Manifest-Dateien und Workpaper-Strukturen.
+Dies aktualisiert automatisch alle Manifest-Dateien, migriert neue Konventionen und erstellt fehlende Ordner-Strukturen.
 
 **⚠️ WSL/PowerShell:** Git Credential Helper in WSL (`git-credential-manager`) funktioniert nicht auf Windows. Pushen in PowerShell: `git push https://Ogerly:<PAT>@github.com/ogerly/AAMS.git main` oder `git config --global credential.helper manager` (Browser-Prompt).
 
