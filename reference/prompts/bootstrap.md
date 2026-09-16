@@ -34,7 +34,7 @@ Cursor, Claude Code, GitHub Copilot, Aider, Continue.dev, Codex, Windsurf.
 **Step 1 — Drop `.agent.json` into your repo:**
 
 ```bash
-curl -sO https://raw.githubusercontent.com/DEVmatrose/AAMS/main/.agent.json
+curl -sO https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json
 ```
 
 **Step 2 — Tell your agent:**

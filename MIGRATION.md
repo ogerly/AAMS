@@ -43,11 +43,11 @@ AAMS ist jetzt ein **Agent Manifest**, keine **Specification**.
 Der curl-Befehl bleibt identisch:
 
 ```bash
-curl -sO https://raw.githubusercontent.com/DEVmatrose/AAMS/main/.agent.json
+curl -sO https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json
 ```
 
 ---
 
 > **AAMS/2.0 — Agent Manifest (not Specification)**
 > AAMS describes. It does not prescribe.
-> [Learn more](https://github.com/DEVmatrose/AAMS)
+> [Learn more](https://github.com/ogerly/AAMS)

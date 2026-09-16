@@ -14,6 +14,8 @@
 | WP-007 | [WP-2026-07-08-index-dateien.md](./WP-2026-07-08-index-dateien.md) | 2026-07-08 | SPEC | INDEX-Dateien für Whitepaper/Workpaper | offen | Schritte 4-8 |
 | WP-008 | [WP-2026-07-08-session-start-issue-check.md](./WP-2026-07-08-session-start-issue-check.md) | 2026-07-08 | ISS | Session-Start & Issue-Check nach v2.3.0 | offen | Issue-Triage |
 | WP-009 | [skill-opencode-agent.md](./skill-opencode-agent.md) | — | ARCH | OpenCode Agent Skill | offen | Skill-Pflege |
+| WP-010 | [WP-2026-09-16-SPEC-QUEST-hermes-sidecar-stellungnahme.md](./WP-2026-09-16-SPEC-QUEST-hermes-sidecar-stellungnahme.md) | 2026-09-16 | SPEC | Hermes-Sidecar-Stellungnahme (Q1–Q5 + Pattern-Entwurf) | offen | Antwort übermitteln, D2 klären, Close |
+| WP-011 | [closed/WP-2026-09-16-MKT-DOC-readme-website-analyse.md](./closed/WP-2026-09-16-MKT-DOC-readme-website-analyse.md) | 2026-09-16 | MKT | README + Webseite: Ist→Soll-Analyse + Umsetzung (M1–M3, Archiv, Relaunch) | closed | Follow-ups: M7 EN/ZH, LICENSE, F-E |
 
 ---
 
@@ -41,4 +43,4 @@
 
 ---
 
-> Letztes Update: 2026-07-08 — INDEX.md erstellt. 9 offene Workpapers (Max 5-Regel ueberschritten).
+> Letztes Update: 2026-09-16 — WP-011 angelegt. 6 offene Workpapers (Max-5-Regel ueberschritten — Vorschlag: skill-opencode-agent.md nach observe/).

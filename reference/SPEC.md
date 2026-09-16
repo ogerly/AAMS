@@ -15,7 +15,7 @@
 
 > **AAMS/2.0 — Agent Manifest (not Specification)**  
 > AAMS describes workspace and documentation conventions. It does not prescribe agent behavior.  
-> [Learn more](https://github.com/DEVmatrose/AAMS)
+> [Learn more](https://github.com/ogerly/AAMS)
 
 ## Philosophy
 
@@ -484,7 +484,7 @@ Metadata for spec compliance and review scheduling.
 ```json
 "governance": {
   "spec_version": "1.0",
-  "spec_url": "https://github.com/DEVmatrose/AAMS",
+  "spec_url": "https://github.com/ogerly/AAMS",
   "validated_with": "check-jsonschema",
   "last_reviewed": "2026-02-18",
   "review_interval_days": 90,
@@ -1164,7 +1164,7 @@ AAMS is an open standard. We invite you to:
 - Contribute validator tools
 - Submit your own implementations as references
 
-→ **https://github.com/DEVmatrose/AAMS**
+→ **https://github.com/ogerly/AAMS**
 
 ---
 

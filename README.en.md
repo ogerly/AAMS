@@ -33,7 +33,7 @@
 > **AAMS is not a dependency to clone.** You do not clone this repository into your project. You download one single file into YOUR repo root.
 
 ```bash
-curl -sO https://raw.githubusercontent.com/DEVmatrose/AAMS/main/.agent.json
+curl -sO https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json
 ```
 
 **Step 2 — Tell your agent:**
@@ -44,7 +44,7 @@ Read .agent.json and execute the full agent_contract.on_first_entry. Start immed
 
 The agent creates the `WORKING/` structure, scans the repo, writes the first workpaper, and indexes into LTM. Works with Cursor, Claude Code, Copilot, Aider, Codex, Windsurf, Continue.dev.
 
-**⚠️ WSL/PowerShell:** Git Credential Helper in WSL (`git-credential-manager`) does not work on Windows. Push in PowerShell: `git push https://DEVmatrose:<PAT>@github.com/DEVmatrose/AAMS.git main` or `git config --global credential.helper manager` (Browser prompt).
+**⚠️ WSL/PowerShell:** Git Credential Helper in WSL (`git-credential-manager`) does not work on Windows. Push in PowerShell: `git push https://Ogerly:<PAT>@github.com/ogerly/AAMS.git main` or `git config --global credential.helper manager` (Browser prompt).
 
 → Extended variants and session-start prompt: [`reference/prompts/bootstrap.md`](./reference/prompts/bootstrap.md)
 

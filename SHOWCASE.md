@@ -8,7 +8,7 @@
 
 | Projekt | Beschreibung | Link | Statement |
 |---------|-------------|------|-----------|
-| AAMS | Die Spezifikation selbst — dogfooding seit Tag 1 | [GitHub](https://github.com/DEVmatrose/AAMS) | *„Ein Repo ohne Agent-Struktur ist wie ein Schiff ohne Logbuch."* |
+| AAMS | Die Spezifikation selbst — dogfooding seit Tag 1 | [GitHub](https://github.com/ogerly/AAMS) | *„Ein Repo ohne Agent-Struktur ist wie ein Schiff ohne Logbuch."* |
 | MantisClaw | Autonomes Agent-Loop-Framework mit emergenter Identität — AAMS als strukturierter Körper | [GitHub](https://github.com/DEVmatrose/MantisClaw) | *„AAMS gibt dem Agent einen Körper. MantisClaw gibt ihm ein Gehirn."* |
 | MantisNostr | Mesh-Netzwerk-Schicht für autonome Agenten über Nostr | [GitHub](https://github.com/DEVmatrose/MantisNostr) | — |
 | Mantis-OS | Autonomes Agenten-Betriebssystem — MantisClaw + MantisNostr als vollständiger Knoten | [GitHub](https://github.com/DEVmatrose/Mantis-OS) | — |
