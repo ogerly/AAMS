@@ -354,9 +354,9 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 - Manifest version: **AAMS/2.4.0**
 - Last release: **v2.4.0** (2026-07-08) — Upgrade-Report, Upgrade-Sicherheit, UPGRADE.md
 - Workspace: initialized, all folders present
-- LTM: 136 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
+- LTM: 142 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
 - Whitepapers: 11 + INDEX.md → WH-001 AAMS Overview, WH-002 Related Work, WH-003 Field Discourse, WH-004 Long-Horizon Reasoning, WH-005 Workpaper Lifecycle States, WH-006 README Consistency, WH-007 SPEC/CONTRACT Stub, WH-008 Health-Score 10/10, WH-009 Guard-Pattern, WH-010 Skills, WH-011 Upgrade-System
-- Closed workpapers: 50 in `WORKING/WORKPAPER/closed/`
+- Closed workpapers: 52 in `WORKING/WORKPAPER/closed/` (inkl. WP-011 MKT-DOC + WP-010 SPEC-QUEST vom 2026-09-16)
 - READMEs: DE ✅ · EN ✅
 - LTM architecture: dual-layer (audit-log + vector store) ✅
 - GitHub Issues: #1–6 closed · #36–#40 closed · #45 (duplikat) · #43 RFC (open) · #41 MantisClaw (open) · #48 Decision-Leck (open) · #49 Upgrade-Transparenz (open) · #47 Tool Decay (open) · #46 Root-Ordner (open) · #26 Security (open) · #50 File Safety (new) · #51 Skill-Konzept (new)
