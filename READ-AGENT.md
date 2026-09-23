@@ -351,19 +351,20 @@ This pattern applies to any agent with native planning behaviours. AAMS is the a
 ## Current Status
 
 - Bootstrap: **complete** (2026-02-22)
-- Manifest version: **AAMS/2.4.0**
-- Last release: **v2.4.0** (2026-07-08) — Upgrade-Report, Upgrade-Sicherheit, UPGRADE.md
+- Manifest version: **AAMS/2.6.0**
+- Last release: **v2.6.0** (2026-09-23) — Team-Authorship (optional): Roster, BY-Header, passive Detection, Handover
 - Workspace: initialized, all folders present
-- LTM: 142 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
-- Whitepapers: 11 + INDEX.md → WH-001 AAMS Overview, WH-002 Related Work, WH-003 Field Discourse, WH-004 Long-Horizon Reasoning, WH-005 Workpaper Lifecycle States, WH-006 README Consistency, WH-007 SPEC/CONTRACT Stub, WH-008 Health-Score 10/10, WH-009 Guard-Pattern, WH-010 Skills, WH-011 Upgrade-System
-- Closed workpapers: 52 in `WORKING/WORKPAPER/closed/` (inkl. WP-011 MKT-DOC + WP-010 SPEC-QUEST vom 2026-09-16)
+- LTM: 145 entries → `WORKING/MEMORY/ltm-index.md` (Audit-Log) + `WORKING/AGENT-MEMORY/` (ChromaDB)
+- Whitepapers: 10 + INDEX.md → WH-001 AAMS Overview, WH-002 Related Work, WH-003 Field Discourse, WH-004 Long-Horizon Reasoning, WH-005 Workpaper Lifecycle States, WH-006 README Consistency, (WH-007 SPEC/CONTRACT Stub: **in INDEX gelistet, Datei fehlt** — wiederherstellen oder INDEX korrigieren), WH-008 Health-Score 10/10, WH-009 Guard-Pattern, WH-010 Skills, WH-011 Upgrade-System
+- Offene Workpapers: 5 (Max-5-Grenze): WP-004, WP-007, WP-008, WP-012 Hermes-Namensabgrenzung, WP-014 GOV-SYNC · Observe: 4 (inkl. WP-013 Open-Jev)
+- Closed workpapers: 64 in `WORKING/WORKPAPER/closed/` (inkl. WP-011 MKT-DOC + WP-010 SPEC-QUEST vom 2026-09-16 + 2 Roh-Dumps vom 2026-09-22)
 - READMEs: DE ✅ · EN ✅
 - LTM architecture: dual-layer (audit-log + vector store) ✅
 - GitHub Issues: #1–6 closed · #36–#40 closed · #45 (duplikat) · #43 RFC (open) · #41 MantisClaw (open) · #48 Decision-Leck (open) · #49 Upgrade-Transparenz (open) · #47 Tool Decay (open) · #46 Root-Ordner (open) · #26 Security (open) · #50 File Safety (new) · #51 Skill-Konzept (new)
 - CHANGELOG.md: **exists** (2026-04-24) — [Unreleased] needs update
-- `.agent.json`: `_contract: AAMS/2.0` + deprecated `_spec` + `topic_registry` + `on_update` + `version_detection` + `workpapers_observe` + **guard**
+- `.agent.json`: `_contract: AAMS/2.6.0` + deprecated `_spec` + `topic_registry` + `on_update` + `version_detection` + `workpapers_observe` + **guard** (+ `authorship_present`) + skills + tool_detection + file_safety + security + **team**
 - Decision-Promotion: **in READ-AGENT.md** (session-end checklist)
-- wiki_lint.py: **7 Checks + L4b Orphaned Decisions** (16 orphane Decisions detektiert)
+- wiki_lint.py: **7 Checks + L4b Orphaned Decisions** (Stand 2026-09-22: 12 ERROR + 28 WARN, alle pre-existing: L1-Pfad-Bug, L3-Altnamen, L4b orphane Decisions, L6 LTM-Lücke)
 - validate_tools.py: **D1-D4 AAMS Doctor** (Tool-Integrität)
 - Diary Layer: **reformed** — pointer-only temporal index (v1.3.0)
 - Documentation model: 4 layers (Workpaper, Whitepaper, Diary, Memory) + RFL consistency check + **Decision-Promotion** (session-end) + **Workpaper Lifecycle** (active → observe → closed) + **Naming Schema** (Whitepapers → WH-*, Workpapers → WP-*)
