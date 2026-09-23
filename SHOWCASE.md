@@ -15,6 +15,7 @@
 | pax | PAX Festival 2026 — Event-One-Pager, entwickelt mit AAMS-Agent-Workflow | [GitHub](https://github.com/ogerly/pax) | — |
 | Ocelot-Social-aams | AAMS-Fork von Ocelot.Social — 9 Whitepapers, Upgrade-Simulator, Zero-Code-Analyse | [GitHub](https://github.com/ogerly/Ocelot-Social-aams) | *„Kein Quellcode verändert. Nur AAMS ausgeführt. 9 Whitepapers, ein Upgrade-Plan und ein Simulator entstanden."* |
 | druid | Keltische Entdecker-App — interaktive Karte mit POIs, GPS-Tracking und Vue 3 | [GitHub](https://github.com/ogerly/druid) | — |
+| Alexander-Friedland (Blog) | Persönlicher Blog, entwickelt mit AAMS-Workflow — plus „Hermes": OpenCode-Plugin, das SOFT/HARD/HANDOFF-Checkpoints auslöst, dokumentiert im Artikel | [Artikel](https://ogerly.github.io/alexander-friedland/blog/blog-hermes-waechter-aams.html) | *„Das Kontextfenster ist flüchtig. Der Task nicht."* |
 
 ---
 
