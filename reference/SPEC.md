@@ -951,12 +951,12 @@ Projects adopting AAMS onto **existing structures** may not be able to follow ev
 ```json
 "_deviations": [
   {
-    "spec_path": "workspace.structure.workpapers_closed = ./WORKING/WORKPAPER/closed",
+    "convention_path": "workspace.structure.workpapers_closed = ./WORKING/WORKPAPER/closed",
     "actual_path": "./WORKING/WORKPAPER/close",
     "reason": "Pre-AAMS naming — 50+ historical workpapers, renaming would break cross-references."
   },
   {
-    "spec_path": "workspace.workpaper_rules.naming_pattern = {date}-{agent}-{topic}.md",
+    "convention_path": "workspace.workpaper_rules.naming_pattern = {date}-{agent}-{topic}.md",
     "actual_path": "{date}_{topic}.md",
     "reason": "Historical consistency — naming predates AAMS adoption."
   }
@@ -964,7 +964,7 @@ Projects adopting AAMS onto **existing structures** may not be able to follow ev
 ```
 
 **Rules:**
-- `spec_path` — the default as defined in this spec
+- `convention_path` — the default as defined in this spec
 - `actual_path` — what the project actually uses
 - `reason` — why (legacy, team preference, historical consistency)
 - Agents reading `_deviations` MUST adapt their path expectations accordingly

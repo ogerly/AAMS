@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/ogerly/AAMS/schema/v2.3.0/AGENT_SCHEMA.json",
+  "$id": "https://github.com/ogerly/AAMS/schema/v2.6.0/AGENT_SCHEMA.json",
   "title": "AAMS — Agent Manifest",
-  "description": "JSON Schema for validating AGENT.json files (Version 2.3.0, local-first).",
-  "version": "2.3.0",
+  "description": "JSON Schema for validating AGENT.json files (Version 2.6.0, local-first).",
+  "version": "2.6.0",
   "type": "object",
   "required": ["_contract", "identity", "runtime", "skills", "permissions", "memory", "session", "tools", "workspace"],
 
@@ -76,6 +76,7 @@
 
     "skills": {
       "type": "object",
+      "description": "Declared capabilities of the agent (capabilities, custom_skills) + optional skill pool (global_pool, local_adaptation, issue_suggestion, relationship). AAMS is neutral and standardless: describes WHAT a skill CAN be, not HOW to implement it.",
       "required": ["capabilities"],
       "properties": {
         "capabilities": {
@@ -96,6 +97,39 @@
               "output_schema": { "type": "object" }
             }
           }
+        },
+        "global_pool": {
+          "type": "object",
+          "properties": {
+            "reference":   { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "local_adaptation": {
+          "type": "object",
+          "properties": {
+            "storage":     { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "issue_suggestion": {
+          "type": "object",
+          "properties": {
+            "enabled":     { "type": "boolean" },
+            "format":      { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "relationship": {
+          "type": "object",
+          "properties": {
+            "_doc":        { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
         }
       },
       "patternProperties": { "^_": true },
@@ -329,51 +363,6 @@
       "additionalProperties": false
     },
 
-    "skills": {
-      "type": "object",
-      "description": "Optional. Skills are crystallized community knowledge. Agents may use them as starting points. AAMS is neutral and standardless: describes WHAT a skill CAN be, not HOW to implement it.",
-      "properties": {
-        "global_pool": {
-          "type": "object",
-          "properties": {
-            "_doc":        { "type": "string" },
-            "reference":   { "type": "string" }
-          },
-          "patternProperties": { "^_": true },
-          "additionalProperties": false
-        },
-        "local_adaptation": {
-          "type": "object",
-          "properties": {
-            "_doc":        { "type": "string" },
-            "storage":     { "type": "string" }
-          },
-          "patternProperties": { "^_": true },
-          "additionalProperties": false
-        },
-        "issue_suggestion": {
-          "type": "object",
-          "properties": {
-            "_doc":        { "type": "string" },
-            "enabled":     { "type": "boolean" },
-            "format":      { "type": "string" }
-          },
-          "patternProperties": { "^_": true },
-          "additionalProperties": false
-        },
-        "relationship": {
-          "type": "object",
-          "properties": {
-            "_doc":        { "type": "string" }
-          },
-          "patternProperties": { "^_": true },
-          "additionalProperties": false
-        }
-      },
-      "patternProperties": { "^_": true },
-      "additionalProperties": false
-    },
-
     "tool_detection": {
       "type": "object",
       "description": "AAMS detects the calling agent/tool at runtime. This enables tool-specific skill recommendations. Detection method depends on the tool. AAMS does NOT prescribe how detection happens — only: if you CAN detect, use it.",
@@ -481,6 +470,18 @@
               "patternProperties": { "^_": true },
               "additionalProperties": false
             },
+            "authorship_present": {
+              "type": "object",
+              "description": "Optional check before write/edit: the active workpaper carries a BY:-header (who + with what). Populated via passive detection — never asked from a human.",
+              "properties": {
+                "_doc":        { "type": "string" },
+                "check":       { "type": "string" },
+                "order":       { "type": "string" },
+                "description": { "type": "string" }
+              },
+              "patternProperties": { "^_": true },
+              "additionalProperties": false
+            },
             "tools_gated": {
               "type": "object",
               "properties": {
@@ -498,9 +499,10 @@
           "type": "object",
           "description": "Error messages describe the state, not the command. Descriptive, not imperative.",
           "properties": {
-            "_doc":        { "type": "string" },
+            "_doc":            { "type": "string" },
             "manifest_not_read": { "type": "string" },
-            "no_workpaper":    { "type": "string" }
+            "no_workpaper":    { "type": "string" },
+            "no_authorship":   { "type": "string" }
           },
           "patternProperties": { "^_": true },
           "additionalProperties": false
@@ -523,6 +525,81 @@
           "enum": ["descriptive_only", "enforced"],
           "description": "Whether the guard is descriptive only or actively enforced by the tool."
         }
+      },
+      "patternProperties": { "^_": true },
+      "additionalProperties": false
+    },
+
+    "team": {
+      "type": "object",
+      "description": "Optional team/collaboration metadata. Descriptive, nothing required. TEAM or SOLO: SAME STRUCTURE, ZERO DIFFERENCE.",
+      "properties": {
+        "roster": {
+          "type": "object",
+          "description": "Dynamic roster in the workspace (e.g. WORKING/TEAM.md) — NOT a static list in the manifest. Bootstrap creates it idempotently, present from day 1, even solo.",
+          "properties": {
+            "path":          { "type": "string" },
+            "bootstrap":     { "type": "string", "enum": ["create_if_missing", "skip"] },
+            "entry_fields":  { "type": "array", "items": { "type": "string" } }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "authorship": {
+          "type": "object",
+          "description": "Authorship format for workpapers, diary and LTM. Whitepapers stay author-free (Wahrheit-in-Zeit).",
+          "properties": {
+            "workpaper_header":     { "type": "string" },
+            "example":              { "type": "string" },
+            "diary_format":         { "type": "string" },
+            "ltm_columns":          { "type": "string" },
+            "whitepaper_authorship": { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "authorship_detection": {
+          "type": "object",
+          "description": "Authorship is PASSIVELY DETECTED from the tech stack (tool_detection + runtime configuration + endpoint), never asked from a human.",
+          "properties": {
+            "tool":        { "type": "string" },
+            "model":       { "type": "string" },
+            "capability":  { "type": "string" },
+            "name":        { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "handover": {
+          "type": "object",
+          "description": "Continuation protocol: continued_from, waiting (observe/ status), single writer per workpaper.",
+          "properties": {
+            "continued_from": { "type": "string" },
+            "waiting":        { "type": "string" },
+            "single_writer":  { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "guard_check": {
+          "type": "object",
+          "description": "Optional guard check: authorship_present (BY:-header in the active workpaper).",
+          "properties": {
+            "authorship_present": {
+              "type": "object",
+              "properties": {
+                "order":        { "type": "string" },
+                "error_format": { "type": "string" }
+              },
+              "patternProperties": { "^_": true },
+              "additionalProperties": false
+            },
+            "status": { "type": "string" }
+          },
+          "patternProperties": { "^_": true },
+          "additionalProperties": false
+        },
+        "status": { "type": "string" }
       },
       "patternProperties": { "^_": true },
       "additionalProperties": false
@@ -562,6 +639,10 @@
         "ltm_audit_log": {
           "type": "string",
           "description": "Path to the human-readable LTM audit log (markdown). Works without any vector store."
+        },
+        "team_file": {
+          "type": "string",
+          "description": "Path to the dynamic team roster (WORKING/TEAM.md). Created idempotently (create_if_missing) — present from day 1, team or solo, zero difference."
         }
       },
       "patternProperties": { "^_": true },

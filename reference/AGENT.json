@@ -1,8 +1,8 @@
 {
   "_spec": "AAMS-MINI/1.0",
   "_spec_note": "DEPRECATED — use _contract.",
-  "_contract": "AAMS/2.3.1",
-  "_version_date": "2026-07-08",
+  "_contract": "AAMS/2.6.0",
+  "_version_date": "2026-09-23",
   "_doc": "Autonomous Agent Manifest — https://github.com/ogerly/AAMS",
   "_focus": "local-first",
 
@@ -33,7 +33,7 @@
   },
 
   "skills": {
-    "_doc": "Declared capabilities of the agent. Used for self-description and routing in mesh.",
+    "_doc": "Declared capabilities of the agent (capabilities, custom_skills) + optional skill pool. AAMS is neutral and standardless: describes WHAT a skill CAN be, not HOW to implement it.",
     "capabilities": [
       "code_generation",
       "documentation",
@@ -70,7 +70,22 @@
           }
         }
       }
-    ]
+    ],
+    "global_pool": {
+      "_doc": "A global pool of skills is the source of truth. Not to be modified — only referenced.",
+      "reference": "https://skills.sh"
+    },
+    "local_adaptation": {
+      "_doc": "When a skill is adapted for a project, it carries its origin as a header comment (# source: origin/skill-name) and may be tailored to the project context.",
+      "storage": "WORKING/TOOLS/skills/<tool-name>/"
+    },
+    "issue_suggestion": {
+      "_doc": "When a detected tool has no skills in the builder, AAMS may suggest creating a new skill entry.",
+      "enabled": true
+    },
+    "relationship": {
+      "_doc": "Global → Local: Source → Refinement. Exploration → direct reach."
+    }
   },
 
   "permissions": {
@@ -420,25 +435,6 @@
     }
   },
 
-  "skills": {
-    "_doc": "Optional. Skills are crystallized community knowledge. Agents may use them as starting points, not as requirements. AAMS is neutral and standardless: describes WHAT a skill CAN be, not HOW to implement it.",
-    "global_pool": {
-      "_doc": "A global pool of skills is the source of truth. Not to be modified — only referenced.",
-      "reference": "https://skills.sh"
-    },
-    "local_adaptation": {
-      "_doc": "When a skill is adapted for a project, it carries its origin as a header comment (# source: origin/skill-name) and may be tailored to the project context.",
-      "storage": "WORKING/TOOLS/skills/<tool-name>/"
-    },
-    "issue_suggestion": {
-      "_doc": "When a detected tool has no skills in the builder, AAMS may suggest creating a new skill entry.",
-      "enabled": true
-    },
-    "relationship": {
-      "_doc": "Global → Local: Source → Refinement. Exploration → direct reach."
-    }
-  },
-
   "tool_detection": {
     "_doc": "AAMS detects the calling agent/tool at runtime. This enables tool-specific skill recommendations. Detection method depends on the tool. AAMS does NOT prescribe how detection happens — only: if you CAN detect, use it.",
     "mechanism": "environment_variable or config_file_inference",
@@ -499,6 +495,12 @@
         "check": "WORKING/WORKPAPER/ contains a file with status: open (or tool-equivalent)",
         "description": "All changes should be documented in a session-bound workpaper."
       },
+      "authorship_present": {
+        "_doc": "Optional check before write/edit: the active workpaper carries a BY:-header (who + with what). Populated via passive detection (tool_detection + runtime configuration) — never asked from a human.",
+        "check": "active workpaper header contains 'BY: {name|—} / {tool} / {model} / {capability}'",
+        "order": "manifest_read → workpaper_open → authorship_present → tools_gated",
+        "description": "Authorship is descriptive provenance, not a hard gate — enforcement is optional (see team.guard_check)."
+      },
       "tools_gated": {
         "_doc": "write/edit/apply_patch/bash should be blocked until manifest_read AND workpaper_open are satisfied.",
         "gated_tools": ["write", "edit", "apply_patch", "bash"]
@@ -507,7 +509,8 @@
     "error_format": {
       "_doc": "Error messages describe the state, not the command. Descriptive, not imperative.",
       "manifest_not_read": "GUARD-VERSTOSS: Lies zuerst .agent.json und READ-AGENT.md, bevor du Änderungen vornimmst.",
-      "no_workpaper": "GUARD-VERSTOSS: Kein offenes Workpaper unter WORKING/. Lege zuerst ein Workpaper mit status: open an."
+      "no_workpaper": "GUARD-VERSTOSS: Kein offenes Workpaper unter WORKING/. Lege zuerst ein Workpaper mit status: open an.",
+      "no_authorship": "GUARD-VERSTOSS: Kein Authorship-Header (BY:) im aktiven Workpaper. Erkennung: tool_detection + Runtime-Konfiguration — keine Eingabe nötig."
     },
     "implementation": {
       "_doc": "Tool-specific implementations are local adaptations. See WORKING/TOOLS/ for reference implementations.",
@@ -515,6 +518,50 @@
       "cursor": "WORKING/TOOLS/aams-guard-cursor.md",
       "claude": "WORKING/TOOLS/aams-guard-claude.md",
       "copilot": "WORKING/TOOLS/aams-guard-copilot.md"
+    },
+    "status": "descriptive_only"
+  },
+
+  "team": {
+    "_doc": "Optional team/collaboration metadata. Descriptive (D9), nothing required. TEAM or SOLO: SAME STRUCTURE, ZERO DIFFERENCE.",
+    "roster": {
+      "_doc": "Dynamic roster in the workspace — NOT a static list in this file. Bootstrap creates it idempotently (create_if_missing), present from day 1, even solo.",
+      "path": "./WORKING/TEAM.md",
+      "bootstrap": "create_if_missing",
+      "entry_fields": [
+        "name (optional — only if known, else '—')",
+        "type: human|agent",
+        "tool: working tool (e.g. opencode, claude-code, cursor)",
+        "model: full model ID (e.g. qwen/qwen3.8-27b, claude-opus-4)",
+        "capability: local|frontier (optional)",
+        "note (optional)"
+      ]
+    },
+    "authorship": {
+      "workpaper_header": "BY: {name|—} / {tool} / {model} / {capability}",
+      "example": "BY: — / opencode / qwen/qwen3.8-27b / local",
+      "diary_format": "YYYY-MM-DD | BY: {tool}/{model}/{capability} | WP: {workpaper} | WH: {whitepaper} | {other}",
+      "ltm_columns": "# | Datum | Typ | BY | Datei | Inhalt",
+      "whitepaper_authorship": "excluded — whitepapers stay author-free (Wahrheit-in-Zeit)"
+    },
+    "authorship_detection": {
+      "_doc": "Authorship is PASSIVELY DETECTED, never asked from a human. The AAMS check always yields the same schema — without relying on a correct human answer.",
+      "tool": "via existing tool_detection (opencode, cursor, claude-code, copilot, windsurf, aider, lm-studio, ollama, llama.cpp, openai-proxy)",
+      "model": "via runtime configuration (e.g. tool config provider/model, runtime.model)",
+      "capability": "via endpoint/provider: localhost/LAN/local runtime (ollama, lm-studio, llamacpp, local gateway) → 'local'; cloud provider (openai, anthropic, alibaba, openrouter, …) → 'frontier'",
+      "name": "only if known (e.g. git user, explicitly set), else '—' — NEVER required"
+    },
+    "handover": {
+      "continued_from": "Workpaper header field: ID of the predecessor workpaper (continuing someone else's workpaper)",
+      "waiting": "observe/ status = waiting for continuation (human or agent)",
+      "single_writer": "one active writer per workpaper; handover = status change, never parallel writes"
+    },
+    "guard_check": {
+      "authorship_present": {
+        "_doc": "Optional guard check before write/edit: the active workpaper carries a BY:-header (populated via authorship_detection).",
+        "order": "manifest_read → workpaper_open → authorship_present → tools_gated"
+      },
+      "status": "descriptive_only + optional tool enforcement (analogous to existing guard checks)"
     },
     "status": "descriptive_only"
   },
@@ -531,12 +578,12 @@
 
   "_deviations": [
     {
-      "spec_path": "workspace.structure.workpapers_closed = ./WORKING/WORKPAPER/closed",
+      "convention_path": "workspace.structure.workpapers_closed = ./WORKING/WORKPAPER/closed",
       "actual_path": "./WORKING/WORKPAPER/close",
       "reason": "Pre-AAMS naming convention — 50+ historical workpapers use 'close/', renaming would break cross-references."
     },
     {
-      "spec_path": "workspace.workpaper_rules.naming_pattern = {date}-{agent}-{topic}.md",
+      "convention_path": "workspace.workpaper_rules.naming_pattern = {date}-{agent}-{topic}.md",
       "actual_path": "{date}_{topic}.md",
       "reason": "Historical consistency — naming pattern predates AAMS adoption."
     }

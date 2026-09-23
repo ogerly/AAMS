@@ -169,7 +169,7 @@ Ja. Das komplette Kontextgedächtnis liegt als Markdown-Dateien auf deiner Festp
 **Alles andere** — der `WORKING/`-Baum, Whitepapers, Workpapers, Diary, Memory — wird vom Agent beim Bootstrap generiert oder während Sessions aufgebaut.
 
 **Current Status:**
-- Manifest version: **AAMS/2.4.0** (Last release: **v2.4.0**, 2026-07-08)
+- Manifest version: **AAMS/2.6.0** (Last release: **v2.6.0**, 2026-09-23)
 - Whitepapers: **11** + INDEX.md → WH-001..WH-011
 - Closed workpapers: **50+** in `WORKING/WORKPAPER/closed/`
 - LTM: **140** entries (audit-log + ChromaDB)
@@ -203,4 +203,4 @@ MIT — eine `LICENSE`-Datei im Repo-Root ist als Follow-up zu ergänzen (bislan
 ---
 
 <p align="center"><strong>Die unsichtbare Ordnung für deine KI-Projekte.</strong></p>
-<p align="center">Every agent. One file. — AAMS/2.4.0 Agent Manifest</p>
+<p align="center">Every agent. One file. — AAMS/2.6.0 Agent Manifest</p>

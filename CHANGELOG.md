@@ -9,6 +9,69 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
 ---
 
+## [2.6.0] — 2026-09-23
+
+### Added
+
+- **Team-Authorship (optional, backward-kompatibel)** — `team`-Sektion in `.agent.json`, `reference/AGENT.json`, `AGENT_SCHEMA.json`
+- **Roster** — `WORKING/TEAM.md`: dynamisch, vom Bootstrap idempotent erstellt (`create_if_missing`), ab Tag 1 — Team oder Solo, gleiche Struktur, null Unterschied
+- **Authorship** — `BY: {name|—} / {tool} / {model} / {capability}` in Workpaper-Header, Diary-Format und LTM-Index
+- **Passive Detection** — Tool/Modell/capability (`local`|`frontier`) werden aus dem Tech-Stack erkannt (tool_detection + Runtime-Konfiguration + Endpoint) — niemals an den Menschen gefragt, niemals Pflicht
+- **Handover** — `continued_from` + `observe/`-Status (wartet auf Weiterarbeit) + Single-Writer pro Workpaper
+- **Guard-Check `authorship_present`** (optional, vor Write/Edit): Reihenfolge `manifest_read → workpaper_open → authorship_present → tools_gated`
+- **`bootstrap_rules.team_file`** — `./WORKING/TEAM.md` (create_if_missing)
+- **`on_update`** — neuer MIGRATE-Schritt: `TEAM.md` anlegen wenn fehlend (nie überschreiben)
+
+### Changed
+
+- **`reference/AGENT.json`** — synchronisiert (war `AAMS/2.3.1`, jetzt `AAMS/2.6.0`), `skills`-Duplikat bereinigt (Capabilities + Skill-Pool in einer Sektion)
+- **`AGENT_SCHEMA.json`** — Version `2.6.0` ($id + version), `team`-Property (alle Felder optional), `skills`-Duplikat bereinigt, `authorship_present`-Guard-Check + `no_authorship`-Error + `bootstrap_rules.team_file`
+- **`_deviations`** — AGENT.json + SPEC.md auf Schema-Naming `convention_path` synchronisiert (war `spec_path`, Validierungs-Drift)
+- **README.md / READ-AGENT.md / docs/index.html** — Version auf `AAMS/2.6.0` synchronisiert
+
+### Decisions
+
+- **Whitepaper bleiben author-frei** (Wahrheit-in-Zeit) — keine „wer/womit"-Infos
+- **Struktur-Invarianz** — Team oder Solo = gleiche Struktur, null Unterschied im Schema
+- **Detection statt Frage** — erkennbare Fakten (Tool, Modell, local/frontier) aus dem Tech-Stack, keine menschliche Eingabe
+- **Sämtliche Team-Felder `descriptive_only`** (D9) — kein Required-Feld, bestehende Repos 1:1 gültig
+
+### Breaking changes
+
+Keine. Alle Team-Felder optional, keine neuen Pflicht-Pfade, nichts wird überschrieben.
+
+---
+
+## [2.5.0] — 2026-07-08
+
+### Added
+
+- **INDEX.md-Pflege** — `WORKING/WHITEPAPER/INDEX.md` + `WORKING/WORKPAPER/INDEX.md`: erstellen wenn fehlend, bestehende Papers indexieren, bei neuem Paper aktualisieren
+- **Max-5-Regel** — mehr als 5 offene Workpapers → Warnung + Vorschlag zum Schließen
+- **WH-011-upgrade-system.md** — Whitepaper zum Upgrade-System
+
+### Changed
+
+- **`on_update`** — um 4 INDEX-Schritte erweitert (Index-Check/-Erstellung/-Aktualisierung + Max-5-Prüfung)
+- **`_contract`** — `AAMS/2.3.1` → `AAMS/2.4.0`
+- **`.aams-version`** — `installed_version` → `AAMS/2.4.0`, `install_type` → `local_tag`
+
+---
+
+## [2.4.0] — 2026-07-08
+
+### Added
+
+- **Upgrade-Sicherheit** — `on_update`/Upgrade-Pfad überschreibt nicht mehr blind: Backup (`.agent.json.bak`) + Merge statt Überschreiben
+- **Anonymisierter Upgrade-Report** — `agent_conventions.feedback`: GitHub-Issue an `ogerly/AAMS` (nur wenn GITHUB_TOKEN vorhanden; keine Repo-Namen, keine Secrets, keine Personaldaten)
+- **UPGRADE.md** — Anleitung für Consumer-Repos (Automatischer Upgrade-Befehl + manuelle Schritte)
+
+### Fixed
+
+- **Versioning** — „niemals runter in der Version": CHANGELOG-Konsistenz + `_contract` trägt die reale Patch-Version (Basis für Update-Detection)
+
+---
+
 ## [2.3.2] — 2026-07-08
 
 ### Fixed
