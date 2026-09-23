@@ -266,6 +266,9 @@ Neue **optionale `team`-Sektion** in `.agent.json` + `reference/AGENT.json`, Sch
 | update (v4) | `CHANGELOG.md` — 2.6.0 + retroaktive 2.5.0 + 2.4.0-Einträge (fehlten komplett) |
 | update (v4) | `README.md`, `READ-AGENT.md`, `docs/index.html` — Version auf AAMS/2.6.0 synchronisiert |
 | validate (v4) | `python3`: JSON-Parser (alle 3 Spec-Dateien, keine doppelten Keys) + `jsonschema` Draft 2020-12: **AGENT.json erfüllt Schema 2.6.0 ✅** (vorher: 4 Fehler durch `spec_path`-Drift, behoben) |
+| git (v5, 2026-09-23) | Commits: `7697938` (Session 2026-09-22: WPs GOV-GRP/GOV-SYNC/SPEC-NOTE + RES-JEV observe + Skill-Umzug + INDEX/LTM/Diary) + `9d4f17f` (AAMS 2.6.0: 3 Spec-Dateien + SPEC.md + CHANGELOG + README/READ-AGENT/docs + dieses WP). Tag `v2.6.0` (annotated). Push: main + v2.6.0 → origin ✅ |
+| release (v5) | GitHub-Releases via API (Token aus `~/.git-credentials`, nirgendwo persistiert): **v2.4.0**, **v2.5.0**, **v2.6.0 (Latest)** — https://github.com/ogerly/AAMS/releases |
+| update (v5) | Dieses WP: §10.4-2 resolved (Agent-Ausführung), §11.4 ✅, file_protocol v5 |
 
 ---
 
@@ -337,8 +340,8 @@ Keine.
 ### 10.4 Release-Entscheidungen (User)
 
 1. ✅ **ENTSCHIEDEN (User 2026-09-23):** **Reihenfolge komplettieren** — zuerst retroaktive GitHub-Releases **v2.4.0** + **v2.5.0** (Tags existieren bereits, Releases fehlen — G9), dann **v2.6.0 als Latest**. → D12
-2. Push + Release: selbst, oder Agent mit Token + explizitem Auftrag?
-3. Assets: nur Source (wie bisher „Assets 2"), oder zusätzlich ein `aams-2.6.0.zip`-Bundle (`.agent.json` + `AGENTS.md` + `READ-AGENT.md`) für 3-Command-Installation?
+2. ✅ **ENTSCHIEDEN (User 2026-09-23):** Agent führt Push + Releases aus (expliziter Auftrag: „Push + Releases komplett"). Execution: Push main + `v2.6.0`-Tag, Releases via GitHub-API (Token aus `~/.git-credentials`, nicht in Dateien/Output). Ergebnis: v2.4.0, v2.5.0, **v2.6.0 = Latest** — lückenlose Release-Chronik.
+3. Assets: nur Source (wie bisher „Assets 2"), oder zusätzlich ein `aams-2.6.0.zip`-Bundle (`.agent.json` + `AGENTS.md` + `READ-AGENT.md`) für 3-Command-Installation? → **offen**
 
 ### 10.5 Retroaktive Release-Notizen (Entwurf für D12 — basierend auf dem tatsächlichen Commit-Content, 2026-09-23 per `git log/show` geprüft)
 
@@ -383,7 +386,7 @@ curl -sO https://raw.githubusercontent.com/ogerly/AAMS/main/.agent.json
 1. ✅ **Erledigt:** D1 bestätigt + §8-Fragen beantwortet (2026-09-22).
 2. ✅ **Erledigt:** Design v2 finalisiert (§4.1) — Detection-basiert, invariant, Guard-Check.
 3. ✅ **Erledigt (2026-09-23):** **Spec-Implementierung** — `.agent.json` + `reference/AGENT.json` + `AGENT_SCHEMA.json` (alle AAMS/2.6.0, `team`-Sektion/-Property, G5/G6 bereinigt, Guard `authorship_present`, `bootstrap_rules.team_file`, `on_update` TEAM.md-Migration) + `CHANGELOG.md` (2.6.0 + retro 2.5.0/2.4.0) + README/READ-AGENT/docs/index.html synchron. **Validiert: AGENT.json erfüllt Schema 2.6.0 ✅**
-4. ⏳ **Release-Reihenfolge (D12):** Commit auf `main` → `git tag v2.6.0` → Push → GitHub-Releases in Reihenfolge: **v2.4.0** (Notiz §10.5) → **v2.5.0** (Notiz §10.5) → **v2.6.0** (Notiz §10.3) als **Latest**. Push/Release = **User-Entscheidung** (§10.4-2/3 noch offen).
+4. ✅ **Erledigt (2026-09-23):** **Release-Reihenfolge (D12) ausgeführt** — Commits `7697938` (Session-Close) + `9d4f17f` (AAMS 2.6.0), Tag `v2.6.0`, Push main + Tag, GitHub-Releases **v2.4.0 → v2.5.0 → v2.6.0** (via GitHub-API, §10.4-2). **v2.6.0 = Latest** ✅ (API-Check). Offene Reste: §10.4-3 (Assets/Bundle) + D10-Adoption.
 5. **Später (D10):** Adoption in diesem Repo über den **standardisierten Upgrade-Pfad** (`curl .agent.json` → `on_update` → legt `./WORKING/TEAM.md` an) + WH-011-Test (Upgrade-System wird dabei mitgetestet).
 6. Optional: `WORKING/TOOLS/wiki_lint.py` um L8 „Team-Authorship" (prüft `BY`/Header-Konsistenz, optional — nach Adoption).
 7. Close: D2/D3/D7/D8 promote → **WH-012 Team-Authorship** (stabile Wahrheit inkl. Invarianz-Prinzip + Detection-Modell), LTM-Ingest, `docs/aams-arbeitsgrundstruktur-argumente.md` um „Team-Authorship" ergänzen.
